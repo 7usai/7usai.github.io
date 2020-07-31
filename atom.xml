@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-07-31T14:40:46.563Z</updated>
+    <updated>2020-07-31T16:03:04.080Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -83,6 +83,27 @@ trusted-host=pypi.douban.com
 <h2 id="内涵的软件">内涵的软件</h2>
 <p>拖进IDA得flag,DBAPP换成flag<br>
 <img src="https://7usai.github.io/post-images/1596205001874.png" alt="" loading="lazy"></p>
+<h2 id="bjdctf-2ndguessgame">[BJDCTF 2nd]guessgame</h2>
+<p>shift+F12得flag</p>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1596211165409.png" alt="" loading="lazy"></figure>
+<h2 id="helloword">helloword</h2>
+<p>得到一个APK文件</p>
+<p>放入android killer里边得flag<br>
+<img src="https://7usai.github.io/post-images/1596211279124.png" alt="" loading="lazy"></p>
+<h2 id="xor">XOR</h2>
+<p>看main函数应该是一个33位数异或<br>
+<img src="https://7usai.github.io/post-images/1596211286748.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1596211291028.png" alt="" loading="lazy"></figure>
+<p>这里有33位数</p>
+<p>写异或算法</p>
+<pre><code>l=[0x66,0x0a,0x6b,0x0c,0x77,0x26,0x4f,0x2e,0x40,0x11,0x78,0x0d,0x5a,0x3b,0x55,0x11,0x70,0x19,0x46,0x1f,0x76,0x22,0x4d,0x23,0x44,0x0e,0x67,0x06,0x68,0x0f,0x47,0x32,0x4f]
+x='f'
+for i in range(1,len(l)):
+    x+=chr(l[i]^l[i-1])
+    print (x)
+</code></pre>
+<p>得flag<br>
+<img src="https://7usai.github.io/post-images/1596211295525.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
