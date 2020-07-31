@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-07-31T16:10:15.629Z</updated>
+    <updated>2020-07-31T22:30:43.383Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -104,6 +104,56 @@ for i in range(1,len(l)):
 </code></pre>
 <p>得flag<br>
 <img src="https://7usai.github.io/post-images/1596211295525.png" alt="" loading="lazy"></p>
+<h2 id="reverse3">reverse3</h2>
+<p>32位IDA打开 找到main函数为sub_4156E0</p>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1596231374547.png" alt="" loading="lazy"></figure>
+<p>Dest与Str2比较，相等则为加密的flag。首先我们输入flag值，flag值经过变换后得Dest，即Str2。</p>
+<p>flag先变为v1,再变为Dest1，再变为Dest（Str2）</p>
+<p>找到v1转换函数</p>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1596231379288.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1596231383733.png" alt="" loading="lazy"></figure>
+<p>可见是base64加密</p>
+<p>又得到Str2的值</p>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1596231387805.png" alt="" loading="lazy"></figure>
+<p>编写脚本</p>
+<pre><code>import base64
+str2='e3nifIH9b_C@n@dH'
+x=''
+for i in range(0,len(str2)):
+    x+=chr(ord(str2[i])-i)
+print (x)
+y=base64.b64decode(x)
+print (y)
+</code></pre>
+<p>得flag</p>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1596231394662.png" alt="" loading="lazy"></figure>
+<p>补充</p>
+<p>ord()函数主要用来返回对应字符的ascii码，chr()主要用来表示ascii码对应的字符他的输入时数字（可十进制可十六进制），ord:字符转ascii码，chr:ascii码转字符。在此题计算中先转为ascii减数字，得到的新ascii再转为字符。</p>
+<p>python中base64加密与解码，加密用encode解密用decode，如下例</p>
+<p>&gt;&gt;&gt; import base64<br>
+&gt;&gt;&gt; s = '我是字符串'<br>
+&gt;&gt;&gt; a = base64.b64encode(s)<br>
+&gt;&gt;&gt; print a<br>
+ztLKx9fWt/u0rg==<br>
+&gt;&gt;&gt; print base64.b64decode(a)<br>
+我是字符串</p>
+<h2 id="不一样的flag">不一样的flag</h2>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1596232291308.png" alt="" loading="lazy"></figure>
+<p>点开程序是这样，放入IDA32位得主函数</p>
+<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1596232295572.png" alt="" loading="lazy"></figure>
+<p>又查到此字符串，猜测是个迷宫题</p>
+<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1596232300989.png" alt="" loading="lazy"></figure>
+<p>这里的意思时遇到1就退出，即不遇到1的情况下到达#<br>
+<img src="https://7usai.github.io/post-images/1596232306563.png" alt="" loading="lazy"></p>
+<p>*11110100001010000101111#可分为5行 *为起点#为重点</p>
+<pre><code>*1111
+01000
+01010
+00010
+1111#
+</code></pre>
+<p>于是走一遍得</p>
+<p>flag{222441144222}</p>
 ]]></content>
     </entry>
     <entry>
