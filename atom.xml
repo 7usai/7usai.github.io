@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-07-24T04:20:01.600Z</updated>
+    <updated>2020-07-31T14:17:12.332Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -10,6 +10,40 @@
     <logo>https://7usai.github.io/images/avatar.png</logo>
     <icon>https://7usai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 7usai</rights>
+    <entry>
+        <title type="html"><![CDATA[BUUCTF re部分wp（持续更新）]]></title>
+        <id>https://7usai.github.io/post/buuctf-re-bu-fen-wpchi-xu-geng-xin/</id>
+        <link href="https://7usai.github.io/post/buuctf-re-bu-fen-wpchi-xu-geng-xin/">
+        </link>
+        <updated>2020-07-31T14:12:06.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="buuctf-re部分wp">BUUCTF re部分wp</h1>
+<h2 id="easyre">easyre</h2>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1596204910229.png" alt="" loading="lazy"></figure>
+<h2 id="reverse1">reverse1</h2>
+<p>搜索flag字符串找到如下位置<br>
+<img src="https://7usai.github.io/post-images/1596204953682.png" alt="" loading="lazy"></p>
+<p>再按F5后再双击Str2<br>
+<img src="https://7usai.github.io/post-images/1596204960649.png" alt="" loading="lazy"></p>
+<p>将hello_world中的o换成0</p>
+<p>得flag{hell0_w0rld}</p>
+<h2 id="reverse2">reverse2</h2>
+<p>找到main函数按下F5<br>
+<img src="https://7usai.github.io/post-images/1596204969585.png" alt="" loading="lazy"></p>
+<p>双击flag</p>
+<p><img src="https://7usai.github.io/post-images/1596204975899.png" alt="" loading="lazy"><br>
+输入发现不正确继续看</p>
+<p>这里flag中存的是{hacking_for_fun}</p>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1596204985974.png" alt="" loading="lazy"></figure>
+<p>在主函数的这里发生了转换，查ascii表得是将i和r转换成1</p>
+<p>得flag{hack1ng_fo1_fun}</p>
+<h2 id="新年快乐">新年快乐</h2>
+<p>有UPX壳，脱壳后找</p>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1596204992819.png" alt="" loading="lazy"></figure>
+<h2 id="内涵的软件">内涵的软件</h2>
+<p>拖进IDA得flag,DBAPP换成flag<br>
+<img src="https://7usai.github.io/post-images/1596205001874.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Typora快捷键]]></title>
         <id>https://7usai.github.io/post/typora-kuai-jie-jian/</id>
