@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-07-31T14:17:12.332Z</updated>
+    <updated>2020-07-31T14:38:16.791Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -10,6 +10,47 @@
     <logo>https://7usai.github.io/images/avatar.png</logo>
     <icon>https://7usai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 7usai</rights>
+    <entry>
+        <title type="html"><![CDATA[CTFD搭建（ubuntu18.04）]]></title>
+        <id>https://7usai.github.io/post/ctfd-da-jian-ubuntu1804/</id>
+        <link href="https://7usai.github.io/post/ctfd-da-jian-ubuntu1804/">
+        </link>
+        <updated>2020-07-31T14:37:17.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="更换ubuntu1804阿里源">更换ubuntu18.04阿里源</h2>
+<p>vim /etc/apt/sources.list</p>
+<p>sudo apt-get update</p>
+<p>sudo apt-get upgrade</p>
+<h2 id="安装pip3">安装pip3</h2>
+<p>apt install python3-pip</p>
+<p>如果异常可以升级pip</p>
+<p>sudo python3 -m pip install --upgrade pip</p>
+<h2 id="pip换源">pip换源</h2>
+<pre><code>mkdir ~/.pip
+cd ~/.pip
+touch pip.conf
+编辑pip.conf文件
+sudo vim ~/.pip/pip.conf
+打开pip.conf文件窗口,将以下内容复制到文件中:
+[global] 
+index-url = http://pypi.douban.com/simple 
+[install] 
+trusted-host=pypi.douban.com
+</code></pre>
+<h2 id="安装flask">安装Flask</h2>
+<p>sudo pip3 install Flask</p>
+<h2 id="下载ctfd">下载CTFd</h2>
+<p>sudo git clone https://github.com/isislab/CTFd.git</p>
+<p>如果不能成功下载就</p>
+<p>sudo git clone https://gitee.com/ivenwings/CTFd.git</p>
+<p>给予权限</p>
+<p>chmod -R 755 CTFd/</p>
+<h2 id="安装ctfd">安装CTFd</h2>
+<p>1  cd CTFd/</p>
+<p>2  ./prepare.sh</p>
+<p>3  pip3 install -r -requirements.txt；这一步如果不行可以尝试python3 -m pip install -r -requirements.txt</p>
+<p>4  python3 serve.py</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[BUUCTF re部分wp（持续更新）]]></title>
         <id>https://7usai.github.io/post/buuctf-re-bu-fen-wpchi-xu-geng-xin/</id>

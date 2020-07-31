@@ -2,27 +2,22 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>BUUCTF re部分wp（持续更新） | 7usai</title>
+<title>CTFD搭建（ubuntu18.04） | 7usai</title>
 <link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1596206277586">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="BUUCTF re部分wp（持续更新） | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="CTFD搭建（ubuntu18.04） | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="BUUCTF re部分wp
-easyre
-
-reverse1
-搜索flag字符串找到如下位置
-
-再按F5后再双击Str2
-
-将hello_world中的o换成0
-得flag{hell0_w0rld}
-reverse2
-找到main函数按下F..." />
+    <meta name="description" content="更换ubuntu18.04阿里源
+vim /etc/apt/sources.list
+sudo apt-get update
+sudo apt-get upgrade
+安装pip3
+apt install python3-pip
+如果异常可..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -89,7 +84,7 @@ reverse2
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              BUUCTF re部分wp（持续更新）
+              CTFD搭建（ubuntu18.04）
             </h2>
             <div class="post-info">
               <span>
@@ -103,43 +98,51 @@ reverse2
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h1 id="buuctf-re部分wp">BUUCTF re部分wp</h1>
-<h2 id="easyre">easyre</h2>
-<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1596204910229.png" alt="" loading="lazy"></figure>
-<h2 id="reverse1">reverse1</h2>
-<p>搜索flag字符串找到如下位置<br>
-<img src="https://7usai.github.io/post-images/1596204953682.png" alt="" loading="lazy"></p>
-<p>再按F5后再双击Str2<br>
-<img src="https://7usai.github.io/post-images/1596204960649.png" alt="" loading="lazy"></p>
-<p>将hello_world中的o换成0</p>
-<p>得flag{hell0_w0rld}</p>
-<h2 id="reverse2">reverse2</h2>
-<p>找到main函数按下F5<br>
-<img src="https://7usai.github.io/post-images/1596204969585.png" alt="" loading="lazy"></p>
-<p>双击flag</p>
-<p><img src="https://7usai.github.io/post-images/1596204975899.png" alt="" loading="lazy"><br>
-输入发现不正确继续看</p>
-<p>这里flag中存的是{hacking_for_fun}</p>
-<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1596204985974.png" alt="" loading="lazy"></figure>
-<p>在主函数的这里发生了转换，查ascii表得是将i和r转换成1</p>
-<p>得flag{hack1ng_fo1_fun}</p>
-<h2 id="新年快乐">新年快乐</h2>
-<p>有UPX壳，脱壳后找</p>
-<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1596204992819.png" alt="" loading="lazy"></figure>
-<h2 id="内涵的软件">内涵的软件</h2>
-<p>拖进IDA得flag,DBAPP换成flag<br>
-<img src="https://7usai.github.io/post-images/1596205001874.png" alt="" loading="lazy"></p>
+                <h2 id="更换ubuntu1804阿里源">更换ubuntu18.04阿里源</h2>
+<p>vim /etc/apt/sources.list</p>
+<p>sudo apt-get update</p>
+<p>sudo apt-get upgrade</p>
+<h2 id="安装pip3">安装pip3</h2>
+<p>apt install python3-pip</p>
+<p>如果异常可以升级pip</p>
+<p>sudo python3 -m pip install --upgrade pip</p>
+<h2 id="pip换源">pip换源</h2>
+<pre><code>mkdir ~/.pip
+cd ~/.pip
+touch pip.conf
+编辑pip.conf文件
+sudo vim ~/.pip/pip.conf
+打开pip.conf文件窗口,将以下内容复制到文件中:
+[global] 
+index-url = http://pypi.douban.com/simple 
+[install] 
+trusted-host=pypi.douban.com
+</code></pre>
+<h2 id="安装flask">安装Flask</h2>
+<p>sudo pip3 install Flask</p>
+<h2 id="下载ctfd">下载CTFd</h2>
+<p>sudo git clone https://github.com/isislab/CTFd.git</p>
+<p>如果不能成功下载就</p>
+<p>sudo git clone https://gitee.com/ivenwings/CTFd.git</p>
+<p>给予权限</p>
+<p>chmod -R 755 CTFd/</p>
+<h2 id="安装ctfd">安装CTFd</h2>
+<p>1  cd CTFd/</p>
+<p>2  ./prepare.sh</p>
+<p>3  pip3 install -r -requirements.txt；这一步如果不行可以尝试python3 -m pip install -r -requirements.txt</p>
+<p>4  python3 serve.py</p>
 
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li><a href="#buuctf-re%E9%83%A8%E5%88%86wp">BUUCTF re部分wp</a>
+<li>
 <ul>
-<li><a href="#easyre">easyre</a></li>
-<li><a href="#reverse1">reverse1</a></li>
-<li><a href="#reverse2">reverse2</a></li>
-<li><a href="#%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90">新年快乐</a></li>
-<li><a href="#%E5%86%85%E6%B6%B5%E7%9A%84%E8%BD%AF%E4%BB%B6">内涵的软件</a></li>
+<li><a href="#%E6%9B%B4%E6%8D%A2ubuntu1804%E9%98%BF%E9%87%8C%E6%BA%90">更换ubuntu18.04阿里源</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85pip3">安装pip3</a></li>
+<li><a href="#pip%E6%8D%A2%E6%BA%90">pip换源</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85flask">安装Flask</a></li>
+<li><a href="#%E4%B8%8B%E8%BD%BDctfd">下载CTFd</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85ctfd">安装CTFd</a></li>
 </ul>
 </li>
 </ul>
@@ -152,9 +155,9 @@ reverse2
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://7usai.github.io/post/typora-kuai-jie-jian/">
+            <a href="https://7usai.github.io/post/buuctf-re-bu-fen-wpchi-xu-geng-xin/">
               <h3 class="post-title">
-                Typora快捷键
+                BUUCTF re部分wp（持续更新）
               </h3>
             </a>
           </div>
