@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-08-14T14:30:25.351Z</updated>
+    <updated>2020-08-17T15:19:11.851Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -317,6 +317,99 @@ ztLKx9fWt/u0rg==<br>
 </code></pre>
 <p>于是走一遍得</p>
 <p>flag{222441144222}</p>
+<h2 id="simplerev">SimpleRev</h2>
+<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1597677451168.png" alt="" loading="lazy"></figure>
+<p>这里表示得到v4，v4为d或者D时进入Decry函数，不为d或者D时判断是否为Q或者q，是的话退出，不是则输出错误。<br>
+<img src="https://7usai.github.io/post-images/1597677458757.png" alt="" loading="lazy"></p>
+<p>进入Decry得到text通过key3，v9和join函数得到，进入join函数</p>
+<figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1597677466006.png" alt="" loading="lazy"></figure>
+<p>意思是a1与a2连接，返回值dest=a1+a2。<br>
+回到Decry函数可知text=key3+v9。key=key1+src。</p>
+<figure data-type="image" tabindex="16"><img src="https://7usai.github.io/post-images/1597677474689.png" alt="" loading="lazy"></figure>
+<p>key3=kills,key1=ADSFK，因为是小端序存储，所以text=killshadow，key=ADSFKNDCLS</p>
+<figure data-type="image" tabindex="17"><img src="https://7usai.github.io/post-images/1597677480466.png" alt="" loading="lazy"></figure>
+<p>这一步是将大写字母变为小写字母，key=adsfkndcls</p>
+<p><img src="https://7usai.github.io/post-images/1597677488135.png" alt="" loading="lazy"><br>
+编写脚本</p>
+<pre><code>key=&quot;adsfkndcls&quot;
+text=&quot;killshadow&quot;
+loop=&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;
+flag=&quot;&quot;
+for i in range(0,len(text)):
+    for j in loop:
+        if ord(text[i])==(ord(j)-39-ord(key[i])+97)%26+97:
+            flag+=j
+print(flag)
+</code></pre>
+<p>得到flag</p>
+<p>KLDQCUDFZO</p>
+<h2 id="刮开有奖">刮开有奖</h2>
+<figure data-type="image" tabindex="18"><img src="https://7usai.github.io/post-images/1597677495395.png" alt="" loading="lazy"></figure>
+<p>找到主函数DialogFunc并进入可知v7是数组的开头第一位，进入sub_4010F0</p>
+<figure data-type="image" tabindex="19"><img src="https://7usai.github.io/post-images/1597677500492.png" alt="" loading="lazy"></figure>
+<p>转为c语音代码得</p>
+<pre><code>#include &lt;iostream&gt;
+using namespace std;
+int f(char arr[], int a, int b)
+{
+    int result;
+    int i;
+    int v5;
+    int v6;
+    result = b;
+    for (i = a; i &lt;= b; a = i)
+    {
+        v5 = i;
+        v6 = arr[i];
+        if (a &lt; result &amp;&amp; i &lt; result)
+        {
+            do
+            {
+                if (v6 &gt; arr[result])
+                {
+                    if (i &gt;= result)
+                        break;
+                    ++i;
+                    arr[v5] = arr[result];
+                    if (i &gt;= result)
+                        break;
+                    while (arr[i] &lt;= v6)
+                    {
+                        if (++i &gt;= result)
+                            goto LABEL_13;
+                    }
+                    if (i&gt;=result)
+                        break;
+                    v5 = i;
+                    arr[result] = arr[i];
+                }
+                --result;
+            } while (i &lt; result);
+        }
+LABEL_13:
+        arr[result] = v6;
+        f(arr, a, i - 1);
+        result = b;
+        ++i;
+    }
+    return result;
+}
+int main()
+{
+    char arr[20] = {90, 74, 83, 69, 67, 97, 78, 72, 51, 110, 103};
+    cout &lt;&lt; arr &lt;&lt; endl;
+    f(arr,0,10);
+    cout&lt;&lt;arr&lt;&lt;endl;
+    return 0;
+}
+</code></pre>
+<p>运行一下得</p>
+<figure data-type="image" tabindex="20"><img src="https://7usai.github.io/post-images/1597677510196.png" alt="" loading="lazy"></figure>
+<p>进入401000函数可看出事base64</p>
+<figure data-type="image" tabindex="21"><img src="https://7usai.github.io/post-images/1597677516740.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="22"><img src="https://7usai.github.io/post-images/1597677522324.png" alt="" loading="lazy"></figure>
+<p>这里第一位是U第二位J第三位开始通过ak1w,V1ax解码得jMp和WP1所以从第三位开始是WP1jMp</p>
+<p>拼得flag{UJWP1jMp}</p>
 ]]></content>
     </entry>
     <entry>
