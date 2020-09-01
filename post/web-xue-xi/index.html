@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>web学习 | 7usai</title>
-<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1598772699499">
+<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1598957495637">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="web学习 | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
@@ -24,7 +24,7 @@ web常见术语
       <div class="main-content">
         <div class="site-header">
   <a href="https://7usai.github.io">
-  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1598772699499" alt="">
+  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1598957495637" alt="">
   </a>
   <h1 class="site-title">
     7usai
@@ -88,7 +88,7 @@ web常见术语
                 2020-08-30
               </span>
               <span>
-                14 min read
+                17 min read
               </span>
               
                 <a href="https://7usai.github.io/tag/lGYs_sz42/" class="post-tag">
@@ -435,6 +435,70 @@ $result = mysqli_query($con,$sql);
 
 $row = mysqli_fetch_array($result)
 </code></pre>
+<h2 id="whois查询">whois查询</h2>
+<p>whois（读作“Who is”，非缩写）是用来查询域名的IP以及所有者等信息的传输协议。简单说，whois就是一个用来查询域名是否已经被注册，以及注册域名的详细信息的数据库（如域名所有人、域名注册商）。</p>
+<h3 id="查询途径">查询途径</h3>
+<p>1.爱站工具网（https://whois.aizhan.com/）<br>
+2.站长之家（http://whois.chinaz.com）<br>
+3.VirusTotal（ https://www.virustotal.com ）</p>
+<p>根据ICANN公布的《通用顶级域名注册数据临时政策细则》和欧盟通用数据保护条例合规要求，全面调整 WHOIS 公开显示的信息。</p>
+<p>即：注册商提供WHOIS查询公开信息中将不再显示域名注册人、管理联系人和技术联系人的个人数据，包括姓名、邮箱、电话、街道地址等，只会显示注册商及到期日期等。而且该调整已于2018年5月25日开始生效。</p>
+<h2 id="备案信息查询">备案信息查询</h2>
+<p>网站备案是根据国家法律法规规定，需要网站的所有者向国家有关部 门申请的 备案，这是国家信息产业部对网站的一种管理，为了防止在网上从事非法的网站经 营活动的发生</p>
+<p>注意：主要针对国内网站，如果网站搭建在其他国家，则不需要进行备案</p>
+<h3 id="常用的查询网站">常用的查询网站</h3>
+<p>ICP备案查询网：http://www.beianbeian.com/<br>
+天眼查：https://beian.tianyancha.com/</p>
+<p>站长工具：http://icp.chinaz.com/<br>
+工业和信息化部：http://www.beian.miit.gov.cn/</p>
+<h2 id="收集敏感信息">收集敏感信息</h2>
+<h3 id="谷歌语法">谷歌语法</h3>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1598957444700.png" alt="" loading="lazy"></figure>
+<h4 id="举例">举例</h4>
+<p>学校网站的后台<br>
+Site:edu.cn intext:后台管理</p>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1598957452119.png" alt="" loading="lazy"></figure>
+<h3 id="burp查询服务器的某些信息">Burp查询服务器的某些信息</h3>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1598957458913.png" alt="" loading="lazy"></figure>
+<h3 id="ip地址">IP地址</h3>
+<p>ping指令</p>
+<h3 id="网站指纹识别">网站指纹识别</h3>
+<p>BugScaner：http://whatweb.bugscaner.com/look/<br>
+云悉指纹：http://www.yunsee.cn/finger.html<br>
+WhatWeb：https://whatweb.net/</p>
+<h3 id="网站容器">网站容器</h3>
+<p>nmap, iis, apache, nginx</p>
+<h3 id="脚本类型">脚本类型</h3>
+<p>php, asp</p>
+<h3 id="数据库类型">数据库类型</h3>
+<p>常见搭配：<br>
+ASP 和 ASPX：ACCESS、SQL Server<br>
+PHP：MySQL、PostgreSQL<br>
+JSP：Oracle、MySQL</p>
+<h2 id="收集子域名信息">收集子域名信息</h2>
+<h3 id="为什么要收集子域名">为什么要收集子域名</h3>
+<p>子域名枚举可以发现更多评估范围相关的域名/子域名，以增加漏洞发现机率；<br>
+探测到更多隐藏或遗忘的应用服务，这些应用往往可导致一些严重漏洞；</p>
+<h3 id="方法">方法</h3>
+<p>1.谷歌语法<br>
+2.在线子域名爆破https://phpinfo.me/domain/<br>
+3.Loyer<br>
+4.Maltego(kali)</p>
+<h2 id="收集常用端口信息">收集常用端口信息</h2>
+<p>在渗透测试的过程中，对端口信息的收集是一个很重要的过程，通过扫描服务器开放的端口以及从该端口判断服务器上存在的服务，就可以对症下药，便于我们渗透目标服务器。</p>
+<h3 id="常见的扫描端口工具">常见的扫描端口工具</h3>
+<p>1.Nmap<br>
+2.Masscan<br>
+3.Zmap<br>
+4.御剑高速TCP端口扫描工具</p>
+<h3 id="nmap基础使用">Nmap基础使用</h3>
+<p>默认扫描：nmap 106.52.110.188<br>
+指定端口扫描：nmap –p 3306 106.52.110.188<br>
+完整扫描到端口、服务及版本：nmap –v –sV 106.52.110.188</p>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1598957468921.png" alt="" loading="lazy"></figure>
+<h3 id="补充其他端口扫描工具">补充：其他端口扫描工具</h3>
+<p>Shodan:https://www.shodan.io/<br>
+在线端口扫描：http://www.t1shopper.com/tools/port-scan/</p>
 
               </div>
               <div class="toc-container">
@@ -506,6 +570,44 @@ $row = mysqli_fetch_array($result)
 <li><a href="#mysqli_connect">Mysqli_connect()</a></li>
 <li><a href="#mysqli_query">Mysqli_query</a></li>
 <li><a href="#mysqli_fetch_array">Mysqli_fetch_array</a></li>
+</ul>
+</li>
+<li><a href="#whois%E6%9F%A5%E8%AF%A2">whois查询</a>
+<ul>
+<li><a href="#%E6%9F%A5%E8%AF%A2%E9%80%94%E5%BE%84">查询途径</a></li>
+</ul>
+</li>
+<li><a href="#%E5%A4%87%E6%A1%88%E4%BF%A1%E6%81%AF%E6%9F%A5%E8%AF%A2">备案信息查询</a>
+<ul>
+<li><a href="#%E5%B8%B8%E7%94%A8%E7%9A%84%E6%9F%A5%E8%AF%A2%E7%BD%91%E7%AB%99">常用的查询网站</a></li>
+</ul>
+</li>
+<li><a href="#%E6%94%B6%E9%9B%86%E6%95%8F%E6%84%9F%E4%BF%A1%E6%81%AF">收集敏感信息</a>
+<ul>
+<li><a href="#%E8%B0%B7%E6%AD%8C%E8%AF%AD%E6%B3%95">谷歌语法</a>
+<ul>
+<li><a href="#%E4%B8%BE%E4%BE%8B">举例</a></li>
+</ul>
+</li>
+<li><a href="#burp%E6%9F%A5%E8%AF%A2%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E6%9F%90%E4%BA%9B%E4%BF%A1%E6%81%AF">Burp查询服务器的某些信息</a></li>
+<li><a href="#ip%E5%9C%B0%E5%9D%80">IP地址</a></li>
+<li><a href="#%E7%BD%91%E7%AB%99%E6%8C%87%E7%BA%B9%E8%AF%86%E5%88%AB">网站指纹识别</a></li>
+<li><a href="#%E7%BD%91%E7%AB%99%E5%AE%B9%E5%99%A8">网站容器</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC%E7%B1%BB%E5%9E%8B">脚本类型</a></li>
+<li><a href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B1%BB%E5%9E%8B">数据库类型</a></li>
+</ul>
+</li>
+<li><a href="#%E6%94%B6%E9%9B%86%E5%AD%90%E5%9F%9F%E5%90%8D%E4%BF%A1%E6%81%AF">收集子域名信息</a>
+<ul>
+<li><a href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%94%B6%E9%9B%86%E5%AD%90%E5%9F%9F%E5%90%8D">为什么要收集子域名</a></li>
+<li><a href="#%E6%96%B9%E6%B3%95">方法</a></li>
+</ul>
+</li>
+<li><a href="#%E6%94%B6%E9%9B%86%E5%B8%B8%E7%94%A8%E7%AB%AF%E5%8F%A3%E4%BF%A1%E6%81%AF">收集常用端口信息</a>
+<ul>
+<li><a href="#%E5%B8%B8%E8%A7%81%E7%9A%84%E6%89%AB%E6%8F%8F%E7%AB%AF%E5%8F%A3%E5%B7%A5%E5%85%B7">常见的扫描端口工具</a></li>
+<li><a href="#nmap%E5%9F%BA%E7%A1%80%E4%BD%BF%E7%94%A8">Nmap基础使用</a></li>
+<li><a href="#%E8%A1%A5%E5%85%85%E5%85%B6%E4%BB%96%E7%AB%AF%E5%8F%A3%E6%89%AB%E6%8F%8F%E5%B7%A5%E5%85%B7">补充：其他端口扫描工具</a></li>
 </ul>
 </li>
 </ul>
