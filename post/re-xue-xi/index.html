@@ -1,0 +1,329 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>RE学习 | 7usai</title>
+<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1599047258682">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="RE学习 | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="逆向软件基础
+debug版本较大、带调试信息，release版本优化程序、程序更小
+OD快捷键
+F2 下断点
+F3 加载一个可执行程序
+F4 程序执行到光标处
+F5 缩小、还原当前窗口
+F7 单步步入
+F8 单步步过
+F9 直接运行程序，遇..." />
+    <meta name="keywords" content="二进制" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://7usai.github.io">
+  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1599047258682" alt="">
+  </a>
+  <h1 class="site-title">
+    7usai
+  </h1>
+  <p class="site-description">
+    7usai'blog
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/7usai" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              RE学习
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-09-02
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://7usai.github.io/tag/7xbgN0lBu/" class="post-tag">
+                  # 二进制
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="逆向软件基础">逆向软件基础</h1>
+<p>debug版本较大、带调试信息，release版本优化程序、程序更小</p>
+<h2 id="od快捷键">OD快捷键</h2>
+<pre><code>F2 下断点
+F3 加载一个可执行程序
+F4 程序执行到光标处
+F5 缩小、还原当前窗口
+F7 单步步入
+F8 单步步过
+F9 直接运行程序，遇到断点处，程序暂停
+Ctrl + F2 重新运行程序到起始处
+Ctrl + F9 执行到函数返回处，用于跳出函数实现
+Ctrl + G 输入十六进制地址，快速定位到该地址处
+Ctrl + N 应用程序的输入表
+Alt + B 显示断点窗口
+Alt + C 显示 CPU 窗口
+Alt + F9 执行到用户代码处，用于快速跳出系统函数
+Ctrl+j跳转main函数
+</code></pre>
+<h2 id="寻找main函数od">寻找main函数(OD)</h2>
+<p>1.寻找参考字符串<br>
+2.main函数特点：3个push、1个call,F7进入。<br>
+3.API寻找<br>
+4.IDA</p>
+<h2 id="修改内存中的数据">修改内存中的数据</h2>
+<p>1.OD:右键-&gt;二进制-&gt;编辑<br>
+2.修改PUSH的地址以及该地址中的数据</p>
+<h2 id="修改跳转">修改跳转</h2>
+<p>1.修改关键跳转<br>
+2.修改对比值</p>
+<h2 id="滑板指令">滑板指令</h2>
+<p>nop/90； 作用：把自己过掉执行下一句</p>
+<h2 id="初级破解">初级破解</h2>
+<h3 id="找到main函数所在位置">找到main函数所在位置</h3>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1599047100466.png" alt="" loading="lazy"></figure>
+<h3 id="整体main函数">整体main函数</h3>
+<pre><code>00181080  /$  55            push ebp
+00181081  |.  8BEC          mov ebp,esp
+00181083  |.  83EC 38       sub esp,0x38
+00181086  |.  A1 04F01900   mov eax,dword ptr ds:[0x19F004]
+0018108B  |.  33C5          xor eax,ebp
+0018108D  |.  8945 FC       mov [local.1],eax
+00181090  |.  68 A8D61900   push 05.0019D6A8
+00181095  |.  E8 86FFFFFF   call 05.00181020
+0018109A  |.  6A 32         push 0x32
+0018109C  |.  8D45 C8       lea eax,[local.14]
+0018109F  |.  6A 00         push 0x0
+001810A1  |.  50            push eax
+001810A2  |.  E8 790D0000   call 05.00181E20
+001810A7  |.  8D45 C8       lea eax,[local.14]
+001810AA  |.  50            push eax
+001810AB  |.  68 B8D61900   push 05.0019D6B8                         ;  &quot;%s&quot;
+001810B0  |.  E8 9BFFFFFF   call 05.00181050
+001810B5  |.  8B45 C8       mov eax,[local.14]
+001810B8  |.  33D2          xor edx,edx
+001810BA  |.  83C4 18       add esp,0x18
+001810BD  |.  3C 72         cmp al,0x72
+001810BF  |.  0F94C2        sete dl
+001810C2  |.  80FC 6B       cmp ah,0x6B
+001810C5  |.  8D4A 01       lea ecx,dword ptr ds:[edx+0x1]
+001810C8  |.  0F45CA        cmovne ecx,edx
+001810CB  |.  807D CA 76    cmp byte ptr ss:[ebp-0x36],0x76
+001810CF  |.  8D41 01       lea eax,dword ptr ds:[ecx+0x1]
+001810D2  |.  0F45C1        cmovne eax,ecx
+001810D5  |.  807D CB 69    cmp byte ptr ss:[ebp-0x35],0x69
+001810D9  |.  8D48 01       lea ecx,dword ptr ds:[eax+0x1]
+001810DC  |.  0F45C8        cmovne ecx,eax
+001810DF  |.  807D CC 72    cmp byte ptr ss:[ebp-0x34],0x72
+001810E3  |.  8D51 01       lea edx,dword ptr ds:[ecx+0x1]
+001810E6  |.  0F45D1        cmovne edx,ecx
+001810E9  |.  807D CD 00    cmp byte ptr ss:[ebp-0x33],0x0
+001810ED  |.  8D42 01       lea eax,dword ptr ds:[edx+0x1]
+001810F0  |.  0F45C2        cmovne eax,edx
+001810F3  |.  83F8 05       cmp eax,0x5
+001810F6  |.  76 07         jbe short 05.001810FF
+001810F8  |.  68 BCD61900   push 05.0019D6BC                         ;  ASCII 6C,&quot;ogin sucess!\n&quot;
+001810FD  |.  EB 05         jmp short 05.00181104
+001810FF  |&gt;  68 CCD61900   push 05.0019D6CC                         ;  ASCII 6C,&quot;ogin failed!\n&quot;
+00181104  |&gt;  E8 17FFFFFF   call 05.00181020
+00181109  |.  83C4 04       add esp,0x4
+0018110C  |.  68 DCD61900   push 05.0019D6DC                         ;  ASCII 70,&quot;ause&quot;
+00181111  |.  E8 892A0000   call 05.00183B9F
+00181116  |.  8B4D FC       mov ecx,[local.1]
+00181119  |.  83C4 04       add esp,0x4
+0018111C  |.  33CD          xor ecx,ebp
+0018111E  |.  33C0          xor eax,eax
+00181120  |.  E8 04000000   call 05.00181129
+00181125  |.  8BE5          mov esp,ebp
+00181127  |.  5D            pop ebp                                  ;  05.001812F1
+00181128  \.  C3            retn
+
+</code></pre>
+<p>单步调试一遍</p>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1599047110988.png" alt="" loading="lazy"></figure>
+<p>到这个位置显示请输入密码，随便敲一串字符继续调试</p>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1599047118404.png" alt="" loading="lazy"></figure>
+<p>调试到此处显示登录失败</p>
+<h3 id="破解方法">破解方法</h3>
+<h4 id="方法1修改跳转">方法1：修改跳转</h4>
+<p>经过初次调试可知00181020为printf，并添加各行作用注释</p>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1599047124421.png" alt="" loading="lazy"></figure>
+<p>意思为eax&gt;5时，即上述对比字符串都相同时登录成功输出login success；<br>
+过程：eax&gt;5，不执行jbe跳转，将login success压栈，跳转到call print函数位置；</p>
+<p><img src="https://7usai.github.io/post-images/1599047131428.png" alt="" loading="lazy"><br>
+修改后我们让它直接跳转到压栈位置。</p>
+<h4 id="方法2修改关键字">方法2：修改关键字</h4>
+<p>这里我们可知关键值时为eax，eax与5比较，大于5时才输出login success</p>
+<p><img src="https://7usai.github.io/post-images/1599047137396.png" alt="" loading="lazy"><br>
+我们在这里将eax值修改为大于5的数</p>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1599047146195.png" alt="" loading="lazy"></figure>
+<h4 id="方法3分析得password">方法3：分析得password</h4>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1599047156075.png" alt="" loading="lazy"></figure>
+<p>我们在这里可知，与0x72,0x6B,0x76,0x69,0x72,0x0做了对比相同则登录成功，于是密码为</p>
+<p>思路：push eax 将输入的值存入了eax，ecx,edx两个中间值辅助eax+1.<br>
+<img src="https://7usai.github.io/post-images/1599047162183.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1599047167384.png" alt="" loading="lazy"></figure>
+<p>得到密码rkvir，成功</p>
+<h4 id="方法4修改对比值">方法4：修改对比值</h4>
+<p>即修改0x72,0x6B,0x76,0x69,0x72，让其与我们输入的值相同，即将我们输入的值变成password。</p>
+<p>假如我们输入7usai就要改成0x37,0x75,0x73,0x61,0x69</p>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1599047173916.png" alt="" loading="lazy"></figure>
+<p>登录成功</p>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1599047179674.png" alt="" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E9%80%86%E5%90%91%E8%BD%AF%E4%BB%B6%E5%9F%BA%E7%A1%80">逆向软件基础</a>
+<ul>
+<li><a href="#od%E5%BF%AB%E6%8D%B7%E9%94%AE">OD快捷键</a></li>
+<li><a href="#%E5%AF%BB%E6%89%BEmain%E5%87%BD%E6%95%B0od">寻找main函数(OD)</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E5%86%85%E5%AD%98%E4%B8%AD%E7%9A%84%E6%95%B0%E6%8D%AE">修改内存中的数据</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E8%B7%B3%E8%BD%AC">修改跳转</a></li>
+<li><a href="#%E6%BB%91%E6%9D%BF%E6%8C%87%E4%BB%A4">滑板指令</a></li>
+<li><a href="#%E5%88%9D%E7%BA%A7%E7%A0%B4%E8%A7%A3">初级破解</a>
+<ul>
+<li><a href="#%E6%89%BE%E5%88%B0main%E5%87%BD%E6%95%B0%E6%89%80%E5%9C%A8%E4%BD%8D%E7%BD%AE">找到main函数所在位置</a></li>
+<li><a href="#%E6%95%B4%E4%BD%93main%E5%87%BD%E6%95%B0">整体main函数</a></li>
+<li><a href="#%E7%A0%B4%E8%A7%A3%E6%96%B9%E6%B3%95">破解方法</a>
+<ul>
+<li><a href="#%E6%96%B9%E6%B3%951%E4%BF%AE%E6%94%B9%E8%B7%B3%E8%BD%AC">方法1：修改跳转</a></li>
+<li><a href="#%E6%96%B9%E6%B3%952%E4%BF%AE%E6%94%B9%E5%85%B3%E9%94%AE%E5%AD%97">方法2：修改关键字</a></li>
+<li><a href="#%E6%96%B9%E6%B3%953%E5%88%86%E6%9E%90%E5%BE%97password">方法3：分析得password</a></li>
+<li><a href="#%E6%96%B9%E6%B3%954%E4%BF%AE%E6%94%B9%E5%AF%B9%E6%AF%94%E5%80%BC">方法4：修改对比值</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://7usai.github.io/post/web-xue-xi/">
+              <h3 class="post-title">
+                web学习
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://7usai.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
