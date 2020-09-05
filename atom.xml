@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-09-02T11:47:41.807Z</updated>
+    <updated>2020-09-05T08:41:12.425Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -139,6 +139,24 @@ Ctrl+j跳转main函数
 <figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1599047173916.png" alt="" loading="lazy"></figure>
 <p>登录成功</p>
 <figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1599047179674.png" alt="" loading="lazy"></figure>
+<h2 id="mfc破解初试">MFC破解初试</h2>
+<h3 id="初始界面">初始界面</h3>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1599295190085.png" alt="" loading="lazy"></figure>
+<h3 id="修改跳转-2">修改跳转</h3>
+<p><img src="https://7usai.github.io/post-images/1599295199199.png" alt="" loading="lazy"><br>
+rkvir为密码已经可以看出，双击紫色行进入<br>
+<img src="https://7usai.github.io/post-images/1599295206191.png" alt="" loading="lazy"><br>
+修改跳转<br>
+<img src="https://7usai.github.io/post-images/1599295211864.png" alt="" loading="lazy"></p>
+<h3 id="修改密码">修改密码</h3>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1599295219313.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1599295225417.png" alt="" loading="lazy"></figure>
+<h2 id="初试破解crakeme">初试破解CrakeMe</h2>
+<p><img src="https://7usai.github.io/post-images/1599295232305.png" alt="" loading="lazy"><br>
+需要弹出下面的消息框</p>
+<h3 id="改跳转">改跳转</h3>
+<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1599295239334.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1599295245091.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
