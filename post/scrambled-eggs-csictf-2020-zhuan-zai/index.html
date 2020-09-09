@@ -1,0 +1,642 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Scrambled Eggs (csictf 2020) 转载！！ | 7usai</title>
+<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1599666122013">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Scrambled Eggs (csictf 2020) 转载！！ | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Scrambled Eggs (csictf 2020) 转载自https://ctftime.org/
+转载！！！ 用于个人学习
+Challenge description
+
+I like my eggs sunny side up, b..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://7usai.github.io">
+  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1599666122013" alt="">
+  </a>
+  <h1 class="site-title">
+    7usai
+  </h1>
+  <p class="site-description">
+    7usai'blog
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/7usai" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Scrambled Eggs (csictf 2020) 转载！！
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-09-09
+              </span>
+              <span>
+                16 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="scrambled-eggs-csictf-2020-转载自httpsctftimeorg">Scrambled Eggs (csictf 2020) 转载自https://ctftime.org/</h1>
+<h2 id="转载-用于个人学习">转载！！！ 用于个人学习</h2>
+<h2 id="challenge-description">Challenge description</h2>
+<blockquote>
+<p>I like my eggs sunny side up, but I ended up scrambling them.</p>
+</blockquote>
+<p>In this <strong>reversing</strong>/<strong>crypto</strong> challenge, we are provided with two files : [scrambledeggs.txt](https://github.com/malikDaCoda/CTFs-writeups/tree/master/reverse/csictf 2020-Scrambled Eggs/scrambledeggs.txt) which contains two encrypted keys and the encrypted flag, and [scrambledeggs.py](https://github.com/malikDaCoda/CTFs-writeups/tree/master/reverse/csictf 2020-Scrambled Eggs/scrambledeggs.py) the python script that was used to encrypt the flag.</p>
+<p><strong>scrambledeggs.txt</strong> :</p>
+<pre><code>Encrytped key1 = xtfsyhhlizoiyx                                                                                                                  
+Encrypted key2 = eudlqgluduggdluqmocgyukhbqkx                                                                                                    
+Encrypted flag = lvvrafwgtocdrdzfdqotiwvrcqnd
+</code></pre>
+<p><strong>scrambledeggs.py</strong> :</p>
+<pre><code class="language-python">import random 
+import sys
+
+map = ['v', 'r', 't', 'p', 'w', 'g', 'n', 'c', 'o', 'b', 'a', 'f', 'm', 'i', 'l', 'u', 'h', 'z', 'd', 'q', 'j', 'y', 'x', 'e', 'k', 's']
+
+flag = 'csictf{this_is_a_fake_flag}'
+flag = flag.replace('{','a')
+flag = flag.replace('}','a')
+flag = flag.replace('_','b')
+key1 = 'ashikka_is_mine'
+key1 = key1.replace('_','b')
+
+if(len(flag) != 28 or len(key1) != 14):
+    exit()
+    
+flag = list(flag)
+key1 = list(key1)
+
+
+def enc1(text):
+    n = random.randint(0,sys.maxsize%28)
+    return text[n:] + text[:n]
+    
+flag = enc1(flag)
+    
+def enc2(text):
+    temp = ''
+    for i in text:
+        temp += map[ord(i)-ord('a')]
+    return temp
+
+key2 = enc2(enc2(key1))
+key2 = list(key2)
+
+for j in range(2):
+    for i in range(14):
+        temp1 = flag[i]
+        flag[i] = flag[(ord(key1[i])-ord('a'))%28] 
+        flag[(ord(key1[i])-ord('a'))%28] = temp1
+        temp2 = key1[i]
+        key1[i] = key1[(ord(key2[i])-ord('a'))%14] 
+        key1[(ord(key2[i])-ord('a'))%14] = temp2
+        
+        
+    for i in range(14,28):
+        temp1 = flag[i]
+        flag[i] = flag[(ord(key2[i-14])-ord('a'))%28] 
+        flag[(ord(key2[i-14])-ord('a'))%28] = temp1
+        temp2 = key2[i-14]
+        key2[i-14] = key2[(ord(key1[i-14])-ord('a'))%14] 
+        key2[(ord(key1[i-14])-ord('a'))%14] = temp2
+        
+
+l = random.sample([key1, key2], 2)
+key1 = l[0]
+key2 = l[1]
+
+k = ''
+for i in range(14):
+    k += random.choice(map)
+k = list(k)
+
+key2 = k+key2
+for i in range(14):
+    a = ord(k[i])-ord('a')+ord(key2[i+14])
+    if a&gt;122:
+        a=a%122
+        a=a+97
+    key2[i+14]= chr(a)
+
+flag = ''.join(flag)
+key1 = ''.join(key1)
+key2 = ''.join(key2)
+ 
+key2 = enc2(key2)
+flag= enc1(enc1(enc1(enc2(flag))))
+
+print('Encrytped key1 = '+key1)
+print('Encrypted key2 = '+key2)
+print('Encrypted flag = '+flag)
+</code></pre>
+<h2 id="approach-to-the-solution">Approach to the solution</h2>
+<h3 id="understanding-the-script">Understanding the script</h3>
+<p>After calmly reading and trying to understand the script above, we can summarize its steps as the following points :</p>
+<ul>
+<li>we start off with the assignment of <code>flag</code> and <code>key1</code> (which both are not the actual ones obviously)</li>
+</ul>
+<pre><code class="language-python">flag = 'csictf{this_is_a_fake_flag}'
+flag = flag.replace('{','a')
+flag = flag.replace('}','a')
+flag = flag.replace('_','b')
+key1 = 'ashikka_is_mine'
+key1 = key1.replace('_','b')
+</code></pre>
+<ul>
+<li><code>flag</code> is encrypted using the <code>enc1</code> function</li>
+</ul>
+<pre><code class="language-python">flag = enc1(flag)
+</code></pre>
+<ul>
+<li><code>key2</code> is assigned as the double encryption of <code>key1</code> using the <code>enc2</code> function</li>
+</ul>
+<pre><code class="language-python">key2 = enc2(enc2(key1))
+</code></pre>
+<ul>
+<li>then comes the big double loop, which simply makes a few swaps between the characters of <code>flag</code>, <code>key1</code> and <code>key2</code></li>
+</ul>
+<pre><code class="language-python">for j in range(2):
+    for i in range(14):
+        temp1 = flag[i]
+        flag[i] = flag[(ord(key1[i])-ord('a'))%28] 
+        flag[(ord(key1[i])-ord('a'))%28] = temp1
+        temp2 = key1[i]
+        key1[i] = key1[(ord(key2[i])-ord('a'))%14] 
+        key1[(ord(key2[i])-ord('a'))%14] = temp2
+        
+        
+    for i in range(14,28):
+        temp1 = flag[i]
+        flag[i] = flag[(ord(key2[i-14])-ord('a'))%28] 
+        flag[(ord(key2[i-14])-ord('a'))%28] = temp1
+        temp2 = key2[i-14]
+        key2[i-14] = key2[(ord(key1[i-14])-ord('a'))%14] 
+        key2[(ord(key1[i-14])-ord('a'))%14] = temp2
+</code></pre>
+<ul>
+<li>after that, there is a possibility that <code>key1</code> and <code>key2</code> are swapped</li>
+</ul>
+<pre><code class="language-python">l = random.sample([key1, key2], 2)
+key1 = l[0]
+key2 = l[1]
+</code></pre>
+<ul>
+<li>random characters are appended to <code>key2</code>, and using those characters <code>key2</code>'s characters are modified</li>
+</ul>
+<pre><code class="language-python">k = ''
+for i in range(14):
+    k += random.choice(map)
+k = list(k)
+
+key2 = k+key2
+for i in range(14):
+    a = ord(k[i])-ord('a')+ord(key2[i+14])
+    if a&gt;122:
+        a=a%122
+        a=a+97
+    key2[i+14]= chr(a)
+</code></pre>
+<ul>
+<li><code>key2</code> is encrypted using the <code>enc2</code> function</li>
+</ul>
+<pre><code class="language-python">key2 = enc2(key2)
+</code></pre>
+<ul>
+<li><code>flag</code> is encrypted using the <code>enc2</code> function, and then encrypted three times using the <code>enc1</code> function</li>
+</ul>
+<pre><code class="language-python">flag= enc1(enc1(enc1(enc2(flag))))
+</code></pre>
+<ul>
+<li>finally <code>key1</code>, <code>key2</code> and <code>flag</code> are printed</li>
+</ul>
+<pre><code class="language-python">print('Encrytped key1 = '+key1)
+print('Encrypted key2 = '+key2)
+print('Encrypted flag = '+flag)
+</code></pre>
+<h3 id="how-to-approach-this">How to approach this ?</h3>
+<p>The general approach to take for this type of challenges is to first start by identifying and dividing the big individual problems/steps and come up with solutions for them if possible, then we procede to reverse each step starting from the bottom heading to the top, and we have to make sure to mark the steps where different values could come up, in our case, these are the steps where random values are used. Since we cannot guess those values, we use brute force by computing all the possible combinations.</p>
+<p>So first, let's start by identifying the steps where brute force is needed and where not :</p>
+<ul>
+<li>the <code>enc1</code> function uses random values to determine where to split the <code>text</code> argument, that means brute force is required</li>
+</ul>
+<pre><code class="language-python">def enc1(text):
+    n = random.randint(0,sys.maxsize%28)
+    return text[n:] + text[:n]
+</code></pre>
+<ul>
+<li>the <code>enc2</code> function simply maps characters from <code>text</code> to the <code>map</code> defined at the top of the script, so we can &quot;undo&quot; that</li>
+</ul>
+<pre><code class="language-python">map = ['v', 'r', 't', 'p', 'w', 'g', 'n', 'c', 'o', 'b', 'a', 'f', 'm', 'i', 'l', 'u', 'h', 'z', 'd', 'q', 'j', 'y', 'x', 'e', 'k', 's']
+def enc2(text):
+    temp = ''
+    for i in text:
+        temp += map[ord(i)-ord('a')]
+    return temp
+</code></pre>
+<ul>
+<li>the big double loop looks daunting but it is easily reversible by litteraly reversing the steps</li>
+<li>the key swapping is out of our control, we have to consider the two cases where <code>key1</code> and <code>key2</code> are swapped and when they are not</li>
+<li>the part where random characters are mixed with <code>key2</code> aspires that we need to use brute force, but we will find out later that we can actually recover <code>key2</code> without using brute force</li>
+</ul>
+<h2 id="crafting-the-solution">Crafting the solution</h2>
+<p>Now that we have identified the major steps of the encryption and the steps that require brute force, we can begin writing the solution. We will start off by writing some functions that will help us reverse some steps.</p>
+<h3 id="reversing-enc1">reversing <code>enc1</code></h3>
+<p>The <code>enc1</code> function generates first a random number <code>n</code> using <code>random.randint(0, sys.maxsize%28)</code>, <code>sys.maxsize</code> refers to the platform's pointer size, for 64-bit machines that's <code>2**63-1</code>, therefore, if we assume that the machine used to run the script is 64-bit <code>sys.maxsize%28</code> evaluates to <code>7</code>.</p>
+<p>Since we can't guess the random numbers generated, we will simply define the reverse function <code>dec1</code> to take two arguments <code>text</code> and <code>n</code> :</p>
+<pre><code class="language-python">def dec1(text, n):
+    assert(0 &lt;= n &lt; 28)
+    return text[-n:] + text[:-n]
+</code></pre>
+<p>Then in our main function, we will make sure to generate all the possible values for <code>n</code> (0 to 7)</p>
+<h3 id="reversing-enc2">reversing <code>enc2</code></h3>
+<p>On the other hand <code>enc2</code> is easily reversible by remapping the characters of <code>text</code> like this :</p>
+<pre><code class="language-python">def dec2(text):
+    # map each character of text to the character of order :
+    # index of text[i] in scramble_map + ord('a')
+    return ''.join(chr(scramble_map.index(char) + ord('a')) for char in text)
+</code></pre>
+<h3 id="unlooping">unlooping</h3>
+<p>As stated before, we reverse the big double loop by simply reversing the steps, just like this :</p>
+<pre><code class="language-python">def unloop(key1, key2, flag):
+    key1, key2, flag = list(key1), list(key2), list(flag)
+    assert (len(key1) == len(key2) == 14)
+    for j in range(2):
+        # we make sure the range is from 27 to 14, not 14 to 27
+        for i in range(27, 13, -1):
+            # taking advantage of python's built-in way to swap values
+            # rather than using a temp variable
+            index = (ord(key1[i-14]) - ord('a')) % 14
+            key2[index], key2[i-14] = key2[i-14], key2[index]
+
+            index = (ord(key2[i-14]) - ord('a')) % 28
+            flag[i], flag[index] = flag[index], flag[i]
+
+        for i in range(13, -1, -1):
+            index = (ord(key2[i]) - ord('a')) % 14
+            key1[index], key1[i] = key1[i], key1[index]
+
+            index = (ord(key1[i]) - ord('a')) % 28
+            flag[i], flag[index] = flag[index], flag[i]
+
+    return ''.join(key1), ''.join(key2), ''.join(flag)
+</code></pre>
+<h3 id="recovering-key2">recovering <code>key2</code></h3>
+<p>We said before that the part where 14 random characters were mixed up with <code>key2</code> is reversible without brute force, that's because those random chars are appended to <code>key2</code> and not scrambled afterwards, so here are the steps to recover <code>key2</code> :</p>
+<pre><code class="language-python">def recover_key2(ekey2):
+    assert(len(ekey2) == 28)
+    # the random characters are the 14 first
+    k = ekey2[:14]
+    # the list of `a`s
+    alist = list(map(ord, ekey2[14:]))
+    res = ''
+    for i in range(14):
+        # we simply compute c using linear equations
+        c = alist[i] - ord(k[i]) + ord('a')
+        # since all characters are ascii lowercase
+        # this check helps avoiding multiple potential values
+        if not ord('a') &lt;= c &lt;= ord('z'):
+            c += 122 - 97
+        res += chr(c)
+    return res
+</code></pre>
+<h3 id="wrapping-everything-up">Wrapping everything up</h3>
+<p>In order to join everything we have been working on, we simply reverse the steps of the total encryption from bottom to top :</p>
+<ol>
+<li>Generate combinations of three <code>n</code>s (from 0 to 7)</li>
+</ol>
+<pre><code class="language-python">randsize = 7
+combinations = [p for p in itertools.product(range(randsize+1), repeat=3)]
+</code></pre>
+<ol>
+<li>Use the combinations to call <code>dec1</code> three times on the encrypted flag, and then call <code>dec2</code> (we can call <code>dec2</code> first since <code>dec1</code> doesn't change the characters of <code>text</code>)</li>
+</ol>
+<pre><code class="language-python">flag = dec2(eflag)
+for c in combinations:
+    flag = dec1(dec1(dec1(flag, c[0]), c[1]), c[2])
+</code></pre>
+<ol>
+<li>Call <code>dec2</code> on the encrypted <code>key2</code></li>
+</ol>
+<pre><code class="language-python">key2 = dec2(ekey2)
+</code></pre>
+<ol>
+<li>Recover <code>key2</code> using <code>recover_key2</code></li>
+</ol>
+<pre><code class="language-python">key2 = recover_key2(key2)
+</code></pre>
+<ol>
+<li>Choose whether to swap <code>key1</code> and <code>key2</code> or not</li>
+</ol>
+<pre><code class="language-python">swapkeys = True
+if swapkeys: key1, key2 = key2, key1
+</code></pre>
+<ol>
+<li>Undo the big double loop using <code>unloop</code></li>
+</ol>
+<pre><code class="language-python">key1, key2, flag = unloop(key1, key2, flag)
+</code></pre>
+<ol>
+<li>Since originally, before the loop, <code>key2</code> is equal to <code>enc2(enc2(key1))</code> we can check whether that is true to minimize the results</li>
+</ol>
+<pre><code class="language-python">if dec2(dec2(key2)) == key1:
+</code></pre>
+<ol>
+<li>Once again we generate <code>n</code>s to decrypt <code>flag</code> with <code>dec1</code></li>
+</ol>
+<pre><code class="language-python">for n in range(randsize + 1):
+    flag = dec1(flag, n)
+    results.append(flag)
+</code></pre>
+<ol>
+<li>Finally, we can store all the resulting flags in a file named &quot;results.txt&quot;, so that we can check out if it contains the actual correct flag</li>
+</ol>
+<pre><code class="language-python">outfile = 'results.txt'
+with open(outfile, 'w') as f:
+    f.write('\n'.join(results))
+    f.close()
+</code></pre>
+<p><strong>Note</strong> : steps 3, 4 and 5 can be done before generating the combinations since those combinations affect only <code>flag</code></p>
+<h3 id="the-main-function">The main function</h3>
+<pre><code class="language-python">combinations = [p for p in itertools.product(range(randsize+1), repeat=3)]
+key1 = ekey1
+key2 = recover_key2(dec2(ekey2))
+flag = dec2(eflag)
+if swapkeys: key1, key2 = key2, key1
+original = flag, key1, key2
+results = []
+for c in combinations:
+    flag = dec1(dec1(dec1(flag, c[0]), c[1]), c[2])
+    key1, key2, flag = unloop(key1, key2, flag)
+    if dec2(dec2(key2)) == key1:
+        for n in range(randsize + 1):
+            flag = dec1(flag, n)
+            results.append(flag)
+    flag, key1, key2 = original
+with open(outfile, 'w') as f:
+    f.write('\n'.join(results))
+    f.close()
+</code></pre>
+<p>The full script is [here](https://github.com/malikDaCoda/CTFs-writeups/tree/master/reverse/csictf 2020-Scrambled Eggs/solve.py)</p>
+<h2 id="unscrambled-eggs">Unscrambled Eggs</h2>
+<p>On the first try, when <code>swapkeys</code> is set to <code>False</code>, &quot;results.txt&quot; turns out to be empty. But then after setting that to <code>True</code>, the file is quite populated, that could mean that we've been successful.</p>
+<p><code>grep &quot;^csictf&quot; results.txt</code> :</p>
+<figure data-type="image" tabindex="1"><img src="https://github.com/malikDaCoda/CTFs-writeups/tree/master/reverse/csictf%202020-Scrambled%20Eggs/img/grep1.png" alt="grep &quot;^csictf&quot; results.txt" loading="lazy"></figure>
+<p>Hmmm.. we get nothing</p>
+<p><code>grep &quot;csictf&quot; results.txt</code> :</p>
+<figure data-type="image" tabindex="2"><img src="https://github.com/malikDaCoda/CTFs-writeups/tree/master/reverse/csictf%202020-Scrambled%20Eggs/img/grep2.png" alt="grep &quot;csictf&quot; results.txt" loading="lazy"></figure>
+<p>Ah ! we get some results now, if we replace some <code>a</code>s and <code>b</code>s to <code>{</code>, <code>}</code> and <code>_</code> in <code>sacsictfaallbthebkingsbhorse</code> we can read <code>s}csictf{all_the_kings_horse</code>.</p>
+<p>It is trivial now that the <strong>flag</strong> is :</p>
+<pre><code>csictf{all_the_kings_horses}
+</code></pre>
+<h2 id="the-full-script">The full script</h2>
+<pre><code>#!/usr/bin/env python3
+import itertools
+
+# encrypted key1, key2 and flag (from scrambledeggs.txt)
+ekey1 = 'xtfsyhhlizoiyx'
+ekey2 = 'eudlqgluduggdluqmocgyukhbqkx'
+eflag = 'lvvrafwgtocdrdzfdqotiwvrcqnd'
+
+scramble_map = ['v', 'r', 't', 'p', 'w', 'g', 'n', 'c', 'o', 'b', 'a', 'f', 'm', 'i', 'l', 'u', 'h', 'z', 'd', 'q', 'j', 'y', 'x', 'e', 'k', 's']
+# result of the evaluation of (sys.maxsize % 28) for 64-bit machines
+randsize = 7
+# to choose whether or not to swap key1 and key2
+swapkeys = True
+# write the resulting flag combinations to a file
+outfile = 'results.txt'
+
+# reverse enc1, but provide n
+def dec1(text, n):
+    assert(0 &lt;= n &lt; 28)
+    return text[-n:] + text[:-n]
+
+# reverse enc2
+def dec2(text):
+    # map each character of text to the character of order :
+    # index of text[i] in scramble_map + ord('a')
+    return ''.join(chr(scramble_map.index(char) + ord('a')) for char in text)
+
+# recover key2 from the encrypted key2 (the part where random chars are appended to key2)
+def recover_key2(ekey2):
+    assert(len(ekey2) == 28)
+    # the random characters are the 14 first
+    k = ekey2[:14]
+    # the list of `a`s
+    alist = list(map(ord, ekey2[14:]))
+    res = ''
+    for i in range(14):
+        # we simply compute c using linear equations
+        c = alist[i] - ord(k[i]) + ord('a')
+        # since all characters are ascii lowercase
+        # this check helps avoiding multiple potential values
+        if not ord('a') &lt;= c &lt;= ord('z'):
+            c += 122 - 97
+        res += chr(c)
+    return res
+
+# undo the big double loop
+def unloop(key1, key2, flag):
+    key1, key2, flag = list(key1), list(key2), list(flag)
+    assert (len(key1) == len(key2) == 14)
+    for j in range(2):
+        # we make sure the range is from 27 to 14, not 14 to 27
+        for i in range(27, 13, -1):
+            # taking advantage of python's built-in way to swap values
+            # rather than using a temp variable
+            index = (ord(key1[i-14]) - ord('a')) % 14
+            key2[index], key2[i-14] = key2[i-14], key2[index]
+
+            index = (ord(key2[i-14]) - ord('a')) % 28
+            flag[i], flag[index] = flag[index], flag[i]
+
+        for i in range(13, -1, -1):
+            index = (ord(key2[i]) - ord('a')) % 14
+            key1[index], key1[i] = key1[i], key1[index]
+
+            index = (ord(key1[i]) - ord('a')) % 28
+            flag[i], flag[index] = flag[index], flag[i]
+
+    return ''.join(key1), ''.join(key2), ''.join(flag)
+
+if __name__ == '__main__':
+    # generate the combinations of 3 `n`s using itertools.product
+    combinations = [p for p in itertools.product(range(randsize+1), repeat=3)]
+    key1 = ekey1
+    key2 = recover_key2(dec2(ekey2))
+    flag = dec2(eflag)
+    if swapkeys: key1, key2 = key2, key1
+    original = flag, key1, key2
+    results = []
+    for c in combinations:
+        flag = dec1(dec1(dec1(flag, c[0]), c[1]), c[2])
+        key1, key2, flag = unloop(key1, key2, flag)
+        if dec2(dec2(key2)) == key1:
+            for n in range(randsize + 1):
+                flag = dec1(flag, n)
+                results.append(flag)
+        flag, key1, key2 = original
+    with open(outfile, 'w') as f:
+        f.write('\n'.join(results))
+        f.close()
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#scrambled-eggs-csictf-2020-%E8%BD%AC%E8%BD%BD%E8%87%AAhttpsctftimeorg">Scrambled Eggs (csictf 2020) 转载自https://ctftime.org/</a>
+<ul>
+<li><a href="#%E8%BD%AC%E8%BD%BD-%E7%94%A8%E4%BA%8E%E4%B8%AA%E4%BA%BA%E5%AD%A6%E4%B9%A0">转载！！！ 用于个人学习</a></li>
+<li><a href="#challenge-description">Challenge description</a></li>
+<li><a href="#approach-to-the-solution">Approach to the solution</a>
+<ul>
+<li><a href="#understanding-the-script">Understanding the script</a></li>
+<li><a href="#how-to-approach-this">How to approach this ?</a></li>
+</ul>
+</li>
+<li><a href="#crafting-the-solution">Crafting the solution</a>
+<ul>
+<li><a href="#reversing-enc1">reversing <code>enc1</code></a></li>
+<li><a href="#reversing-enc2">reversing <code>enc2</code></a></li>
+<li><a href="#unlooping">unlooping</a></li>
+<li><a href="#recovering-key2">recovering <code>key2</code></a></li>
+<li><a href="#wrapping-everything-up">Wrapping everything up</a></li>
+<li><a href="#the-main-function">The main function</a></li>
+</ul>
+</li>
+<li><a href="#unscrambled-eggs">Unscrambled Eggs</a></li>
+<li><a href="#the-full-script">The full script</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://7usai.github.io/post/cumtoj-bu-fen-ti-jie-geng-xin-zhong/">
+              <h3 class="post-title">
+                CUMTOJ部分题解(更新中)
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://7usai.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
