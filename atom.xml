@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-09-09T15:42:06.570Z</updated>
+    <updated>2020-09-10T14:41:37.647Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -10,6 +10,79 @@
     <logo>https://7usai.github.io/images/avatar.png</logo>
     <icon>https://7usai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 7usai</rights>
+    <entry>
+        <title type="html"><![CDATA[攻防世界re部分wp]]></title>
+        <id>https://7usai.github.io/post/gong-fang-shi-jie-re-bu-fen-wp/</id>
+        <link href="https://7usai.github.io/post/gong-fang-shi-jie-re-bu-fen-wp/">
+        </link>
+        <updated>2020-09-10T14:38:31.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="攻防世界re部分wp">攻防世界RE部分wp</h1>
+<h2 id="re2-cpp-is-awesome">re2-cpp-is-awesome</h2>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1599748738949.png" alt="" loading="lazy"></figure>
+<p>64位ELF文件 放入ubuntu中运行结果如下</p>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1599748743703.png" alt="" loading="lazy"></figure>
+<p>放入IDA进入main函数</p>
+<p><img src="https://7usai.github.io/post-images/1599748750390.png" alt="" loading="lazy"><br>
+如下两个 一个正确一个错误</p>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1599748769934.png" alt="" loading="lazy"></figure>
+<p>通过分析可得</p>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1599748776529.png" alt="" loading="lazy"></figure>
+<p>V12与off_6020A0和dword_6020C0组成的数组比较，相同则得flag</p>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1599748784955.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1599748790751.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1599748796928.png" alt="" loading="lazy"></figure>
+<p>得到所需数值后编写函数</p>
+<pre><code>a=[0x24,0x00,0x05,0x36,0x65,0x07,0x27,0x26,0x2d,0x01,0x03,0x00,0x0d,0x56,0x01,0x03,0x65,0x03,0x2d,0x16,0x02,0x15,0x03,0x65,0x00,0x29,0x44,0x44,0x01,0x44,0x2b]
+flag=&quot; &quot;
+x=&quot;L3t_ME_T3ll_Y0u_S0m3th1ng_1mp0rtant_A_{FL4G}_W0nt_b3_3X4ctly_th4t_345y_t0_c4ptur3_H0wev3r_1T_w1ll_b3_C00l_1F_Y0u_g0t_1t&quot;
+b=len(a)
+for i in range(b):
+    flag+=x[a[i]]
+print(flag)
+</code></pre>
+<pre><code>得flag=ALEXCTF{W3_L0v3_C_W1th_CL45535}
+</code></pre>
+<h2 id="srm-50">srm-50</h2>
+<p>主要部分如下</p>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1599748819043.png" alt="" loading="lazy"></figure>
+<p>if部分成立时得flag,说明flag长度为16位，前四位是CZ9d<br>
+<img src="https://7usai.github.io/post-images/1599748824045.png" alt="" loading="lazy"><br>
+V13<sub>V24组成其余12位，求出V12[4]</sub>V24即可</p>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1599748829235.png" alt="" loading="lazy"></figure>
+<p>编写代码</p>
+<pre><code>a=[67,90,57,100,109,113,52,99,56,103,57,71,55,98,65,88]
+flag=&quot; &quot;
+for i in range(len(a)):
+    flag+=chr(a[i])
+print(flag)
+
+</code></pre>
+<pre><code>得flag为CZ9dmq4c8g9G7bAX
+</code></pre>
+<h2 id="guess-the-number">Guess-the-Number</h2>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1599748835634.png" alt="" loading="lazy"></figure>
+<p>转为zip解压后得<img src="https://7usai.github.io/post-images/1599748846528.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1599748854085.png" alt="" loading="lazy"></figure>
+<p>编写脚本</p>
+<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1599748864158.png" alt="" loading="lazy"></figure>
+<pre><code>import java.math.BigInteger;
+
+class Untitled {
+	public static void main(String[] args) {
+          String str_one = &quot;4b64ca12ace755516c178f72d05d7061&quot;;
+          String str_two = &quot;ecd44646cfe5994ebeb35bf922e25dba&quot;;
+		  BigInteger i1 = new BigInteger(str_one, 16);
+   		  BigInteger i2 = new BigInteger(str_two, 16);
+   		  BigInteger res = i1.xor(i2);
+    	  String result = res.toString(16);
+          System.out.printf(&quot;%s&quot;,result);
+	}
+}
+得flag=a7b08c546302cc1fd2a4d48bf2bf2ddb
+</code></pre>
+<h3 id="收获第一次反编译java">收获：第一次反编译java</h3>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Scrambled Eggs (csictf 2020) 转载！！]]></title>
         <id>https://7usai.github.io/post/scrambled-eggs-csictf-2020-zhuan-zai/</id>
