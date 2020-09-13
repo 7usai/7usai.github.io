@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>攻防世界re部分wp | 7usai</title>
-<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1599748885632">
+<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600000521825">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="攻防世界re部分wp | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
@@ -32,7 +32,7 @@ V12与off_6020A0和dword_6020..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://7usai.github.io">
-  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1599748885632" alt="">
+  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600000521825" alt="">
   </a>
   <h1 class="site-title">
     7usai
@@ -96,7 +96,7 @@ V12与off_6020A0和dword_6020..." />
                 2020-09-10
               </span>
               <span>
-                2 min read
+                3 min read
               </span>
               
                 <a href="https://7usai.github.io/tag/_wk3DR6W6/" class="post-tag">
@@ -176,6 +176,38 @@ class Untitled {
 得flag=a7b08c546302cc1fd2a4d48bf2bf2ddb
 </code></pre>
 <h3 id="收获第一次反编译java">收获：第一次反编译java</h3>
+<h2 id="666">666</h2>
+<p>主函数</p>
+<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1600000477839.png" alt="" loading="lazy"></figure>
+<p>主要加密函数</p>
+<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1600000482916.png" alt="" loading="lazy"></figure>
+<pre><code>a2=[0x69,0x7A,0x77,0x68,0x72,0x6F,0x7A,0x22,0x22,0x77,0x22,0x76,0x2E,0x4B,0x22,0x2E,0x4E,0x69]
+flag=''
+for i in range(0,18,3):
+    flag += chr(18 ^ a2[i] - 6)
+    flag += chr(18 ^ a2[i + 1] + 6)
+    flag += chr(18 ^ a2[i+2] ^ 6)
+print(flag)
+</code></pre>
+<p>编写代码，得flag</p>
+<p>注：我python一直显示一个错误的flag<img src="https://7usai.github.io/post-images/1600000495622.png" alt="" loading="lazy"></p>
+<p>c++代码如下：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+char i;
+char target[]=&quot;izwhroz\&quot;\&quot;w\&quot;v.K\&quot;.Ni&quot;;
+for(i=0;i&lt;18;i+=3){
+    target[i]=(target[i]^18)-6;
+    target[i+1]=(target[i+1]^18)+6;
+    target[i+2]=(target[i+2]^18)^6;
+}
+puts(target);
+return 0;
+}
+</code></pre>
+<h2 id="2020913第一面完成">2020.9.13第一面完成</h2>
+<figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1600000504111.png" alt="" loading="lazy"></figure>
 
               </div>
               <div class="toc-container">
@@ -189,6 +221,8 @@ class Untitled {
 <li><a href="#%E6%94%B6%E8%8E%B7%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8F%8D%E7%BC%96%E8%AF%91java">收获：第一次反编译java</a></li>
 </ul>
 </li>
+<li><a href="#666">666</a></li>
+<li><a href="#2020913%E7%AC%AC%E4%B8%80%E9%9D%A2%E5%AE%8C%E6%88%90">2020.9.13第一面完成</a></li>
 </ul>
 </li>
 </ul>
