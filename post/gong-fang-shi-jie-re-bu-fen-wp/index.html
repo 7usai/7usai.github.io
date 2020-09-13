@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>攻防世界re部分wp | 7usai</title>
-<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600000521825">
+<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600010842911">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="攻防世界re部分wp | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
@@ -32,7 +32,7 @@ V12与off_6020A0和dword_6020..." />
       <div class="main-content">
         <div class="site-header">
   <a href="https://7usai.github.io">
-  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600000521825" alt="">
+  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600010842911" alt="">
   </a>
   <h1 class="site-title">
     7usai
@@ -96,7 +96,7 @@ V12与off_6020A0和dword_6020..." />
                 2020-09-10
               </span>
               <span>
-                3 min read
+                5 min read
               </span>
               
                 <a href="https://7usai.github.io/tag/_wk3DR6W6/" class="post-tag">
@@ -208,6 +208,68 @@ return 0;
 </code></pre>
 <h2 id="2020913第一面完成">2020.9.13第一面完成</h2>
 <figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1600000504111.png" alt="" loading="lazy"></figure>
+<h2 id="reverseme-120">ReverseMe-120</h2>
+<h3 id="main函数">main函数</h3>
+<p><img src="https://7usai.github.io/post-images/1600010757978.png" alt="" loading="lazy"><br>
+大概思路是需要v9=0；v9=0的前提是v13=you_know_how_to_remove_junk_code；v13是经过异或的得到的，写脚本得之前的v13如下</p>
+<pre><code>a='you_know_how_to_remove_junk_code'
+b=''
+c=len(a)
+for i in range(c):
+    b+=chr(ord(a[i])^37)
+    print(b)
+</code></pre>
+<p>得到字符串\JPzNKJRzMJRzQJzW@HJS@zOPKNzFJA@这里失去头绪</p>
+<p>sub_401000函数没看懂；但是查看字符串发现<img src="https://7usai.github.io/post-images/1600010779978.png" alt="" loading="lazy"><br>
+猜测是base64;</p>
+<p>在线加密后得XEpQek5LSlJ6TUpSelFKeldASEpTQHpPUEtOekZKQUA=，即为flag</p>
+<h2 id="reversing-x64elf-100">Reversing-x64Elf-100</h2>
+<figure data-type="image" tabindex="16"><img src="https://7usai.github.io/post-images/1600010785917.png" alt="" loading="lazy"></figure>
+<h3 id="主函数">主函数</h3>
+<figure data-type="image" tabindex="17"><img src="https://7usai.github.io/post-images/1600010790350.png" alt="" loading="lazy"></figure>
+<h3 id="关键函数">关键函数</h3>
+<figure data-type="image" tabindex="18"><img src="https://7usai.github.io/post-images/1600010796725.png" alt="" loading="lazy"></figure>
+<h3 id="思路">思路</h3>
+<p>flag存在a1数组里，逆向进行if里得运算就行<br>
+编写脚本</p>
+<pre><code>v3 = [&quot;Dufhbmf&quot;,&quot;pG`imos&quot;,&quot;ewUglpt&quot;]
+flag=''
+for i in range(12):
+    flag+=chr(ord(v3[(i % 3)][2 * int(i / 3)])-1)
+    print(flag)
+</code></pre>
+<pre><code>v3[a][b]的意思
+a表示下标为a的字符串，b表示此字符串中下标为b的字符
+</code></pre>
+<h2 id="igniteme">IgniteMe</h2>
+<h3 id="main函数-2">main函数</h3>
+<figure data-type="image" tabindex="19"><img src="https://7usai.github.io/post-images/1600010801875.png" alt="" loading="lazy"></figure>
+<h3 id="进入4011c0">进入4011C0</h3>
+<figure data-type="image" tabindex="20"><img src="https://7usai.github.io/post-images/1600010805986.png" alt="" loading="lazy"></figure>
+<p>这里byte_4420B0我简单的用一个a表示<img src="https://7usai.github.io/post-images/1600010832666.png" alt="" loading="lazy"></p>
+<h3 id="编写脚本">编写脚本</h3>
+<pre><code>v7=&quot;GONDPHyGjPEKruv{{pj]X@rF&quot;
+a=[0x0D,0x13 ,0x17 ,0x11 ,0x02 ,0x01 ,0x20 ,0x1D,0x0C ,0x02 ,0x19 ,0x2F ,0x17 ,0x2B ,0x24 ,0x1F,0x1E ,
+   0x16 ,0x09 ,0x0F ,0x15 ,0x27 ,0x13 ,0x26 ,0x0A ,0x2F ,0x1E ,0x1A ,0x2D ,0x0C ,0x22 ,0x04]
+v5=''
+eflag=''
+for i in range(len(v7)):
+    v5+=chr(ord(v7[i])^a[i])
+for i in range(len(v5)):
+    eflag+=chr((ord(v5[i])-72)^0x55)
+    print(eflag)
+</code></pre>
+<p>这里注意最后得到的flag值需要大小写转换，因为懒没写代码</p>
+<p>在网上找的代码如下</p>
+<pre><code>for i in range(len(eflag)):
+    if ord(eflag[i]) &gt;= 97 and ord(eflag[i]) &lt;= 122:
+        flag += chr(ord(eflag[i]) - 32)
+    elif ord(eflag[i]) &gt;= 65 and ord(eflag[i]) &lt;= 90:
+        flag += chr(ord(eflag[i]) + 32)
+    else:
+        flag += eflag[i]
+</code></pre>
+<p>再与<img src="https://7usai.github.io/post-images/1600010822260.png" alt="" loading="lazy">连接，得flag=EIS{wadx_tdgk_aihc_ihkn_pjlm}</p>
 
               </div>
               <div class="toc-container">
@@ -223,6 +285,25 @@ return 0;
 </li>
 <li><a href="#666">666</a></li>
 <li><a href="#2020913%E7%AC%AC%E4%B8%80%E9%9D%A2%E5%AE%8C%E6%88%90">2020.9.13第一面完成</a></li>
+<li><a href="#reverseme-120">ReverseMe-120</a>
+<ul>
+<li><a href="#main%E5%87%BD%E6%95%B0">main函数</a></li>
+</ul>
+</li>
+<li><a href="#reversing-x64elf-100">Reversing-x64Elf-100</a>
+<ul>
+<li><a href="#%E4%B8%BB%E5%87%BD%E6%95%B0">主函数</a></li>
+<li><a href="#%E5%85%B3%E9%94%AE%E5%87%BD%E6%95%B0">关键函数</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF">思路</a></li>
+</ul>
+</li>
+<li><a href="#igniteme">IgniteMe</a>
+<ul>
+<li><a href="#main%E5%87%BD%E6%95%B0-2">main函数</a></li>
+<li><a href="#%E8%BF%9B%E5%85%A54011c0">进入4011C0</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC">编写脚本</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
