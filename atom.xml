@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-09-13T15:27:25.251Z</updated>
+    <updated>2020-09-13T15:29:31.687Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://7usai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 7usai</rights>
     <entry>
-        <title type="html"><![CDATA[攻防世界re部分wp]]></title>
+        <title type="html"><![CDATA[攻防世界_re_2星题_部分wp]]></title>
         <id>https://7usai.github.io/post/gong-fang-shi-jie-re-bu-fen-wp/</id>
         <link href="https://7usai.github.io/post/gong-fang-shi-jie-re-bu-fen-wp/">
         </link>
@@ -175,6 +175,8 @@ for i in range(len(v5)):
         flag += eflag[i]
 </code></pre>
 <p>再与<img src="https://7usai.github.io/post-images/1600010822260.png" alt="" loading="lazy">连接，得flag=EIS{wadx_tdgk_aihc_ihkn_pjlm}</p>
+<h2 id="总结">总结</h2>
+<p>二星题还是很简单的，部分题目自己觉得没有学习意义就没写wp</p>
 ]]></content>
     </entry>
     <entry>
