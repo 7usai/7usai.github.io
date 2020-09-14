@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-09-13T15:29:31.687Z</updated>
+    <updated>2020-09-14T15:08:51.451Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -10,6 +10,104 @@
     <logo>https://7usai.github.io/images/avatar.png</logo>
     <icon>https://7usai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 7usai</rights>
+    <entry>
+        <title type="html"><![CDATA[攻防世界_re_3星题_部分wp]]></title>
+        <id>https://7usai.github.io/post/gong-fang-shi-jie-_re_3-xing-ti-_-bu-fen-wp/</id>
+        <link href="https://7usai.github.io/post/gong-fang-shi-jie-_re_3-xing-ti-_-bu-fen-wp/">
+        </link>
+        <updated>2020-09-14T15:05:52.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="攻防世界_re_3星题__部分wp">攻防世界_re_3星题__部分wp</h1>
+<h2 id="debug">debug</h2>
+<h3 id="先用de4dot进行脱壳">先用de4dot进行脱壳</h3>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600095989406.png" alt="" loading="lazy"></figure>
+<h3 id="放入dnspy调试">放入dnSpy调试</h3>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600095996901.png" alt="" loading="lazy"></figure>
+<p>找到main函数所在位置，很简单，a相当于输入的数，b就是经过一系列加密后得到的flag,下入断点运行就得到了flag<br>
+<img src="https://7usai.github.io/post-images/1600096004477.png" alt="" loading="lazy"></p>
+<h2 id="hackme">hackme</h2>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600096012245.png" alt="" loading="lazy"></figure>
+<h3 id="主函数">主函数</h3>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600096022965.png" alt="" loading="lazy"></figure>
+<h3 id="思路网上借鉴的">思路(网上借鉴的)</h3>
+<p>sub_406D90为随机数生成函数，且seed为固定值</p>
+<p>重点是要理解这个函数的逻辑是啥。。虽然这个判断只取了有输入字符串的10个字符，但是实际上需要输入的字符串是22位（也就是实际上flag有22个char）。。</p>
+<p>之后程序会从这里面随机选择一个数字i，然后从byte_6B4270和输入的字符串中分别取出第i个字符v16和v15，将v15的内容和一个生成的大数进行异或运算与v16比较。</p>
+<p>整体逻辑如上，而且我们发现，这个i具体是多少其实是不需要的，因为这个i是随机生成的用于检验得到的flag的（理解这点后题目就变得十分简单了），所以我们需要做的时按程序正向逻辑进行爆破或者逆向生成这flag即可。</p>
+<p>需要注意的是，虽然很多时候这种类似 unsigned __int8 的信息会被我们忽略， 但是在本题中它是非常重要的， 它标表示这个数被转型为8个bit长（也就是只有一个字节，刚好是我们ascii表的范围），故脚本中我们需要与上一个0xff</p>
+<h3 id="脚本">脚本</h3>
+<pre><code>a=[0x5F ,0xF2 ,0x5E ,0x8B ,0x4E ,0x0E ,0xA3 ,0xAA ,0xC7 ,0x93 ,0x81 ,
+   0x3D ,0x5F ,0x74 ,0xA3 ,0x09 ,0x91 ,0x2B, 0x49 ,0x28 ,0x93 ,0x67]
+flag=''
+for i in range(22):
+    v14=i+1
+    v18=0
+    v19=0
+    while v18&lt;v14:
+        v18+=1
+        v19=1828812941 * v19 + 12345
+    flag+=chr((a[i]^v19)&amp;0xff)
+print(flag)
+</code></pre>
+<h2 id="babyre">BABYRE</h2>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1600096037348.png" alt="" loading="lazy"></figure>
+<p>GDB还不会，等学会了再写</p>
+<h2 id="crackme">crackme</h2>
+<h3 id="脱壳">脱壳</h3>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1600096045818.png" alt="" loading="lazy"></figure>
+<h3 id="主函数-2">主函数</h3>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1600096054533.png" alt="" loading="lazy"></figure>
+<p>很简单，异或一下就行</p>
+<p>dword_402150值如下</p>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1600096060907.png" alt="" loading="lazy"></figure>
+<h3 id="脚本-2">脚本</h3>
+<pre><code>a=[0x12,0x04,0x08,0x14,0x24,0x5C,0x4A,0x3D,0x56,0x0A,0x10,0x67,0x00,0x41,0x00,0x01,0x46,0x5A,0x44,0x42,0x6E,0x0C,0x44,0x72,0x0C,0x0D,0x40,0x3E,0x4B,0x5F,0x02,0x01,0x4C,0x5E,0x5B,0x17,0x6E,0x0C,0x16,0x68,0x5B,0x12]
+flag=''
+e='this_is_not_flag'
+for i in range(42):
+    flag+=chr(ord(e[i%16])^a[i])
+print (flag)
+</code></pre>
+<h2 id="apk-逆向2">APK-逆向2</h2>
+<h3 id="主函数-3">主函数</h3>
+<p><img src="https://7usai.github.io/post-images/1600096069499.png" alt="" loading="lazy"><br>
+大致意思是通过31337端口向主机发送flag</p>
+<h3 id="python脚本">python脚本</h3>
+<pre><code>import http.server
+
+server_address = ('127.0.0.1', 31337)
+handler_class = http.server.BaseHTTPRequestHandler
+httpd = http.server.HTTPServer(server_address, handler_class)
+httpd.serve_forever()
+</code></pre>
+<h3 id="结果">结果</h3>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1600096078531.png" alt="" loading="lazy"></figure>
+<h2 id="babymips">babymips</h2>
+<p>需要配置JDK环境并且安装Ghidra</p>
+<h3 id="主函数-4">主函数</h3>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1600096092065.png" alt="" loading="lazy"></figure>
+<p>abStack44为输入的字符，之后进行32次异或：abStack44[i]=abStack44[i]^0x20-char[i]<br>
+iVar1处转换后前5位是Q|j{g<img src="https://7usai.github.io/post-images/1600096112265.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600096100128.png" alt="" loading="lazy"></p>
+<p>uStack16为偶数时相当于&lt;&lt;2|&gt;&gt;6为奇数时相当于&gt;&gt;2|&lt;&lt;6</p>
+<h3 id="脚本-3">脚本</h3>
+<pre><code>a=[0x51, 0x7C, 0x6A, 0x7B, 0x67,
+  0x52, 0xFD, 0x16, 0xA4, 0x89, 0xBD, 0x92, 0x80, 0x13, 0x41,
+  0x54, 0xA0, 0x8D, 0x45, 0x18, 0x81, 0xDE, 0xFC, 0x95, 0xF0,
+  0x16, 0x79, 0x1A, 0x15, 0x5B, 0x75, 0x1F, 0x00]
+flag=''
+for i in range(5,32):
+    if((i&amp;1)!=0):
+        a[i]=a[i]&gt;&gt;6|(a[i]&lt;&lt;2)%0x100
+    else:
+        a[i]=(a[i]&lt;&lt;6)%0x100|a[i]&gt;&gt;2
+for i in range(32):
+    a[i]=a[i]^32-i
+    flag+=chr(a[i])
+print(flag)
+</code></pre>
+<p>注意这里的%0x100需要加上不然失败</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[攻防世界_re_2星题_部分wp]]></title>
         <id>https://7usai.github.io/post/gong-fang-shi-jie-re-bu-fen-wp/</id>
@@ -2073,304 +2171,6 @@ int main()
 <li>应用内窗口切换：Ctrl+Tab</li>
 <li>打开DevTools：Shift+F12</li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[汇编学习部分总结]]></title>
-        <id>https://7usai.github.io/post/hui-bian-xue-xi-bu-fen-zong-jie/</id>
-        <link href="https://7usai.github.io/post/hui-bian-xue-xi-bu-fen-zong-jie/">
-        </link>
-        <updated>2020-07-24T03:29:26.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="汇编">汇编</h1>
-<h2 id="汇编代码">汇编代码</h2>
-<p>.586  <em>:指令集</em><br>
-.MODEL flat, stdcall :指定调用约定，flat：内存指令方式 stadcall：调用约定<br>
-includelib user32.lib :lib 静态库 包含一下lib文件<br>
-includelib kernel32.lib :<br>
-ExitProcess PROTO, dwExitCode : DWORD<br>
-MessageBoxA PROTO hWnd : DWORD, lText : BYTE, lpCaption : BYTE, uType: DWORD<br>
-.data<br>
-Number DWORD 0<br>
-text db &quot;shellcode&quot;,0<br>
-.code<br>
-main proc<br>
-mov eax,5<br>
-mov ebx,6<br>
-add eax,ebx<br>
-add eax,Number<br>
-push 0<br>
-push offset text<br>
-push offset text<br>
-push 0<br>
-call MessageBoxA<br>
-add esp,16<br>
-call ExitProcess<br>
-main ENDP<br>
-END main</p>
-<h2 id="知识点">知识点</h2>
-<p>ASCII码</p>
-<p>UNICODE字符集：统一码、万国码、单一码</p>
-<h2 id="mov">MOV</h2>
-<p>mov a,b：寄存器，寄存器||寄存器，立即数||寄存器，存储器。</p>
-<h2 id="add">ADD</h2>
-<p>加法指令，操作数1+操作数2，结果放入操作数1中</p>
-<h2 id="整数常量">整数常量</h2>
-<p>0A3H,42Q,26(D)，01010010B</p>
-<p>2 b, 8 o/q,16 h ,10 (d)</p>
-<h2 id="实数常量">实数常量</h2>
-<p>2， 3.0， +3.0， -44.E+5，  26.E5</p>
-<h2 id="字符常量">字符常量</h2>
-<p>'A'/&quot;A&quot; 单/双引号都可</p>
-<h2 id="字符串常量">字符串常量</h2>
-<p>&quot;hello&quot;/'hello'</p>
-<h2 id="保留字">保留字</h2>
-<p>指令： mov	lea	 add	sub	jcc……</p>
-<p>寄存器</p>
-<p>属性： db	dword……</p>
-<p>运算符</p>
-<h2 id="标识符">标识符</h2>
-<p>第一个字符是有限制的	标识符不能与保留字相同</p>
-<h2 id="伪指令">伪指令</h2>
-<p>.data	.code	offest...</p>
-<h2 id="指令">指令</h2>
-<p>mov eax,123	：汇编语句</p>
-<h2 id="内部数据类型">内部数据类型</h2>
-<h3 id="整数">整数</h3>
-<p>BYTE 8位 无符号		WORD 16位 无符号		DWORD 32位 无符号</p>
-<p>SBYTE 8位 有符号		WORD 16位 有符号		SDWORD 32位 有符号</p>
-<p>FWORD 48位 保护模式的远指针		QWORD 64位 整数		TBYTE 80位 整数</p>
-<h3 id="实数">实数</h3>
-<p>REAL4 32位 短实数 /4字节		REAL8 64位 长实数 /8字节		REAL10 80位 扩展实数 /10字节</p>
-<h3 id="伪指令-2">伪指令</h3>
-<p>db 8位整数 //相当于C语言里的char 可以保存ASCII码</p>
-<p>dw 16位整数</p>
-<p>db 32位整数或实数</p>
-<p>dq 64位整数或实数</p>
-<p>dt 80位整数</p>
-<h2 id="数组">数组</h2>
-<h3 id="初始化数组初值为0">初始化数组（初值为0）</h3>
-<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1595562002397.png" alt="" loading="lazy"></figure>
-<h3 id="初始化数组不定义初值">初始化数组不定义初值</h3>
-<img src="F:\markdown\Typora\SAVES\image-20200624193431916.png" alt="image-20200624193431916" style="zoom:80%;" />
-<h2 id="一些疑问">一些疑问</h2>
-<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1595562020942.png" alt="" loading="lazy"></figure>
-<p>老师讲解：dword 8位二进制数；	 win32 	32➗8=4   	4字节   	单位为4</p>
-<h2 id="大端序小端序">大端序小端序</h2>
-<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1595562042953.png" alt="" loading="lazy"></figure>
-<p>67 45 23 01小端序		12345678 大端序</p>
-<h2 id="数据传送指令">数据传送指令</h2>
-<h3 id="操作数类型">操作数类型</h3>
-<p>立即数	寄存器操作数（eax,ebx...)	内存操作数</p>
-<h3 id="reg通用寄存器">reg通用寄存器</h3>
-<p>reg8 (8位) reg16 reg32</p>
-<p>sreg 段寄存器</p>
-<h3 id="imm-立即数">imm 立即数</h3>
-<p>imm8 imm16 imm32</p>
-<h3 id="mem内存">mem内存</h3>
-<p>mem8 mem16 mem32</p>
-<p>(8,16,32为位数)</p>
-<h3 id="数据传送指令-2">数据传送指令</h3>
-<h3 id="mov-2">mov</h3>
-<p>mov 目的操作数，源操作数 （源操作数如果是地址，就把地址上的数给目的操作数；如果是立即数，就直接给。前后的位数要一致，两数不能同为内存操作数）//int a=15--&gt;mov a,15</p>
-<p>能使用的5种情况：mov reg,reg	mov mem,reg	mov reg,mem	mov mem,imm	mov reg,imm</p>
-<p>如何实现mov mem2,mem1：mov reg,mem1+++mov mem2,reg</p>
-<p>mov reg32,reg16:(eax 32位 ax 16位 ah,al 8位)看下面例子</p>
-<p>mov eax,cx：		mov eax,FFFFFFFFH+++mov ax,cx</p>
-<h3 id="movzx">movzx</h3>
-<p>movzx eax,cx</p>
-<p>cx 1234H</p>
-<p>eax=00001234H（填0扩展）</p>
-<h3 id="movsx">movsx</h3>
-<p>movsx eax,cx</p>
-<p>填1扩展</p>
-<h3 id="lahf">LAHF</h3>
-<p>lahf ,（没有操作数的指令）将标志存储到ah里</p>
-<p>mov flag,ah</p>
-<h3 id="sahf">SAHF</h3>
-<p>mov ah,flag</p>
-<p>sahf，将ah中的值拷贝到efalgs标志位里（zf,sf.....）</p>
-<h3 id="xchg">XCHG</h3>
-<p>交换指令</p>
-<p>xchg reg,reg		xchg reg,mem		xchg mem,reg</p>
-<h2 id="加法与减法">加法与减法</h2>
-<p>add</p>
-<p>add eax,ecx</p>
-<p>eax=1,ecx=2 	add后 eax=3,ecx=2</p>
-<p>sub减法</p>
-<p>sub eax,ecx</p>
-<p>eax=2,ecx=1 	sub后 eax=1,ecx=1</p>
-<p>inc 自增//i++</p>
-<p>inc eax  		eax=5 inc后 eax=6</p>
-<p>dec 自减</p>
-<p>neg</p>
-<p>非 ，将操作数转为二进制补码并将符号取反</p>
-<p>neg reg/mem	补码：二进制数按位取反后+1</p>
-<h2 id="数据相关的运算符与伪指令">数据相关的运算符与伪指令</h2>
-<p>arrNum DWORD 0,1,2,3,4,5</p>
-<p>mov eax offset arrNum + 4  	:将1的地址放在eax里</p>
-<p>mov eax,[eax]  		:将eax中地址的值放在eax里（将1放入eax里）</p>
-<p>num DWORD 5</p>
-<p>mov ax,word ptr num 		：因为ax是16位，num是32位</p>
-<p>mov eax,offset lengthof num   	:获取元素个数</p>
-<p>var word 32 dup(0)</p>
-<p>mov eax, sizeof var		:eax =40--&gt;64 十进制  ：32*2(字节数)=64</p>
-<h2 id="间接寻址">间接寻址</h2>
-<p>var byte 0,1,2,3,4,5,6,7,8</p>
-<p>xor eax,eax ：异或操作将eax清零</p>
-<p>mov eax,offset var ：eax中存的是var的偏移，（var 为1个字节）</p>
-<p>mov bl,[eax]		；将eax中地址的值给bl（1个字节）</p>
-<p>mov bl,[eax+1]   ;b1为1</p>
-<p>mov bl,[eax+2]	;bi为2</p>
-<p>var dword 0,1,2,3,4,5,6,7,8</p>
-<p>mov esi,4		;esi为下标</p>
-<p>mov eax,var[esi*4]		; *4 ,4为dword宽度 （4字节） 此时eax为4</p>
-<p>pbyte typedef ptr byte声明pbyte为byte(定义在数据段之前)</p>
-<h2 id="jmp和loop">JMP和loop</h2>
-<p>jmp无条件跳转		loop跳转一次cx--一次</p>
-<h2 id="堆栈操作">堆栈操作</h2>
-<p>push 压栈 	pop 出栈</p>
-<p>push eax;将eax中的值压入栈顶</p>
-<p>pop eax;将栈顶的值压出到eax中</p>
-<p>push   ;esp-4存入一个4字节的；栈顶地址减4</p>
-<p>pop     ;esp+4取出一个4字节的</p>
-<p>pushfd  把32位的eflags寄存器压栈(多用于保护环境)</p>
-<p>popfd  把eflags弹出</p>
-<p>pushad 压栈通用寄存器 	popad 出栈</p>
-<p>按此顺序压入eax,ecx,edx,ebx,esp,ebp,esi,edi  		；pop时按反顺序压出</p>
-<p>pusha    	popa  16位</p>
-<h3 id="获取字符串长度">获取字符串长度</h3>
-<p>source byte &quot;my name is wanghailin&quot;,0</p>
-<p>sourcesize = ( $ - source) - 1</p>
-<h3 id="loop">loop</h3>
-<p>loopz loope 循环条件：ecx&gt;0 &amp;&amp; ZF=1 (loopz一边用加减法，loope用cmp对比，两操作数相等时ZF=1跳转)</p>
-<p>loopnz loopne  循环条件：ecx&gt;0 &amp;&amp; ZF=0</p>
-<h2 id="定义函数">定义函数</h2>
-<p>xxxx proc</p>
-<p>函数内容</p>
-<p>ret</p>
-<p>xxxx endp</p>
-<h3 id="call">call</h3>
-<p>call指令：1.将eip压栈 push eip 2. jmp到函数位置</p>
-<p>eip指令指针：指向下一行要执行的指令(call的下一行)</p>
-<p>jmp:jmp到函数位置</p>
-<h3 id="ret">ret</h3>
-<p>ret指令 1.pop eip(将call的下一行压出到eip)2.jmp eip(跳转到call的下一行)</p>
-<p>xxxx proc uses eax,ebx</p>
-<p>函数内容</p>
-<p>xxxx endp</p>
-<p>可直接调用eax,ebx用于函数</p>
-<h2 id="布尔与比较指令">布尔与比较指令</h2>
-<p>与and 	或or	 非not	 异或xor</p>
-<h3 id="test">test</h3>
-<p>(测试某一位是否为1)相当于and 但不修改寄存器值 只修改eflags</p>
-<p>如：</p>
-<p>mov eax,00000001</p>
-<p>test eax,00000000 :eax值不变,ZF=1(结果为00000000)</p>
-<p>test eax,00000001 :eax值不变,ZF=0(结果为00000001)</p>
-<h3 id="cmp">cmp</h3>
-<p>cmp o1,o2	:o1-o2</p>
-<p>o1&lt;o2 	ZF 0	 CF 1 	SF != OF</p>
-<p>o1&gt;o2	 ZF 0	 CF 0	 SF =OF</p>
-<p>o1=o2 	ZF 1	 CF 0</p>
-<p>ZF 0标志位</p>
-<p>CF 进位标志位:进位时为1</p>
-<p>SF 符号标志位</p>
-<p>OF 溢出标志位</p>
-<h2 id="条件跳转指令">条件跳转指令</h2>
-<p>JCC指令</p>
-<p><a href="https://blog.csdn.net/fengshh2301/article/details/53327195">相关blog</a></p>
-<p>JZ/JE 	ZF为1时跳转</p>
-<p>JNZ/JNE 	ZF为0时跳转</p>
-<h2 id="条件结构">条件结构</h2>
-<h3 id="顺序结构">顺序结构</h3>
-<h3 id="选择结构">选择结构</h3>
-<p>o1 dword 100</p>
-<p>o2 dword 100</p>
-<p>x dword ?</p>
-<p>y dword ?</p>
-<p>main proc</p>
-<p>​	mov eax o1</p>
-<p>​	cmp eax o2	:o1=o2,eax=0,ZF=1</p>
-<p>​	jnz l1	:ZF=0时跳转</p>
-<p>​	mov x,1</p>
-<p>​	mov y,1</p>
-<p>​	jmp l2</p>
-<p>l1:mov x,0</p>
-<p>​	mov y,0</p>
-<p>l2:push 	:l2用于让执行完if中语句后不执行else的语句</p>
-<p>​	call ExitProcess	:退出</p>
-<p><strong>相当于</strong></p>
-<p>if(o1=o2)</p>
-<p>{</p>
-<p>​			x=1;</p>
-<p>​			y=1;</p>
-<p>}</p>
-<p>else</p>
-<p>{</p>
-<p>​			x=0;</p>
-<p>​			y=0;</p>
-<p>}</p>
-<h3 id="循环结构">循环结构</h3>
-<p>i dword 0</p>
-<p>main proc</p>
-<p>​	mov eax,100</p>
-<p>​	cmp eax,i</p>
-<p>​	jle l1	:eax&lt;=i跳转</p>
-<p>​	inc i</p>
-<p>l1:</p>
-<p>​	push 0</p>
-<p>​	call ExitProcess	:退出</p>
-<p><strong>相当于</strong></p>
-<p>while(i&lt;100)</p>
-<p>{</p>
-<p>​			i++;</p>
-<p>}</p>
-<h2 id="条件控制流伪命令">条件控制流伪命令</h2>
-<h3 id="if">if</h3>
-<p>.data</p>
-<p>i dword 100</p>
-<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1595562117092.png" alt="" loading="lazy"></figure>
-<p>可以使用的运算符 ==	!==	&gt;	&gt;=	&lt;	&lt;=	&amp;	|	!	CARRY?(有进位CF=1返回true)	overflow?(溢出OF=1返回true)</p>
-<h3 id="while">while</h3>
-<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1595562126073.png" alt="" loading="lazy"></figure>
-<h3 id="do-while">do while</h3>
-<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1595562138129.png" alt="" loading="lazy"></figure>
-<h2 id="移位与循环移位指令">移位与循环移位指令</h2>
-<h3 id="逻辑移位">逻辑移位</h3>
-<p>11001111--&gt;01100111		:补0</p>
-<p>移出的一位放入了CF标志位中</p>
-<h3 id="算数移位">算数移位</h3>
-<p>11001111--&gt;11100111 	:符号位为1，补充1(为0时补充0)</p>
-<p>SHL左移	SHR右移	SAL算数左移	SAR算数右移	ROL循环左移	ROR循环右移	RCL带进位的循环左移	RCR带进位的循环右移	SHLD双精度左移	SHRD双精度右移</p>
-<h3 id="rcl带进位的循环左移">RCL带进位的循环左移</h3>
-<p>clc 	:cf=0</p>
-<p>mov bl,88h	:bl=10001000</p>
-<p>rcl bl,1	:bl=00010000 cf=1	:把最高位1放入cf里，把cf里的数放到最后</p>
-<p>rcl bl,1	:bl=00100001 cf=0</p>
-<h3 id="shld双精度左移">SHLD双精度左移</h3>
-<p>o1=11100000</p>
-<p>o2=10011101</p>
-<p>o3=1</p>
-<p>shld o1,o2,o3	:o3移动位数</p>
-<p>移位后</p>
-<p>o1最高位放入cf里 	:CF=1</p>
-<p>o1=11000001:最后一位1用o2来补上</p>
-<h2 id="乘法与除法指令">乘法与除法指令</h2>
-<p>无符号 mul div</p>
-<p>有符号 imul idiv</p>
-<p>乘数 bl bx ebx</p>
-<p>被乘数 al ax eax</p>
-<p>xor eax,eax</p>
-<p>mov al,5h</p>
-<p>mov bl,10h</p>
-<p>mul bl 	:乘后的数放入al</p>
-<p>有符号 imul edx,eax,ebx 	:eax✖ebx---&gt;edx</p>
-<p>div 除数 被除数 商 余数</p>
-<p>div mem/reg(除数)</p>
-<p>被除数ax,dx,ax,eax,edx</p>
-<p>8位:商在al 余数在ah</p>
-<p>16位:商在ax 余数在dx</p>
-<p>32位:商在eax 余数在edx</p>
 ]]></content>
     </entry>
 </feed>

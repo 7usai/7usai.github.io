@@ -1,0 +1,308 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>攻防世界_re_3星题_部分wp | 7usai</title>
+<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600096128401">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="攻防世界_re_3星题_部分wp | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="攻防世界_re_3星题__部分wp
+debug
+先用de4dot进行脱壳
+
+放入dnSpy调试
+
+找到main函数所在位置，很简单，a相当于输入的数，b就是经过一系列加密后得到的flag,下入断点运行就得到了flag
+
+hackme
+
+主函..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://7usai.github.io">
+  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600096128401" alt="">
+  </a>
+  <h1 class="site-title">
+    7usai
+  </h1>
+  <p class="site-description">
+    7usai'blog
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/7usai" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              攻防世界_re_3星题_部分wp
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-09-14
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="攻防世界_re_3星题__部分wp">攻防世界_re_3星题__部分wp</h1>
+<h2 id="debug">debug</h2>
+<h3 id="先用de4dot进行脱壳">先用de4dot进行脱壳</h3>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600095989406.png" alt="" loading="lazy"></figure>
+<h3 id="放入dnspy调试">放入dnSpy调试</h3>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600095996901.png" alt="" loading="lazy"></figure>
+<p>找到main函数所在位置，很简单，a相当于输入的数，b就是经过一系列加密后得到的flag,下入断点运行就得到了flag<br>
+<img src="https://7usai.github.io/post-images/1600096004477.png" alt="" loading="lazy"></p>
+<h2 id="hackme">hackme</h2>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600096012245.png" alt="" loading="lazy"></figure>
+<h3 id="主函数">主函数</h3>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600096022965.png" alt="" loading="lazy"></figure>
+<h3 id="思路网上借鉴的">思路(网上借鉴的)</h3>
+<p>sub_406D90为随机数生成函数，且seed为固定值</p>
+<p>重点是要理解这个函数的逻辑是啥。。虽然这个判断只取了有输入字符串的10个字符，但是实际上需要输入的字符串是22位（也就是实际上flag有22个char）。。</p>
+<p>之后程序会从这里面随机选择一个数字i，然后从byte_6B4270和输入的字符串中分别取出第i个字符v16和v15，将v15的内容和一个生成的大数进行异或运算与v16比较。</p>
+<p>整体逻辑如上，而且我们发现，这个i具体是多少其实是不需要的，因为这个i是随机生成的用于检验得到的flag的（理解这点后题目就变得十分简单了），所以我们需要做的时按程序正向逻辑进行爆破或者逆向生成这flag即可。</p>
+<p>需要注意的是，虽然很多时候这种类似 unsigned __int8 的信息会被我们忽略， 但是在本题中它是非常重要的， 它标表示这个数被转型为8个bit长（也就是只有一个字节，刚好是我们ascii表的范围），故脚本中我们需要与上一个0xff</p>
+<h3 id="脚本">脚本</h3>
+<pre><code>a=[0x5F ,0xF2 ,0x5E ,0x8B ,0x4E ,0x0E ,0xA3 ,0xAA ,0xC7 ,0x93 ,0x81 ,
+   0x3D ,0x5F ,0x74 ,0xA3 ,0x09 ,0x91 ,0x2B, 0x49 ,0x28 ,0x93 ,0x67]
+flag=''
+for i in range(22):
+    v14=i+1
+    v18=0
+    v19=0
+    while v18&lt;v14:
+        v18+=1
+        v19=1828812941 * v19 + 12345
+    flag+=chr((a[i]^v19)&amp;0xff)
+print(flag)
+</code></pre>
+<h2 id="babyre">BABYRE</h2>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1600096037348.png" alt="" loading="lazy"></figure>
+<p>GDB还不会，等学会了再写</p>
+<h2 id="crackme">crackme</h2>
+<h3 id="脱壳">脱壳</h3>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1600096045818.png" alt="" loading="lazy"></figure>
+<h3 id="主函数-2">主函数</h3>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1600096054533.png" alt="" loading="lazy"></figure>
+<p>很简单，异或一下就行</p>
+<p>dword_402150值如下</p>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1600096060907.png" alt="" loading="lazy"></figure>
+<h3 id="脚本-2">脚本</h3>
+<pre><code>a=[0x12,0x04,0x08,0x14,0x24,0x5C,0x4A,0x3D,0x56,0x0A,0x10,0x67,0x00,0x41,0x00,0x01,0x46,0x5A,0x44,0x42,0x6E,0x0C,0x44,0x72,0x0C,0x0D,0x40,0x3E,0x4B,0x5F,0x02,0x01,0x4C,0x5E,0x5B,0x17,0x6E,0x0C,0x16,0x68,0x5B,0x12]
+flag=''
+e='this_is_not_flag'
+for i in range(42):
+    flag+=chr(ord(e[i%16])^a[i])
+print (flag)
+</code></pre>
+<h2 id="apk-逆向2">APK-逆向2</h2>
+<h3 id="主函数-3">主函数</h3>
+<p><img src="https://7usai.github.io/post-images/1600096069499.png" alt="" loading="lazy"><br>
+大致意思是通过31337端口向主机发送flag</p>
+<h3 id="python脚本">python脚本</h3>
+<pre><code>import http.server
+
+server_address = ('127.0.0.1', 31337)
+handler_class = http.server.BaseHTTPRequestHandler
+httpd = http.server.HTTPServer(server_address, handler_class)
+httpd.serve_forever()
+</code></pre>
+<h3 id="结果">结果</h3>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1600096078531.png" alt="" loading="lazy"></figure>
+<h2 id="babymips">babymips</h2>
+<p>需要配置JDK环境并且安装Ghidra</p>
+<h3 id="主函数-4">主函数</h3>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1600096092065.png" alt="" loading="lazy"></figure>
+<p>abStack44为输入的字符，之后进行32次异或：abStack44[i]=abStack44[i]^0x20-char[i]<br>
+iVar1处转换后前5位是Q|j{g<img src="https://7usai.github.io/post-images/1600096112265.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600096100128.png" alt="" loading="lazy"></p>
+<p>uStack16为偶数时相当于&lt;&lt;2|&gt;&gt;6为奇数时相当于&gt;&gt;2|&lt;&lt;6</p>
+<h3 id="脚本-3">脚本</h3>
+<pre><code>a=[0x51, 0x7C, 0x6A, 0x7B, 0x67,
+  0x52, 0xFD, 0x16, 0xA4, 0x89, 0xBD, 0x92, 0x80, 0x13, 0x41,
+  0x54, 0xA0, 0x8D, 0x45, 0x18, 0x81, 0xDE, 0xFC, 0x95, 0xF0,
+  0x16, 0x79, 0x1A, 0x15, 0x5B, 0x75, 0x1F, 0x00]
+flag=''
+for i in range(5,32):
+    if((i&amp;1)!=0):
+        a[i]=a[i]&gt;&gt;6|(a[i]&lt;&lt;2)%0x100
+    else:
+        a[i]=(a[i]&lt;&lt;6)%0x100|a[i]&gt;&gt;2
+for i in range(32):
+    a[i]=a[i]^32-i
+    flag+=chr(a[i])
+print(flag)
+</code></pre>
+<p>注意这里的%0x100需要加上不然失败</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E6%94%BB%E9%98%B2%E4%B8%96%E7%95%8C_re_3%E6%98%9F%E9%A2%98__%E9%83%A8%E5%88%86wp">攻防世界_re_3星题__部分wp</a>
+<ul>
+<li><a href="#debug">debug</a>
+<ul>
+<li><a href="#%E5%85%88%E7%94%A8de4dot%E8%BF%9B%E8%A1%8C%E8%84%B1%E5%A3%B3">先用de4dot进行脱壳</a></li>
+<li><a href="#%E6%94%BE%E5%85%A5dnspy%E8%B0%83%E8%AF%95">放入dnSpy调试</a></li>
+</ul>
+</li>
+<li><a href="#hackme">hackme</a>
+<ul>
+<li><a href="#%E4%B8%BB%E5%87%BD%E6%95%B0">主函数</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF%E7%BD%91%E4%B8%8A%E5%80%9F%E9%89%B4%E7%9A%84">思路(网上借鉴的)</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC">脚本</a></li>
+</ul>
+</li>
+<li><a href="#babyre">BABYRE</a></li>
+<li><a href="#crackme">crackme</a>
+<ul>
+<li><a href="#%E8%84%B1%E5%A3%B3">脱壳</a></li>
+<li><a href="#%E4%B8%BB%E5%87%BD%E6%95%B0-2">主函数</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC-2">脚本</a></li>
+</ul>
+</li>
+<li><a href="#apk-%E9%80%86%E5%90%912">APK-逆向2</a>
+<ul>
+<li><a href="#%E4%B8%BB%E5%87%BD%E6%95%B0-3">主函数</a></li>
+<li><a href="#python%E8%84%9A%E6%9C%AC">python脚本</a></li>
+<li><a href="#%E7%BB%93%E6%9E%9C">结果</a></li>
+</ul>
+</li>
+<li><a href="#babymips">babymips</a>
+<ul>
+<li><a href="#%E4%B8%BB%E5%87%BD%E6%95%B0-4">主函数</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC-3">脚本</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://7usai.github.io/post/gong-fang-shi-jie-re-bu-fen-wp/">
+              <h3 class="post-title">
+                攻防世界_re_2星题_部分wp
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://7usai.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
