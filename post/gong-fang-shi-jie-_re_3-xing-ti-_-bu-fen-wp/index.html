@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>攻防世界_re_3星题_部分wp | 7usai</title>
-<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600096154388">
+<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600161652242">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="攻防世界_re_3星题_部分wp | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
@@ -31,7 +31,7 @@ hackme
       <div class="main-content">
         <div class="site-header">
   <a href="https://7usai.github.io">
-  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600096154388" alt="">
+  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600161652242" alt="">
   </a>
   <h1 class="site-title">
     7usai
@@ -95,7 +95,7 @@ hackme
                 2020-09-14
               </span>
               <span>
-                4 min read
+                5 min read
               </span>
               
                 <a href="https://7usai.github.io/tag/_wk3DR6W6/" class="post-tag">
@@ -200,6 +200,42 @@ for i in range(32):
 print(flag)
 </code></pre>
 <p>注意这里的%0x100需要加上不然失败</p>
+<h2 id="reverse-for-the-holy-grail-350">reverse-for-the-holy-grail-350</h2>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1600161580746.png" alt="" loading="lazy"></figure>
+<h3 id="主函数-5">主函数</h3>
+<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1600161585732.png" alt="" loading="lazy"></figure>
+<h3 id="关键函数stringmod">关键函数stringmod</h3>
+<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1600161590750.png" alt="" loading="lazy"></figure>
+<h3 id="脚本-4">脚本</h3>
+<pre><code>firstchar=[0x41,0x69,0x6E,0x45,0x6F,0x61]
+thirdchar=[0x2EF,0x2C4,0x2DC,0x2C7,0x2ED,0x2FC]
+masterArray=[0x1D7,0x0C,0x244,0x25E,0x93,0x6C]
+flag=[0 for i in range(18)]
+t=[]
+v7=666
+temp=0
+for i in range(18):
+    t.append(v7)
+    v7+=v7%5
+    if i % 3==0:
+        flag[i]=firstchar[temp]
+        temp+=1
+temp=0
+for i in range(2,18,3):
+    flag[i]=thirdchar[temp]^t[i]
+    temp+=1
+temp=0
+for i in range (1,18,3):
+    for j in range(32,127):
+        if((flag[i-1]^t[i-1])*(j^t[i])%(flag[i+1]^t[i+1]))==masterArray[temp]:
+            temp+=1
+            flag[i]=j
+            break
+print('tuctf{'+''.join(map(chr,flag))+'}')
+</code></pre>
+<p>这里得到的是tuctf{AfricanOrEuro Va ?}不知道为什么<br>
+如果有想交流的可以发送邮件<br>
+实际flag=tuctf{AfricanOrEuropean?}</p>
 
               </div>
               <div class="toc-container">
@@ -238,6 +274,13 @@ print(flag)
 <ul>
 <li><a href="#%E4%B8%BB%E5%87%BD%E6%95%B0-4">主函数</a></li>
 <li><a href="#%E8%84%9A%E6%9C%AC-3">脚本</a></li>
+</ul>
+</li>
+<li><a href="#reverse-for-the-holy-grail-350">reverse-for-the-holy-grail-350</a>
+<ul>
+<li><a href="#%E4%B8%BB%E5%87%BD%E6%95%B0-5">主函数</a></li>
+<li><a href="#%E5%85%B3%E9%94%AE%E5%87%BD%E6%95%B0stringmod">关键函数stringmod</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC-4">脚本</a></li>
 </ul>
 </li>
 </ul>
