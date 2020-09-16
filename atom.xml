@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-09-16T07:17:28.568Z</updated>
+    <updated>2020-09-16T15:12:45.994Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -2214,6 +2214,30 @@ int main()
 <figure data-type="image" tabindex="22"><img src="https://7usai.github.io/post-images/1597677522324.png" alt="" loading="lazy"></figure>
 <p>这里第一位是U第二位J第三位开始通过ak1w,V1ax解码得jMp和WP1所以从第三位开始是WP1jMp</p>
 <p>拼得flag{UJWP1jMp}</p>
+<h2 id="java逆向解密">Java逆向解密</h2>
+<figure data-type="image" tabindex="23"><img src="https://7usai.github.io/post-images/1600269138705.png" alt="" loading="lazy"></figure>
+<p>用jd-gui打开</p>
+<p>很简单：输入flag值，再得到一个新的result，再与KEY比较，相同则成功，逆向就好</p>
+<h3 id="脚本">脚本</h3>
+<pre><code>key=[180, 136, 137, 147, 191, 137, 147, 191, 148, 136, 133, 191, 134, 140, 129, 135, 191, 65]
+flag=''
+for i in range(len(key)):
+    flag+=chr(key[i]-ord('@')^0x20)
+print(flag)
+</code></pre>
+<h2 id="findit">findit</h2>
+<figure data-type="image" tabindex="24"><img src="https://7usai.github.io/post-images/1600269146152.png" alt="" loading="lazy"></figure>
+<p>用APKIDE打开<br>
+得到两个奇怪数组<br>
+写脚本</p>
+<pre><code>a=[0x70,0x76,0x6b,0x71,0x7b,0x6d,0x31,0x36,0x34,0x36,0x37,0x35, 0x32, 0x36, 0x32, 0x30, 0x33, 0x33,0x6c,0x34,0x6d,0x34,0x39,0x6c,0x6e,0x70,0x37,0x70,0x39,0x6d,0x6e,0x6b,0x32,0x38,0x6b,0x37,0x35,0x7d,]
+b=''
+for i in a:
+    b+=chr(i)
+print(b)
+</code></pre>
+<p>得pvkq{m164675262033l4m49lnp7p9mnk28k75}<br>
+凯撒解密得flag{c164675262033b4c49bdf7f9cda28a75}</p>
 ]]></content>
     </entry>
 </feed>
