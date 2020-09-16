@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>攻防世界_re_3星题_部分wp | 7usai</title>
-<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600161652242">
+<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600240646119">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="攻防世界_re_3星题_部分wp | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
@@ -31,7 +31,7 @@ hackme
       <div class="main-content">
         <div class="site-header">
   <a href="https://7usai.github.io">
-  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600161652242" alt="">
+  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600240646119" alt="">
   </a>
   <h1 class="site-title">
     7usai
@@ -95,7 +95,7 @@ hackme
                 2020-09-14
               </span>
               <span>
-                5 min read
+                6 min read
               </span>
               
                 <a href="https://7usai.github.io/tag/_wk3DR6W6/" class="post-tag">
@@ -236,6 +236,43 @@ print('tuctf{'+''.join(map(chr,flag))+'}')
 <p>这里得到的是tuctf{AfricanOrEuro Va ?}不知道为什么<br>
 如果有想交流的可以发送邮件<br>
 实际flag=tuctf{AfricanOrEuropean?}</p>
+<h2 id="serial-150">serial-150</h2>
+<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1600240488845.png" alt="" loading="lazy"></figure>
+<p>注意按字符顺序打印flag，比如208-&gt;208_1_1....</p>
+<h2 id="key">key</h2>
+<h3 id="主函数-6">主函数</h3>
+<figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1600240503658.png" alt="" loading="lazy"></figure>
+<p>关键函数是sub_4021E0，大致意思就是将后两个参数进行异或放入第一个参数，</p>
+<p><img src="https://7usai.github.io/post-images/1600240522266.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600240536879.png" alt="" loading="lazy">这里可以看到后两个参数是什么</p>
+<figure data-type="image" tabindex="16"><img src="https://7usai.github.io/post-images/1600240546193.png" alt="" loading="lazy"></figure>
+<p>这里也可以但是注意这里是倒叙存储的</p>
+<h3 id="编写脚本">编写脚本</h3>
+<pre><code>a='themidathemidathemida'
+b='&gt;----++++....&lt;&lt;&lt;&lt;.'
+c=''
+flag=''
+for i in range(len(b)):
+    c+=chr((ord(a[i])^ord(b[i]))+22)
+for i in c:
+    flag+=chr(ord(i)+9)
+print(flag)
+</code></pre>
+<p>得flag=idg_cni~bjbfi|gsxb</p>
+<h3 id="gametime">gametime</h3>
+<h3 id="思路">思路</h3>
+<p>运行一边程序后找错误时的字符串所在函数<br>
+<img src="https://7usai.github.io/post-images/1600240563079.png" alt="" loading="lazy"><br>
+如上，就是要让sub_401260(xxxxx)!=0</p>
+<h3 id="进入sub_401260函数">进入sub_401260函数</h3>
+<p><img src="https://7usai.github.io/post-images/1600240572593.png" alt="" loading="lazy"><br>
+这里有帮助的是v4存在了eax里，最终return的是eax的值<br>
+<img src="https://7usai.github.io/post-images/1600240579914.png" alt="" loading="lazy"><br>
+看思维图可知loc_4012AD对eax清零了，于是我们就要修改错误跳转</p>
+<h3 id="修改错误跳转">修改错误跳转</h3>
+<figure data-type="image" tabindex="17"><img src="https://7usai.github.io/post-images/1600240594564.png" alt="" loading="lazy"></figure>
+<h3 id="运行得flag">运行得flag</h3>
+<figure data-type="image" tabindex="18"><img src="https://7usai.github.io/post-images/1600240610853.png" alt="" loading="lazy"></figure>
 
               </div>
               <div class="toc-container">
@@ -281,6 +318,18 @@ print('tuctf{'+''.join(map(chr,flag))+'}')
 <li><a href="#%E4%B8%BB%E5%87%BD%E6%95%B0-5">主函数</a></li>
 <li><a href="#%E5%85%B3%E9%94%AE%E5%87%BD%E6%95%B0stringmod">关键函数stringmod</a></li>
 <li><a href="#%E8%84%9A%E6%9C%AC-4">脚本</a></li>
+</ul>
+</li>
+<li><a href="#serial-150">serial-150</a></li>
+<li><a href="#key">key</a>
+<ul>
+<li><a href="#%E4%B8%BB%E5%87%BD%E6%95%B0-6">主函数</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC">编写脚本</a></li>
+<li><a href="#gametime">gametime</a></li>
+<li><a href="#%E6%80%9D%E8%B7%AF">思路</a></li>
+<li><a href="#%E8%BF%9B%E5%85%A5sub_401260%E5%87%BD%E6%95%B0">进入sub_401260函数</a></li>
+<li><a href="#%E4%BF%AE%E6%94%B9%E9%94%99%E8%AF%AF%E8%B7%B3%E8%BD%AC">修改错误跳转</a></li>
+<li><a href="#%E8%BF%90%E8%A1%8C%E5%BE%97flag">运行得flag</a></li>
 </ul>
 </li>
 </ul>

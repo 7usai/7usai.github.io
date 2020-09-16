@@ -1,0 +1,255 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>攻防世界_re_4星题_部分wp | 7usai</title>
+<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600240646119">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="攻防世界_re_4星题_部分wp | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="handcrafted-pyc
+理解文件
+得到了一个py文件
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import marshal, zlib, base64
+
+exec(marshal..." />
+    <meta name="keywords" content="CTF,二进制" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://7usai.github.io">
+  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600240646119" alt="">
+  </a>
+  <h1 class="site-title">
+    7usai
+  </h1>
+  <p class="site-description">
+    7usai'blog
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/7usai" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              攻防世界_re_4星题_部分wp
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-09-16
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://7usai.github.io/tag/_wk3DR6W6/" class="post-tag">
+                  # CTF
+                </a>
+              
+                <a href="https://7usai.github.io/tag/7xbgN0lBu/" class="post-tag">
+                  # 二进制
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="handcrafted-pyc">handcrafted-pyc</h2>
+<h3 id="理解文件">理解文件</h3>
+<p>得到了一个py文件</p>
+<pre><code>#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+import marshal, zlib, base64
+
+exec(marshal.loads(zlib.decompress(base64.b64decode('eJyNVktv00AQXm/eL0igiaFA01IO4cIVCUGFBBJwqRAckLhEIQmtRfPwI0QIeio/hRO/hJ/CiStH2M/prj07diGRP43Hs9+MZ2fWMxbnP6mux+oK9xVMHPFViLdCTB0xkeKDFEFfTIU4E8KZq8dCvB4UlN3hGEsdddXU9QTLv1eFiGKGM4cKUgsFCNLFH7dFrS9poayFYmIZm1b0gyqxMOwJaU3r6xs9sW1ooakXuRv+un7Q0sIlLVzOCZq/XtsK2oTSYaZlStogXi1HV0iazoN2CV2HZeXqRQ54TlJRb7FUlKyUatISsdzo+P7UU1Gb1POdMruckepGwk9tIXQTftz2yBaT5JQovWvpSa6poJPuqgao+b9l5Aj/R+mLQIP4f6Q8Vb3g/5TB/TJxWGdZr9EQrmn99fwKtTvAZGU7wzS7GNpZpDm2JgCrr8wrmPoo54UqGampFIeS9ojXjc4E2yI06bq/4DRoUAc0nVnng4k6p7Ks0+j/S8z9V+NZ5dhmrJUM/y7JTJeRtnJ2TSYJvsFq3CQt/vnfqmQXt5KlpuRcIvDAmhnn2E0t9BJ3SvB/SfLWhuOWNiNVZ+h28g4wlwUp00w95si43rZ3r6+fUIEdgOZbQAsyFRRvBR6dla8KCzRdslar7WS+a5HFb39peIAmG7uZTHVm17Czxju4m6bayz8e7J40DzqM0jr0bmv9PmPvk6y5z57HU8wdTDHeiUJvBMAM4+0CpoAZ4BPgJeAYEAHmgAUgAHiAj4AVAGORtwd4AVgC3gEmgBBwCPgMWANOAQ8AbwBHgHuAp4D3gLuARwoGmNUizF/j4yDC5BWM1kNvvlxFA8xikRrBxHIUhutFMBlgQoshhPphGAXe/OggKqqb2cibxwuEXjUcQjccxi5eFRL1fDSbKrUhy2CMb2aLyepkegDWsBwPlrVC0/kLHmeCBQ=='))))
+
+</code></pre>
+<p>经过搜索可得函数作用如下</p>
+<p>base64.b64decode() ——base64解码<br>
+zlib.decompress() ——解压缩<br>
+marshal.loads() ——反序列化<br>
+exec() ——将参数当做可执行文件运行</p>
+<h3 id="写入文件">写入文件</h3>
+<p>我们将解压缩后的文件写入文件中</p>
+<pre><code>import zlib
+import base64
+d=zlib.decompress(base64.b64decode('eJyNVktv00AQXm/eL0igiaFA01IO4cIVCUGFBBJwqRAckLhEIQmtRfPwI0QIeio/hRO/hJ/CiStH2M/prj07diGRP43Hs9+MZ2fWMxbnP6mux+oK9xVMHPFViLdCTB0xkeKDFEFfTIU4E8KZq8dCvB4UlN3hGEsdddXU9QTLv1eFiGKGM4cKUgsFCNLFH7dFrS9poayFYmIZm1b0gyqxMOwJaU3r6xs9sW1ooakXuRv+un7Q0sIlLVzOCZq/XtsK2oTSYaZlStogXi1HV0iazoN2CV2HZeXqRQ54TlJRb7FUlKyUatISsdzo+P7UU1Gb1POdMruckepGwk9tIXQTftz2yBaT5JQovWvpSa6poJPuqgao+b9l5Aj/R+mLQIP4f6Q8Vb3g/5TB/TJxWGdZr9EQrmn99fwKtTvAZGU7wzS7GNpZpDm2JgCrr8wrmPoo54UqGampFIeS9ojXjc4E2yI06bq/4DRoUAc0nVnng4k6p7Ks0+j/S8z9V+NZ5dhmrJUM/y7JTJeRtnJ2TSYJvsFq3CQt/vnfqmQXt5KlpuRcIvDAmhnn2E0t9BJ3SvB/SfLWhuOWNiNVZ+h28g4wlwUp00w95si43rZ3r6+fUIEdgOZbQAsyFRRvBR6dla8KCzRdslar7WS+a5HFb39peIAmG7uZTHVm17Czxju4m6bayz8e7J40DzqM0jr0bmv9PmPvk6y5z57HU8wdTDHeiUJvBMAM4+0CpoAZ4BPgJeAYEAHmgAUgAHiAj4AVAGORtwd4AVgC3gEmgBBwCPgMWANOAQ8AbwBHgHuAp4D3gLuARwoGmNUizF/j4yDC5BWM1kNvvlxFA8xikRrBxHIUhutFMBlgQoshhPphGAXe/OggKqqb2cibxwuEXjUcQjccxi5eFRL1fDSbKrUhy2CMb2aLyepkegDWsBwPlrVC0/kLHmeCBQ=='))
+f=open('bytecode','wb')
+f.write(d)
+</code></pre>
+<p>open用法：https://www.runoob.com/python/python-func-open.html</p>
+<h3 id="添加文件头">添加文件头</h3>
+<p>更改后缀名为pyc时发现不能运行<img src="https://7usai.github.io/post-images/1600239334055.png" alt="" loading="lazy"></p>
+<p>于是手动添加文件头</p>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600239343673.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600239349059.png" alt="" loading="lazy"></figure>
+<p>这里我更改了两个pyc，两种都能运行但是可以看到5~8字节不同，上一个(就是444.pyc)是我在网上搜索得到的文件头，而1111.pyc是我自己编写py文件后转成pyc后得到的文件头，这里有一个知识</p>
+<pre><code>pyc文件头部
+- 前4个字节：03f3 0d0a，表示python版本
+- 5-8个字节：0e6b 905d，表示pyc文件修改时间
+</code></pre>
+<p>具体可参考https://www.cnblogs.com/blili/p/11799483.html</p>
+<p>添加文件头后我们发现可以运行了</p>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600239355890.png" alt="" loading="lazy"></figure>
+<h3 id="pyc转为py">pyc转为py</h3>
+<p>通过uncompyle6将其转为py文件</p>
+<pre><code>uncompyle6 -o 123.py 1111.pyc
+</code></pre>
+<p><img src="https://7usai.github.io/post-images/1600239362899.png" alt="" loading="lazy"><br>
+2k多行这里只截一部分</p>
+<p>将LOAD_CONST后面的所有数字转为ascii码</p>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600239369086.png" alt="" loading="lazy"></figure>
+<p><img src="https://7usai.github.io/post-images/1600239375580.png" alt="" loading="lazy"><br>
+再次分析我们可知他是4个字符为一组</p>
+<h3 id="观察规律尝试解密">观察规律尝试解密</h3>
+<p>将乱序得flag尝试4个为一组倒叙得<br>
+hitcon{Now y</p>
+<p>神似flag，最终全部倒叙得flag=hitcon{Now you can compile and run Python bytecode in your brain!}</p>
+<h3 id="总结">总结</h3>
+<p>很费时间，学习了pyc文件格式，学习了uncompyle6<br>
+<img src="https://7usai.github.io/post-images/1600239447558.png" alt="" loading="lazy"></p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#handcrafted-pyc">handcrafted-pyc</a>
+<ul>
+<li><a href="#%E7%90%86%E8%A7%A3%E6%96%87%E4%BB%B6">理解文件</a></li>
+<li><a href="#%E5%86%99%E5%85%A5%E6%96%87%E4%BB%B6">写入文件</a></li>
+<li><a href="#%E6%B7%BB%E5%8A%A0%E6%96%87%E4%BB%B6%E5%A4%B4">添加文件头</a></li>
+<li><a href="#pyc%E8%BD%AC%E4%B8%BApy">pyc转为py</a></li>
+<li><a href="#%E8%A7%82%E5%AF%9F%E8%A7%84%E5%BE%8B%E5%B0%9D%E8%AF%95%E8%A7%A3%E5%AF%86">观察规律尝试解密</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://7usai.github.io/post/gong-fang-shi-jie-_re_3-xing-ti-_-bu-fen-wp/">
+              <h3 class="post-title">
+                攻防世界_re_3星题_部分wp
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://7usai.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
