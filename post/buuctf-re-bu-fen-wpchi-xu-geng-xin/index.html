@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>BUUCTF re部分wp（持续更新） | 7usai</title>
-<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600269161649">
+<link rel="shortcut icon" href="https://7usai.github.io/favicon.ico?v=1600346224741">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://7usai.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="BUUCTF re部分wp（持续更新） | 7usai - Atom Feed" href="https://7usai.github.io/atom.xml">
@@ -32,7 +32,7 @@ reverse2
       <div class="main-content">
         <div class="site-header">
   <a href="https://7usai.github.io">
-  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600269161649" alt="">
+  <img class="avatar" src="https://7usai.github.io/images/avatar.png?v=1600346224741" alt="">
   </a>
   <h1 class="site-title">
     7usai
@@ -96,7 +96,7 @@ reverse2
                 2020-07-31
               </span>
               <span>
-                6 min read
+                7 min read
               </span>
               
                 <a href="https://7usai.github.io/tag/_wk3DR6W6/" class="post-tag">
@@ -325,6 +325,43 @@ print(b)
 </code></pre>
 <p>得pvkq{m164675262033l4m49lnp7p9mnk28k75}<br>
 凯撒解密得flag{c164675262033b4c49bdf7f9cda28a75}</p>
+<h2 id="gxyctf2019luck_guy">[GXYCTF2019]luck_guy</h2>
+<figure data-type="image" tabindex="25"><img src="https://7usai.github.io/post-images/1600346205023.png" alt="" loading="lazy"></figure>
+<p>进入关键函数patch_me</p>
+<figure data-type="image" tabindex="26"><img src="https://7usai.github.io/post-images/1600346210966.png" alt="" loading="lazy"></figure>
+<p>进入get_flag</p>
+<figure data-type="image" tabindex="27"><img src="https://7usai.github.io/post-images/1600346216886.png" alt="" loading="lazy"></figure>
+<p>f1可查字符串知为'GXY{do_not_'<br>
+rand()%200是指switch里的是0到199的随机数<br>
+5个case需要按一定顺序执行，观看可发现顺序为451</p>
+<h3 id="脚本-2">脚本</h3>
+<pre><code>a=[0x69,0x63,0x75,0x67,0x60,0x6F,0x66,0x7F,0x00]
+b='GXY{do_not_'
+for i in range(8):
+    if i&amp;1==1:
+        b+=chr(a[i]-2)
+    else:
+        b+=chr(a[i]-1)
+print(b)
+</code></pre>
+<h2 id="简单注册器">简单注册器</h2>
+<p>用jadx-gui打开</p>
+<h3 id="主函数">主函数</h3>
+<figure data-type="image" tabindex="28"><img src="https://7usai.github.io/post-images/1600346223074.png" alt="" loading="lazy"></figure>
+<p>x中存的是flag值，44到60行是flag转化过程</p>
+<h3 id="脚本-3">脚本</h3>
+<pre><code>x='dd2940c04462b4dd7c450528835cca15'
+a = [i for i in x]
+a[2]=chr(ord(a[2])+ord(a[3])-50)
+a[4]=chr(ord(a[2])+ord(a[5])-48)
+a[30]=chr(ord(a[31])+ord(a[9])-48)
+a[14]=chr(ord(a[27])+ord(a[28])-97)
+for i in range(16):
+    b=a[31-i]
+    a[31-i]=a[i]
+    a[i]=b
+print(''.join(a))
+</code></pre>
 
               </div>
               <div class="toc-container">
@@ -349,6 +386,17 @@ print(b)
 </ul>
 </li>
 <li><a href="#findit">findit</a></li>
+<li><a href="#gxyctf2019luck_guy">[GXYCTF2019]luck_guy</a>
+<ul>
+<li><a href="#%E8%84%9A%E6%9C%AC-2">脚本</a></li>
+</ul>
+</li>
+<li><a href="#%E7%AE%80%E5%8D%95%E6%B3%A8%E5%86%8C%E5%99%A8">简单注册器</a>
+<ul>
+<li><a href="#%E4%B8%BB%E5%87%BD%E6%95%B0">主函数</a></li>
+<li><a href="#%E8%84%9A%E6%9C%AC-3">脚本</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
