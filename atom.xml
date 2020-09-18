@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-09-17T15:31:21.291Z</updated>
+    <updated>2020-09-18T07:33:30.653Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -10,6 +10,55 @@
     <logo>https://7usai.github.io/images/avatar.png</logo>
     <icon>https://7usai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 7usai</rights>
+    <entry>
+        <title type="html"><![CDATA[Jarvis OJ_re部分]]></title>
+        <id>https://7usai.github.io/post/aUlplRi6E/</id>
+        <link href="https://7usai.github.io/post/aUlplRi6E/">
+        </link>
+        <updated>2020-09-18T07:30:36.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="61dctfstheasy">[61dctf]stheasy</h2>
+<p>主函数</p>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600414298392.png" alt="" loading="lazy"></figure>
+<p>进入关键函数得，flag长度为29位</p>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600414303121.png" alt="" loading="lazy"></figure>
+<p>byte_8049AE0和byte8049B15值如下</p>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600414307727.png" alt="" loading="lazy"></figure>
+<p>写脚本</p>
+<pre><code>a=[0x48,0x5D,0x8D,0x24,0x84,0x27,0x99,0x9F,0x54,0x18,0x1E,0x69,0x7E,0x33,0x15,0x72
+   ,0x8D,0x33,0x24,0x63,0x21,0x54,0x0C,0x78,0x78,0x78,0x78,0x78,0x1B]
+b='lk2j9Gh}AgfY4ds-a6QW1#k5ER_T[cvLbV7nOm3ZeX{CMt8SZo]U'
+flag=''
+for i in range(29):
+    flag+=chr(ord(b[int(a[i]/3-2)]))
+    print(flag)
+</code></pre>
+<p>得flag=kctf{YoU_hAVe-GOt-fLg_233333}</p>
+<h2 id="dd-hello">DD - Hello</h2>
+<p>关键函数</p>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600414334088.png" alt="" loading="lazy"></figure>
+<p>V2等于start和sub_100000C90得地址之差再向右移动两位后于byte_10001040异或</p>
+<p>地址于byte_10001040如下</p>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1600414343342.png" alt="" loading="lazy"></figure>
+<p><img src="https://7usai.github.io/post-images/1600414347990.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600414353508.png" alt="" loading="lazy"></p>
+<p>脚本</p>
+<pre><code>a= [0x41, 0x10, 0x11, 0x11, 0x1B, 0x0A, 0x64, 0x67, 0x6A, 0x68, 0x62, 0x68,
+    0x6E, 0x67, 0x68, 0x6B, 0x62, 0x3D, 0x65, 0x6A, 0x6A, 0x3D, 0x68, 0x4,
+    0x5, 0x8, 0x3, 0x2, 0x2, 0x55, 0x8, 0x5D, 0x61, 0x55, 0x0A, 0x5F, 0x0D
+    , 0x5D, 0x61, 0x32, 0x17, 0x1D, 0x19, 0x1F, 0x18, 0x20, 0x4, 0x2, 0x12,
+    0x16, 0x1E, 0x54, 0x20, 0x13, 0x14, 0x0, 0x0]
+flag=''
+v2=((0xCB0-0xC90)&gt;&gt;2)^(a[0])
+for i in range(55):
+    a[i]-=2
+    a[i]^=v2
+    i+=1
+    v2+=1
+    flag+=chr(a[i-1])
+print(flag[1:])
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[攻防世界_re_4星题_部分wp]]></title>
         <id>https://7usai.github.io/post/gong-fang-shi-jie-_re_4-xing-ti-_-bu-fen-wp/</id>
@@ -4104,47 +4153,6 @@ return 0;
 <h2 id="基础类型">基础类型</h2>
 <p>int,long ,short ,unsigned,char ,float ,double ,signed, _Bool, _Complex(复数), _Imaginary(虚数)</p>
 <p>包含一个头文件：inttype.h后有uint64_t(无符号整型64位)</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[CTFD搭建（ubuntu18.04）]]></title>
-        <id>https://7usai.github.io/post/ctfd-da-jian-ubuntu1804/</id>
-        <link href="https://7usai.github.io/post/ctfd-da-jian-ubuntu1804/">
-        </link>
-        <updated>2020-07-31T14:37:17.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="更换ubuntu1804阿里源">更换ubuntu18.04阿里源</h2>
-<p>vim /etc/apt/sources.list</p>
-<p>sudo apt-get update</p>
-<p>sudo apt-get upgrade</p>
-<h2 id="安装pip3">安装pip3</h2>
-<p>apt install python3-pip</p>
-<p>如果异常可以升级pip</p>
-<p>sudo python3 -m pip install --upgrade pip</p>
-<h2 id="pip换源">pip换源</h2>
-<pre><code>mkdir ~/.pip
-cd ~/.pip
-touch pip.conf
-编辑pip.conf文件
-sudo vim ~/.pip/pip.conf
-打开pip.conf文件窗口,将以下内容复制到文件中:
-[global] 
-index-url = http://pypi.douban.com/simple 
-[install] 
-trusted-host=pypi.douban.com
-</code></pre>
-<h2 id="安装flask">安装Flask</h2>
-<p>sudo pip3 install Flask</p>
-<h2 id="下载ctfd">下载CTFd</h2>
-<p>sudo git clone https://github.com/isislab/CTFd.git</p>
-<p>如果不能成功下载就</p>
-<p>sudo git clone https://gitee.com/ivenwings/CTFd.git</p>
-<p>给予权限</p>
-<p>chmod -R 755 CTFd/</p>
-<h2 id="安装ctfd">安装CTFd</h2>
-<p>1  cd CTFd/</p>
-<p>2  ./prepare.sh</p>
-<p>3  pip3 install -r -requirements.txt；这一步如果不行可以尝试python3 -m pip install -r -requirements.txt</p>
-<p>4  python3 serve.py</p>
 ]]></content>
     </entry>
 </feed>
