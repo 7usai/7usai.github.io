@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-09-19T11:17:31.231Z</updated>
+    <updated>2020-09-20T03:53:23.235Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -10,6 +10,51 @@
     <logo>https://7usai.github.io/images/avatar.png</logo>
     <icon>https://7usai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 7usai</rights>
+    <entry>
+        <title type="html"><![CDATA[利用msf利用easyfilesharing漏洞]]></title>
+        <id>https://7usai.github.io/post/1ucQSUb1Y/</id>
+        <link href="https://7usai.github.io/post/1ucQSUb1Y/">
+        </link>
+        <updated>2020-09-20T03:46:45.000Z</updated>
+        <content type="html"><![CDATA[<h3 id="思路">思路</h3>
+<p>1.安装一个win10虚拟机<br>
+2.开启win10虚拟机端口<br>
+3.开始攻击</p>
+<p>win10ip地址</p>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600573646446.png" alt="" loading="lazy"></figure>
+<p>查看开启端口</p>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600573658331.png" alt="" loading="lazy"></figure>
+<p>这里可以看到80端口为easyfilesharing，因为在win10虚拟机里我们设置的就为80</p>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600573677088.png" alt="" loading="lazy"></figure>
+<p>搜索EasyFileSharing漏洞</p>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600573690601.png" alt="" loading="lazy"></figure>
+<p>设置攻击模块</p>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1600573704435.png" alt="" loading="lazy"></figure>
+<p>show payloads后选择第52个</p>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1600573712860.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1600573771977.png" alt="" loading="lazy"></figure>
+<p>在这里可以看到缺少一个RHOSTS和一个LHOST，RHOSTS为靶机IP（win10虚拟机），LHOSTS为攻击者IP（kali）</p>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1600573785155.png" alt="" loading="lazy"></figure>
+<p>查看kali ip地址</p>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1600573798152.png" alt="" loading="lazy"></figure>
+<p>设置ip地址</p>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1600573806372.png" alt="" loading="lazy"></figure>
+<p>此漏洞失败</p>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1600573816668.png" alt="" loading="lazy"></figure>
+<h3 id="尝试栈溢出漏洞">尝试栈溢出漏洞</h3>
+<p>首先我们查看easyfilesharing上存在哪些漏洞</p>
+<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1600573827540.png" alt="" loading="lazy"></figure>
+<p>我们选取这个进行栈溢出漏洞攻击</p>
+<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1600573834729.png" alt="" loading="lazy"></figure>
+<p>利用漏洞脚本</p>
+<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1600573841739.png" alt="" loading="lazy"></figure>
+<p>打开了计算器并且关闭了easyfilesharing</p>
+<p><img src="https://7usai.github.io/post-images/1600573847447.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600573853001.png" alt="" loading="lazy"></p>
+<h3 id="漏洞利用成功">漏洞利用成功</h3>
+<p>利用溢出漏洞攻击目标并让其服务崩溃和让主机运行计算器</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[URL,ASCII,Unicode,Base64]]></title>
         <id>https://7usai.github.io/post/BNdT9mz74/</id>
@@ -4013,414 +4058,6 @@ rkvir为密码已经可以看出，双击紫色行进入<br>
 <p>cout &lt;&lt; NS::i &lt;&lt;endl;<strong>参考资料</strong>**😗*</p>
 <p>《C++面向对象程序设计教程(第四版)》</p>
 <p>《C++面向对象程序设计教程(第四版)习题解答与上机指导》</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[web学习]]></title>
-        <id>https://7usai.github.io/post/web-xue-xi/</id>
-        <link href="https://7usai.github.io/post/web-xue-xi/">
-        </link>
-        <updated>2020-08-30T07:16:44.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="web学习">web学习</h1>
-<h2 id="web常见术语">web常见术语</h2>
-<h3 id="渗透测试">渗透测试</h3>
-<p>渗透测试：是为了证明网络防御按照预期计划正常运行而提供的一种机制。不妨假设，你的公司定期更新安全策略和程序，时时给系统打补丁，并采用了漏洞扫描器等工具，以确保所有补丁都已打上。如果你早已做到了这些，为什么还要请外方进行审查或渗透测试呢？因为，渗透测试能够独立地检查你的网络策略，换句话说，就是给你的系统安了一双眼睛。而且，进行这类测试的，都是寻找网络系统安全漏洞的专业人士。</p>
-<p>参考资料：https://baike.baidu.com/item/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95</p>
-<h3 id="网站">网站</h3>
-<p>网站：(Website)是指在因特网上根据一定的规则，使用HTML（标准通用标记语言）等工具制作的用于展示特定内容相关网页的集合。简单地说，网站是一种沟通工具，人们可以通过网站来发布自己想要公开的资讯，或者利用网站来提供相关的网络服务。人们可以通过网页浏览器来访问网站，获取自己需要的资讯或者享受网络服务。<br>
-网站是在互联网上拥有域名或地址并提供一定网络服务的主机，是存储文件的空间，以服务器为载体。人们可通过浏览器等进行访问、查找文件，也可通过远程文件传输(FTP)方式上传、下载网站文件。</p>
-<p>参考资料：https://baike.baidu.com/item/%E7%BD%91%E7%AB%99/155722</p>
-<h3 id="网站分类">网站分类</h3>
-<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1598772667836.png" alt="" loading="lazy"></figure>
-<table>
-<thead>
-<tr>
-<th><strong>静态网站</strong></th>
-<th><strong>动态网站</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>每次加载页面时，预建内容都是相同的。</td>
-<td>内容快速生成并定期更改。</td>
-</tr>
-<tr>
-<td>它使用HTML代码开发。</td>
-<td>它使用诸如PHP，JSP和ASP.NET等服务器端语言来开发网站。</td>
-</tr>
-<tr>
-<td>它为每个请求发送完全相同的响应。</td>
-<td>它可能会为每个请求生成不同的HTML。</td>
-</tr>
-<tr>
-<td>仅当有人发布和更新文件(将其发送到Web服务器)时，内容才会更改。</td>
-<td>页面包含“服务器端”代码，代码允许服务器在加载页面时生成唯一内容。</td>
-</tr>
-<tr>
-<td>灵活性是静态网站的主要优势。</td>
-<td>内容管理系统(CMS)是动态网站的主要优势。</td>
-</tr>
-</tbody>
-</table>
-<h3 id="cms">CMS</h3>
-<p>CMS:就是模板</p>
-<h3 id="脚本语言">脚本语言</h3>
-<p>脚本语言又被称为扩建的语言，或者动态语言，是一种编程语言，用来控制软件应用程序，脚本通常以文本（如ASCII)保存，只在被调用时进行解释或编译。</p>
-<p>常见的脚本语言：<br>
-PHP<br>
-JavaScript</p>
-<p>数据库</p>
-<p>数据库：是“按照数据结构来组织、存储和管理数据的仓库”。是一个长期存储在计算机内的、有组织的、有共享的、统一管理的数据集合。</p>
-<p>常见的数据库：<br>
-mysql 、SQL Server、Oracle、DB2、ACCESS</p>
-<h3 id="http请求">HTTP请求</h3>
-<p>当浏览器向Web服务器发出请求时，它向服务器传递了一个数据块，也就是请求信息，HTTP请求信息由3部分组成：（1）请求方法URI协议/版本（2）　请求头(Request Header)（3）　请求正文</p>
-<h3 id="html">html</h3>
-<p>HTML：称为超文本标记语言，是一种标识性的语言。它包括一系列标签．通过这些标签可以将网络上的文档格式统一，使分散的Internet资源连接为一个逻辑整体。HTML文本是由HTML命令组成的描述性文本，HTML命令可以说明文字，图形、动画、声音、表格、链接等。</p>
-<h3 id="javascript">JavaScript</h3>
-<p>JavaScript：（简称“JS”） 是一种具有函数优先的轻量级，解释型或即时编译型的编程语言。虽然它是作为开发Web页面的脚本语言而出名的，但是它也被用到了很多非浏览器环境中，JavaScript 基于原型编程、多范式的动态脚本语言，并且支持面向对象、命令式和声明式（如函数式编程）风格。</p>
-<p>注意：<br>
-java和javascript外形字母非常像，但是二者是完全不同的二种语言。形象说，二者关系就和雷锋和雷峰塔关系一样。</p>
-<p>参考资料：<br>
-https://baike.baidu.com/item/javascript</p>
-<h3 id="php">PHP</h3>
-<p>PHP：“超文本预处理器”，是一种通用开源脚本语言。PHP是在服务器端执行的脚本语言，与C语言类似，是常用的网站编程语言。PHP独特的语法混合了C、Java、Perl以及 PHP 自创的语法。利于学习，使用广泛，主要适用于Web开发领域。</p>
-<h2 id="web组件">web组件</h2>
-<p>Web组件是指对 Web 的数据和方法进行封装实体，可以包含 JavaBean 组件，从而方便地进行业务逻辑的处理<br>
-https://python.freelycode.com/contribution/detail/1506</p>
-<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1598772682704.png" alt="" loading="lazy"></figure>
-<h3 id="自定义元素">自定义元素</h3>
-<pre><code>自定义元素是HTML元素，像&lt;div&gt;, &lt;section&gt; 或&lt;article&gt;，但是我们可以自己对通过浏览器API定义的元素进行命名。自定义元素就像那些标准的HTML元素一样——名称用尖括号括起来——只不过它们总是有一个破折号，比如&lt;news-slider&gt; 或 &lt;bacon-cheeseburger&gt;。展望未来，浏览器厂商已承诺不再创建新的包含一个破折号的内置元素，以防止冲突。
-自定义元素包含自己的语义、行为、标记，可以跨框架和浏览器共享。
-</code></pre>
-<h3 id="影子dom">影子DOM</h3>
-<pre><code>影子DOM是DOM的一个封装版本。这允许作者有效地将DOM片段彼此隔离，包括可以用作CSS选择器的任何东西以及与它们关联的样式。通常，文档范围内的任何内容都称为 light DOM，影子根内的任何内容都称为影子DOM。
-使用light DOM时，可以使用document.querySelector('selector')来选择元素，也可以使用element. queryselector ('selector')来选择任何元素的子元素；同样，可以通过调用shadowRoot.querySelector来锁定影子根的子节点,其中shadowRoot是对文档片段的引用——不同之处在于，影子根的子元素不能从light DOM中选择。例如，如果我们有一个包含&lt;button&gt;的影子根，调用shadowRoot.querySelector('button')将返回我们的按钮，但是没有一个文档查询选择器（document’s query selector）的调用会返回该元素，因为它属于另一个不同的DocumentOrShadowRoot实例。样式选择器也以同样的方式工作。
-在这方面，影子DOM的工作方式有点像 &lt;iframe&gt;，它里边的内容会与文档的其他内容切割开；但是，当我们创建一个阴影根时，我们仍然可以完全控制页面的这一部分，但是范围仅限于上下文。这就是我们所说的封装。
-如果你曾经编写过重用相同id，或者依赖于CSS-in- js工具或CSS命名策略(如BEM) 的组件，那么影子DOM有可能改善你的开发体验。
-</code></pre>
-<h3 id="html模板">HTML模板</h3>
-<pre><code>HTML&lt;template&gt;元素允许我们在一个正常的HTML流中剔除可重用的代码模板，这些模板不会立即渲染，但是可以在稍后使用。
-
-HTML导入：将HTML文档导入其他文档的声明方法
-</code></pre>
-<h2 id="html-2">HTML</h2>
-<pre><code>&lt;!DOCTYPE HTML&gt;	声明该代码是由html5编写
-&lt;html&gt;
-
-&lt;head&gt;
-&lt;title&gt;标题&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-主体
-&lt;/body&gt;
-
-&lt;/html&gt;
-</code></pre>
-<pre><code>&lt;!DOCTYPE HTML&gt;
-&lt;html&gt;
-
-&lt;head&gt;
-&lt;title&gt;第一个程序&lt;/title&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-hello world!
-&lt;/body&gt;
-
-&lt;/html&gt;
-</code></pre>
-<h3 id="常用的几个标签">常用的几个标签</h3>
-<pre><code>&lt;h1&gt;一级大标题&lt;/h1&gt;
-&lt;p&gt;用于存放一段文字&lt;/p&gt;
-&lt;b&gt;加粗文字&lt;/b&gt;
-&lt;i&gt;斜体文字&lt;/i&gt;
-&lt;br /&gt;换行
-&lt;a href=”https://www.baidu.com/”&gt;百度&lt;/a&gt;超级链接
-&lt;img src=”1.jpg”&gt;包含图片
-
-&lt;form method=&quot;get&quot;&gt;声明传入方式
-  Username: &lt;input type=&quot;text&quot; name=&quot;username&quot; /&gt;
-  Password: &lt;input type=&quot;passwod&quot; name=&quot;password&quot; /&gt;
-  &lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
-&lt;/form&gt;
-</code></pre>
-<h2 id="javascript-2">JavaScript</h2>
-<h3 id="javascript-和-html-以及-css的区别">JavaScript 和 HTML 以及 CSS的区别</h3>
-<p>HTML：提供网页的结构，提供网页中的内容<br>
-CSS: 用来美化网页<br>
-JavaScript: 可以用来控制网页内容，给网页增加动态的效果</p>
-<p>参考资料：<br>
-https://www.w3school.com.cn/js/index.asp</p>
-<h3 id="javascript组成">JavaScript组成</h3>
-<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1598772698026.png" alt="" loading="lazy"></figure>
-<h3 id="ecmascript核心">ECMAScript（核心）</h3>
-<p>定义了JavaScript的语法规范<br>
-是JavaScript的核心，描述了语言的基本语法和数据类型，ECMAScript是一套标准，定义了一种语言的标准与具体实现无关</p>
-<h3 id="bom浏览器对象模型">BOM（浏览器对象模型）</h3>
-<p>一套操作浏览器功能的API<br>
-通过BOM可以操作浏览器窗口，比如：弹出框、控制浏览器跳转、获取分辨率等</p>
-<h3 id="dom文档对象模型">DOM（文档对象模型）</h3>
-<p>一套操作页面元素的API<br>
-DOM可以把HTML看做是文档树，通过DOM提供的API可以对树上的节点进行操作</p>
-<h3 id="javascript-的书写格式">JavaScript 的书写格式</h3>
-<pre><code>第一种，例如：
-&lt;input type=&quot;button&quot; value=&quot;按钮&quot; onclick=&quot;alert('Hello World')&quot; /&gt;
-
-第二种，例如：
-  &lt;script&gt;
-    alert('Hello World!');
-  &lt;/script&gt;
-
-第三种，例如：
-&lt;script src=&quot;main.js&quot;&gt;&lt;/script&gt;
-注意：引用外部js文件的script标签中不可以写JavaScript代码
-</code></pre>
-<h3 id="输出">输出</h3>
-<p>javascript 没有任何打印或输出的函数<br>
-可以通过不同的方式输出数据</p>
-<p>使用window.alert() 弹出警告框<br>
-使用document.write()方法将内容写到html文档中<br>
-使用document.getElementById(&quot;&quot;).innerHtml=&quot;需要写入的值&quot;; 写入到HTML元素<br>
-使用console.log()写入到浏览器的控制台</p>
-<h3 id="输出四种方法示例">输出四种方法示例：</h3>
-<pre><code>&lt;h1 id=&quot;demo&quot;&gt;&lt;/h1&gt;
-&lt;script&gt;
-	var a=1;
-	var b=2;
-	if(a&gt;b){
-		window.alert(a);
-		document.write(a);
-		console.log(a);
-		document.getElementById(&quot;demo&quot;).innerHTML=a;
-	}else{
-		console.log(b);
-		document.write(b);
-		window.alert(b);
-		document.getElementById(&quot;demo&quot;).innerHTML=b;
-	}
-	//alert(a);
-	&lt;/script&gt;
-
-</code></pre>
-<h3 id="基本语法变量">基本语法：变量</h3>
-<p>使用var声明变量，例如：</p>
-<pre><code>&lt;script&gt;
-	var a=1;
-	alert(a);
-&lt;/script&gt;
-
-</code></pre>
-<p>命名规范：<br>
-由字母、数字、下划线、$符号组成，不能以数字开头<br>
-不能是关键字和保留字，例如：for、while。<br>
-区分大小写</p>
-<h3 id="if语句">if语句</h3>
-<pre><code>&lt;script&gt;
-	var a=1;
-	var b=2;
-	if(a&gt;b){
-		alert(a);
-	}else{
-		alert(b);
-	}
-&lt;/script&gt;
-</code></pre>
-<h3 id="for语句">for语句</h3>
-<pre><code>for (初始化表达式1; 判断表达式2; 自增表达式3) {
-  // 循环体4
-}
-
-
-for(var i=1;i&lt;10;i++){
-		document.write(i);
-}
-
-</code></pre>
-<h2 id="sql">SQL</h2>
-<h3 id="information_schema">information_schema</h3>
-<p>在MySQL中，把 information_schema 看作是一个数据库，确切说是信息数据库。其中保存着关于MySQL服务器所维护的所有其他数据库的信息</p>
-<p>SCHEMATA表：提供了当前mysql实例中所有数据库的信息。<br>
-TABLES表：提供了关于数据库中的表的信息（包括视图）。详细表述了某个数据库中所有表的信息。<br>
-COLUMNS表：提供了表中的列信息。详细表述了某张表的所有列以及每个列的信息。</p>
-<h3 id="mysql">MYSQL</h3>
-<p>user表是存放该mysql数据库中所有用户名跟密码的表</p>
-<h3 id="select">select</h3>
-<p>select语句是查询语句。<br>
-例如：<br>
-1.查询test数据库中users表中所有的数据。<br>
-select * from test.users;<br>
-2.查询test数据库中users表中username列中的数据。<br>
-select username from test.users;<br>
-3.查询test数据库中users表中id为1的数据。<br>
-select * from test.users where id=1;<br>
-4.查询test数据库中users表中address为china而且username为zhangsan的数据。<br>
-select * from test.users where address='china' and username='zhangsan';</p>
-<h3 id="order-by">order by</h3>
-<p>排序功能<br>
-例如：<br>
-1.查询test数据库中users表中所有的数据并按照第一列进行排序。<br>
-select * from test.users order by 1;<br>
-2.查询test数据库中users表中所有的数据并按照第二列进行排序。<br>
-select * from test.users order by 2;<br>
-3.查询test数据库中users表中所有的数据并按照第三列进行排序。<br>
-select * from test.users order by 3;</p>
-<h3 id="union">union</h3>
-<p>UNION 操作符用于连接两个以上的 SELECT 语句的结果组合到一个结果集合中。<br>
-例如：<br>
-1.查询test数据库中users中username列的数据并查询person表中username列中的数据。<br>
-select username from test.users union select username from test.person;</p>
-<h3 id="insert语句">insert语句</h3>
-<p>INSERT INTO SQL语句来插入数据</p>
-<p>例如：在test数据库person表中插入一条数据：username是lisi，money是100<br>
-insert into person (username,money) values ('lisi','100')</p>
-<h2 id="php-2">PHP</h2>
-<h3 id="第一个程序hello-world">第一个程序：hello world！</h3>
-<pre><code>&lt;?php
-echo ‘Hello world!’;
-php&gt;
-
-</code></pre>
-<h3 id="变量的命名">变量的命名</h3>
-<p>变量以 $ 符号开头，其后是变量的名称<br>
-变量名称必须以字母或下划线开头<br>
-变量名称不能以数字开头<br>
-变量名称只能包含字母数字字符和下划线（A-z、0-9 以及 _）可以有汉字<br>
-变量名称对大小写敏感（$y 与 $Y 是两个不同的变量）</p>
-<h3 id="运算符">运算符</h3>
-<pre><code>+-*/
-&gt;
-&lt;
-=
-&lt;=
-&gt;=
-!=
-==
-</code></pre>
-<h3 id="if">if</h3>
-<pre><code>$sex = '男'
-if ($sex == '男'){
-echo '哥们';
-}else{
-echo '姐们';
-}
-</code></pre>
-<h3 id="while">while</h3>
-<pre><code>while($id &lt;= 10){
-echo '不够';
-$id = $id+1;
-}
-</code></pre>
-<h3 id="for">for</h3>
-<pre><code>for($id=1;$id&lt;=10;$id++){
-echo '不够';
-}
-</code></pre>
-<h3 id="打印1-100">打印1-100</h3>
-<pre><code>方法一：
-$id = 1;
-while($id &lt;= 100){
-echo $id,'&lt;br /&gt;';
-$id = $id+1;
-}
-方法二：
-for ($id =1;$id &lt;= 100;$id++)
-    echo $id,'&lt;br /&gt;';
-</code></pre>
-<h3 id="数组">数组</h3>
-<pre><code>$arr = array('1' =&gt; '张三' , '2' =&gt; '李四');
-print_r($arr);
-echo '&lt;hr /&gt;';
-echo $arr[1];
-</code></pre>
-<h3 id="_get">$_GET</h3>
-<pre><code>header(&quot;Content-type: text/html; charset=utf-8&quot;);
-$id = $_GET['id'];
-echo '我是第'.$id.'号程序员';
-</code></pre>
-<h3 id="_post">$_POST</h3>
-<pre><code>header(&quot;Content-type: text/html; charset=utf-8&quot;);
-$id = $_POST['id'];
-echo '我是第'.$id.'号程序员';
-</code></pre>
-<h3 id="mysqli_connect">Mysqli_connect()</h3>
-<pre><code>$conn = mysqli_connect('127.0.0.1','root','root','test');
-</code></pre>
-<h3 id="mysqli_query">Mysqli_query</h3>
-<pre><code>mysqli_query() 函数执行一条 MySQL 查询。
-$result = mysqli_query($con,$sql);
-</code></pre>
-<h3 id="mysqli_fetch_array">Mysqli_fetch_array</h3>
-<pre><code>mysql_fetch_array() 函数从结果集中取得一行作为关联数组，或数字数组，或二者兼有
-返回根据从结果集取得的行生成的数组，如果没有更多行则返回 false。
-
-$row = mysqli_fetch_array($result)
-</code></pre>
-<h2 id="whois查询">whois查询</h2>
-<p>whois（读作“Who is”，非缩写）是用来查询域名的IP以及所有者等信息的传输协议。简单说，whois就是一个用来查询域名是否已经被注册，以及注册域名的详细信息的数据库（如域名所有人、域名注册商）。</p>
-<h3 id="查询途径">查询途径</h3>
-<p>1.爱站工具网（https://whois.aizhan.com/）<br>
-2.站长之家（http://whois.chinaz.com）<br>
-3.VirusTotal（ https://www.virustotal.com ）</p>
-<p>根据ICANN公布的《通用顶级域名注册数据临时政策细则》和欧盟通用数据保护条例合规要求，全面调整 WHOIS 公开显示的信息。</p>
-<p>即：注册商提供WHOIS查询公开信息中将不再显示域名注册人、管理联系人和技术联系人的个人数据，包括姓名、邮箱、电话、街道地址等，只会显示注册商及到期日期等。而且该调整已于2018年5月25日开始生效。</p>
-<h2 id="备案信息查询">备案信息查询</h2>
-<p>网站备案是根据国家法律法规规定，需要网站的所有者向国家有关部 门申请的 备案，这是国家信息产业部对网站的一种管理，为了防止在网上从事非法的网站经 营活动的发生</p>
-<p>注意：主要针对国内网站，如果网站搭建在其他国家，则不需要进行备案</p>
-<h3 id="常用的查询网站">常用的查询网站</h3>
-<p>ICP备案查询网：http://www.beianbeian.com/<br>
-天眼查：https://beian.tianyancha.com/</p>
-<p>站长工具：http://icp.chinaz.com/<br>
-工业和信息化部：http://www.beian.miit.gov.cn/</p>
-<h2 id="收集敏感信息">收集敏感信息</h2>
-<h3 id="谷歌语法">谷歌语法</h3>
-<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1598957444700.png" alt="" loading="lazy"></figure>
-<h4 id="举例">举例</h4>
-<p>学校网站的后台<br>
-Site:edu.cn intext:后台管理</p>
-<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1598957452119.png" alt="" loading="lazy"></figure>
-<h3 id="burp查询服务器的某些信息">Burp查询服务器的某些信息</h3>
-<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1598957458913.png" alt="" loading="lazy"></figure>
-<h3 id="ip地址">IP地址</h3>
-<p>ping指令</p>
-<h3 id="网站指纹识别">网站指纹识别</h3>
-<p>BugScaner：http://whatweb.bugscaner.com/look/<br>
-云悉指纹：http://www.yunsee.cn/finger.html<br>
-WhatWeb：https://whatweb.net/</p>
-<h3 id="网站容器">网站容器</h3>
-<p>nmap, iis, apache, nginx</p>
-<h3 id="脚本类型">脚本类型</h3>
-<p>php, asp</p>
-<h3 id="数据库类型">数据库类型</h3>
-<p>常见搭配：<br>
-ASP 和 ASPX：ACCESS、SQL Server<br>
-PHP：MySQL、PostgreSQL<br>
-JSP：Oracle、MySQL</p>
-<h2 id="收集子域名信息">收集子域名信息</h2>
-<h3 id="为什么要收集子域名">为什么要收集子域名</h3>
-<p>子域名枚举可以发现更多评估范围相关的域名/子域名，以增加漏洞发现机率；<br>
-探测到更多隐藏或遗忘的应用服务，这些应用往往可导致一些严重漏洞；</p>
-<h3 id="方法">方法</h3>
-<p>1.谷歌语法<br>
-2.在线子域名爆破https://phpinfo.me/domain/<br>
-3.Loyer<br>
-4.Maltego(kali)</p>
-<h2 id="收集常用端口信息">收集常用端口信息</h2>
-<p>在渗透测试的过程中，对端口信息的收集是一个很重要的过程，通过扫描服务器开放的端口以及从该端口判断服务器上存在的服务，就可以对症下药，便于我们渗透目标服务器。</p>
-<h3 id="常见的扫描端口工具">常见的扫描端口工具</h3>
-<p>1.Nmap<br>
-2.Masscan<br>
-3.Zmap<br>
-4.御剑高速TCP端口扫描工具</p>
-<h3 id="nmap基础使用">Nmap基础使用</h3>
-<p>默认扫描：nmap 106.52.110.188<br>
-指定端口扫描：nmap –p 3306 106.52.110.188<br>
-完整扫描到端口、服务及版本：nmap –v –sV 106.52.110.188</p>
-<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1598957468921.png" alt="" loading="lazy"></figure>
-<h3 id="补充其他端口扫描工具">补充：其他端口扫描工具</h3>
-<p>Shodan:https://www.shodan.io/<br>
-在线端口扫描：http://www.t1shopper.com/tools/port-scan/</p>
 ]]></content>
     </entry>
 </feed>
