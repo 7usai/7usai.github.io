@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://localhost:4000</id>
+    <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-09-27T11:20:46.874Z</updated>
+    <updated>2020-09-27T11:32:49.807Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="http://localhost:4000"/>
-    <link rel="self" href="http://localhost:4000/atom.xml"/>
+    <link rel="alternate" href="https://7usai.github.io"/>
+    <link rel="self" href="https://7usai.github.io/atom.xml"/>
     <subtitle>7usai&apos;blog</subtitle>
-    <logo>http://localhost:4000/images/avatar.png</logo>
-    <icon>http://localhost:4000/favicon.ico</icon>
+    <logo>https://7usai.github.io/images/avatar.png</logo>
+    <icon>https://7usai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 7usai</rights>
     <entry>
         <title type="html"><![CDATA[CUMT校赛200923]]></title>
-        <id>http://localhost:4000/post/lgs4SdGy2/</id>
-        <link href="http://localhost:4000/post/lgs4SdGy2/">
+        <id>https://7usai.github.io/post/lgs4SdGy2/</id>
+        <link href="https://7usai.github.io/post/lgs4SdGy2/">
         </link>
         <updated>2020-09-27T11:08:29.000Z</updated>
         <content type="html"><![CDATA[<h1 id="cumt校赛">CUMT校赛</h1>
@@ -60,7 +60,7 @@ def encode(ptext):
     print (&quot;&quot;.join(s)[:-1])
 encode(flag)
 </code></pre>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1601204975990.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1601204975990.png" alt="" loading="lazy"></figure>
 <p>硬算，算到一半发现加法就行，淦</p>
 <h4 id="脚本-2">脚本</h4>
 <pre><code>a=[2,20,12,19,2,19,5,58,24,46,52,30,32,49,36,30,17,40,38,39,51,60]
@@ -74,7 +74,7 @@ for i in range(22):
 <p>b=a+65</p>
 <p>得flag=CUMTCTF{You_are_Right}</p>
 <h3 id="初中生的密码题">初中生的密码题</h3>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1601205029628.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1601205029628.png" alt="" loading="lazy"></figure>
 <p>先用z3求出来p和q的值，最后正常计算鸡号</p>
 <h4 id="脚本-3">脚本</h4>
 <pre><code>from z3 import *
@@ -195,13 +195,13 @@ print(s)
 </code></pre>
 <h2 id="re">RE</h2>
 <h3 id="re1">re1</h3>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1601205060940.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1601205069100.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1601205060940.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1601205069100.png" alt="" loading="lazy"></figure>
 <h3 id="re2">re2</h3>
-<figure data-type="image" tabindex="5"><img src="http://localhost:4000/post-images/1601205077620.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1601205077620.png" alt="" loading="lazy"></figure>
 <p>脱壳机脱壳</p>
-<figure data-type="image" tabindex="6"><img src="http://localhost:4000/post-images/1601205085576.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="http://localhost:4000/post-images/1601205093318.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1601205085576.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1601205093318.png" alt="" loading="lazy"></figure>
 <h3 id="re3">re3</h3>
 <p>从python字节码可看出是存入一个数组cipher，再与19异或得flag</p>
 <h4 id="脚本-6">脚本</h4>
@@ -215,9 +215,9 @@ for i in range(29):
 <h3 id="re4">re4</h3>
 <p>无壳，32位</p>
 <p>加密函数</p>
-<figure data-type="image" tabindex="8"><img src="http://localhost:4000/post-images/1601205154701.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1601205154701.png" alt="" loading="lazy"></figure>
 <p>存在v15的字符</p>
-<figure data-type="image" tabindex="9"><img src="http://localhost:4000/post-images/1601205183970.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1601205183970.png" alt="" loading="lazy"></figure>
 <p>正向脚本</p>
 <pre><code>v15=[0x15,0x02,0x0A,0x16,0x13,0x0B,0x11,0x08,0x03,0x1B,0x19,0x21,0x12,0x1A,
      0x18,0x10,0x09,0x22,0x24,0x17,0x04,0x0E,0x0C,0x14,0x1E,0x00,0x1D,0x07,
@@ -230,35 +230,35 @@ for j in range(len(v15)):
 </code></pre>
 <p>其实a=flag[v15[j]]</p>
 <p>逆向脚本不会写</p>
-<figure data-type="image" tabindex="10"><img src="http://localhost:4000/post-images/1601205194993.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1601205194993.png" alt="" loading="lazy"></figure>
 <p>再排序</p>
-<figure data-type="image" tabindex="11"><img src="http://localhost:4000/post-images/1601205201637.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1601205201637.png" alt="" loading="lazy"></figure>
 <h2 id="misc">Misc</h2>
 <h3 id="连签到都算不上">连签到都算不上</h3>
-<figure data-type="image" tabindex="12"><img src="http://localhost:4000/post-images/1601205220371.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1601205220371.png" alt="" loading="lazy"></figure>
 <p>得</p>
 <pre><code>\u81ea\u7531\u548c\u8c10\u5e73\u7b49\u5e73\u7b49\u81ea\u7531\u8bda\u4fe1\u548c\u8c10\u5e73\u7b49\u81ea\u7531\u81ea\u7531\u548c\u8c10\u5e73\u7b49\u81ea\u7531\u81ea\u7531\u516c\u6b63\u6cd5\u6cbb\u53cb\u5584\u5e73\u7b49\u5e73\u7b49\u6cd5\u6cbb\u548c\u8c10\u548c\u8c10\u516c\u6b63\u8bda\u4fe1\u6587\u660e\u516c\u6b63\u548c\u8c10\u548c\u8c10\u5bcc\u5f3a\u516c\u6b63\u8bda\u4fe1\u548c\u8c10\u548c\u8c10\u548c\u8c10\u5e73\u7b49\u8bda\u4fe1\u5e73\u7b49\u548c\u8c10\u6587\u660e\u5e73\u7b49\u8bda\u4fe1\u5e73\u7b49\u81ea\u7531\u548c\u8c10\u5e73\u7b49\u81ea\u7531\u81ea\u7531\u516c\u6b63\u6587\u660e\u6c11\u4e3b\u6cd5\u6cbb\u8bda\u4fe1\u548c\u8c10\u000d\u000a
 </code></pre>
 <p>继续转</p>
-<figure data-type="image" tabindex="13"><img src="http://localhost:4000/post-images/1601205241220.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1601205241220.png" alt="" loading="lazy"></figure>
 <p>继续转</p>
-<figure data-type="image" tabindex="14"><img src="http://localhost:4000/post-images/1601205251698.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1601205251698.png" alt="" loading="lazy"></figure>
 <h3 id="真签到题">真签到题</h3>
-<figure data-type="image" tabindex="15"><img src="http://localhost:4000/post-images/1601205294999.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="16"><img src="http://localhost:4000/post-images/1601205311610.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="17"><img src="http://localhost:4000/post-images/1601205326113.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1601205294999.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="16"><img src="https://7usai.github.io/post-images/1601205311610.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="17"><img src="https://7usai.github.io/post-images/1601205326113.png" alt="" loading="lazy"></figure>
 <h3 id="大鲨鱼之你可劲找">大鲨鱼之你可劲找</h3>
 <p>这题真的很恶心<br>
-<img src="http://localhost:4000/post-images/1601205336893.png" alt="" loading="lazy"></p>
+<img src="https://7usai.github.io/post-images/1601205336893.png" alt="" loading="lazy"></p>
 <p>先搜索flag，发现全是http</p>
 <p>再缩小范围</p>
-<figure data-type="image" tabindex="18"><img src="http://localhost:4000/post-images/1601205347454.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="18"><img src="https://7usai.github.io/post-images/1601205347454.png" alt="" loading="lazy"></figure>
 <p>这里可以看到是这样的sql语句</p>
-<figure data-type="image" tabindex="19"><img src="http://localhost:4000/post-images/1601205357377.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="19"><img src="https://7usai.github.io/post-images/1601205357377.png" alt="" loading="lazy"></figure>
 <p>追踪http流</p>
-<figure data-type="image" tabindex="20"><img src="http://localhost:4000/post-images/1601205365585.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="20"><img src="https://7usai.github.io/post-images/1601205365585.png" alt="" loading="lazy"></figure>
 <p>分为好几组，每一组确定一个十进制数，一组有好几段，每段后面都有一串字符，根据不同的字符判断是&gt;还是&lt;=，数就完事了，</p>
-<figure data-type="image" tabindex="21"><img src="http://localhost:4000/post-images/1601205375301.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="21"><img src="https://7usai.github.io/post-images/1601205375301.png" alt="" loading="lazy"></figure>
 <h4 id="脚本-7">脚本</h4>
 <pre><code>a=[99,101,99,99,49,51,57,52,45,54,49,51,51,45,52,51,
 100,48,45,98,101,48,54,45,97,52,49,99,53,102,50,51,49,100,100,52,125]
@@ -268,18 +268,18 @@ for i in range(len(a)):
     print(b)
 </code></pre>
 <h3 id="别做题了听歌吧">别做题了听歌吧</h3>
-<figure data-type="image" tabindex="22"><img src="http://localhost:4000/post-images/1601205385896.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="22"><img src="https://7usai.github.io/post-images/1601205385896.jpg" alt="" loading="lazy"></figure>
 <p>用MP3stego分离</p>
-<figure data-type="image" tabindex="23"><img src="http://localhost:4000/post-images/1601205396602.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="23"><img src="https://7usai.github.io/post-images/1601205396602.png" alt="" loading="lazy"></figure>
 <p>得到这个</p>
-<figure data-type="image" tabindex="24"><img src="http://localhost:4000/post-images/1601205404190.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="24"><img src="https://7usai.github.io/post-images/1601205404190.png" alt="" loading="lazy"></figure>
 <p>放入010editor</p>
-<figure data-type="image" tabindex="25"><img src="http://localhost:4000/post-images/1601205410895.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="25"><img src="https://7usai.github.io/post-images/1601205410895.png" alt="" loading="lazy"></figure>
 <p>09为-，20为.，0D0A为\转化摩斯密码</p>
-<figure data-type="image" tabindex="26"><img src="http://localhost:4000/post-images/1601205417668.jpg" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="26"><img src="https://7usai.github.io/post-images/1601205417668.jpg" alt="" loading="lazy"></figure>
 <h3 id="兔兔那么可爱">兔兔那么可爱</h3>
 <p>以txt方式打开flag文件</p>
-<figure data-type="image" tabindex="27"><img src="http://localhost:4000/post-images/1601205424847.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="27"><img src="https://7usai.github.io/post-images/1601205424847.png" alt="" loading="lazy"></figure>
 <p>斐波那契数列</p>
 <h4 id="脚本-8">脚本</h4>
 <pre><code>filename=&quot;C://Users/lenovo/Desktop/Misc3/flag.txt&quot;
@@ -310,11 +310,11 @@ else:
 <h2 id="pwn">pwn</h2>
 <h3 id="test_nc">test_nc</h3>
 <p>nc一下加qq要flag</p>
-<figure data-type="image" tabindex="28"><img src="http://localhost:4000/post-images/1601205435175.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="28"><img src="https://7usai.github.io/post-images/1601205435175.png" alt="" loading="lazy"></figure>
 <h3 id="babystack">babystack</h3>
 <p>当输入为1_love_y0u时拿到shell</p>
 <h3 id="canary">canary</h3>
-<figure data-type="image" tabindex="29"><img src="http://localhost:4000/post-images/1601205443639.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="29"><img src="https://7usai.github.io/post-images/1601205443639.png" alt="" loading="lazy"></figure>
 <p>buf在rsp+10，v3在rsp+48，两个相距0x38，输入‘a’*0x38，泄露出来canary的值，但是要减去换行符0xa，再通过ROPgadget找到sh的地址，构造payload。</p>
 <pre><code>#!/usr/bin/env python2
 #-*- coding:utf-8 -*
@@ -339,7 +339,7 @@ r.recv()
 r.interactive()
 </code></pre>
 <h3 id="fmstr">fmstr</h3>
-<figure data-type="image" tabindex="30"><img src="http://localhost:4000/post-images/1601205452797.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="30"><img src="https://7usai.github.io/post-images/1601205452797.png" alt="" loading="lazy"></figure>
 <p>Gets（）不限制输入，printf处有格式化字符串漏洞，可以从中泄露出输入的偏移，然后用fmstr_payload()把puts的got表中的内容改为backdoor的地址</p>
 <pre><code>#!/usr/bin/env python2
 #-*- coding:utf-8 -*
@@ -354,35 +354,35 @@ r.sendline(payload)
 r.interactive()
 </code></pre>
 <h3 id="babyrop">babyrop</h3>
-<figure data-type="image" tabindex="31"><img src="http://localhost:4000/post-images/1601205468718.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="31"><img src="https://7usai.github.io/post-images/1601205468718.png" alt="" loading="lazy"></figure>
 <p>buf实际在ebp-6c，但却要输入0x100，存在溢出，并没有在发现system（），但发现可以通过泄露write的got表的内容得到write的实际地址，然后通过泄露出的地址的后三位查找libc的版本</p>
 <h2 id="web">web</h2>
 <h3 id="web签到">web签到</h3>
 <p>步骤</p>
-<figure data-type="image" tabindex="32"><img src="http://localhost:4000/post-images/1601205478240.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="32"><img src="https://7usai.github.io/post-images/1601205478240.png" alt="" loading="lazy"></figure>
 <p>打开发现需要GET传参但并未指明参数，多次尝试发现只需要传入?1即可；</p>
-<figure data-type="image" tabindex="33"><img src="http://localhost:4000/post-images/1601205485110.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="33"><img src="https://7usai.github.io/post-images/1601205485110.png" alt="" loading="lazy"></figure>
 <ol>
 <li>传入发现需要post一个2，多次尝试发现并没有反应，于是使用burpsuite</li>
 </ol>
-<figure data-type="image" tabindex="34"><img src="http://localhost:4000/post-images/1601205494381.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="34"><img src="https://7usai.github.io/post-images/1601205494381.png" alt="" loading="lazy"></figure>
 <p>在params里填好参数后发现2后面多了一个等号，然后就传参成功，并且发现php代码；</p>
-<figure data-type="image" tabindex="35"><img src="http://localhost:4000/post-images/1601205503388.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="35"><img src="https://7usai.github.io/post-images/1601205503388.png" alt="" loading="lazy"></figure>
 <p>明显是使用PHP伪协议查看源文件即可获得flag</p>
-<figure data-type="image" tabindex="36"><img src="http://localhost:4000/post-images/1601205511353.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="36"><img src="https://7usai.github.io/post-images/1601205511353.png" alt="" loading="lazy"></figure>
 <p>base64解码即可</p>
-<figure data-type="image" tabindex="37"><img src="http://localhost:4000/post-images/1601205520780.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="37"><img src="https://7usai.github.io/post-images/1601205520780.png" alt="" loading="lazy"></figure>
 <h3 id="babysqli">Babysqli</h3>
 <p>使用burpsuite进行注入后发现空格被过滤了，使用/**/ 替代空格；</p>
-<figure data-type="image" tabindex="38"><img src="http://localhost:4000/post-images/1601205528504.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="38"><img src="https://7usai.github.io/post-images/1601205528504.png" alt="" loading="lazy"></figure>
 <p>并且发现下方注释，猜测flag可能在password里面，使用SQL语句查询</p>
-<figure data-type="image" tabindex="39"><img src="http://localhost:4000/post-images/1601205537338.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="39"><img src="https://7usai.github.io/post-images/1601205537338.png" alt="" loading="lazy"></figure>
 <p>发现flag，成功</p>
 <h3 id="secret">Secret</h3>
 <p>发现图片，并且下载图片，按文本格式打开，后发现php代码</p>
-<figure data-type="image" tabindex="40"><img src="http://localhost:4000/post-images/1601205544688.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="40"><img src="https://7usai.github.io/post-images/1601205544688.png" alt="" loading="lazy"></figure>
 <p>进行代码审计，题目要求需要使用GET方式提交param1和param2,然后使用POST方式提交param1与 param2;file_get_contents(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>r</mi><mn>1</mn><mo>)</mo><mi mathvariant="normal">是</mi><mi mathvariant="normal">指</mi><mi mathvariant="normal">需</mi><mi mathvariant="normal">要</mi><mi>s</mi><mi>t</mi><mi>r</mi><mn>1</mn><mi mathvariant="normal">以</mi><mi mathvariant="normal">文</mi><mi mathvariant="normal">件</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">形</mi><mi mathvariant="normal">式</mi><mi mathvariant="normal">写</mi><mi mathvariant="normal">入</mi><mi mathvariant="normal">值</mi><mi mathvariant="normal">，</mi><mi>i</mi><msub><mi>s</mi><mi>n</mi></msub><mi>u</mi><mi>m</mi><mi>e</mi><mi>r</mi><mi>i</mi><mi>c</mi><mo>(</mo></mrow><annotation encoding="application/x-tex">str1)是指需要str1以文件的形式写入值，is_numeric(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">1</span><span class="mclose">)</span><span class="mord cjk_fallback">是</span><span class="mord cjk_fallback">指</span><span class="mord cjk_fallback">需</span><span class="mord cjk_fallback">要</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">1</span><span class="mord cjk_fallback">以</span><span class="mord cjk_fallback">文</span><span class="mord cjk_fallback">件</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">形</span><span class="mord cjk_fallback">式</span><span class="mord cjk_fallback">写</span><span class="mord cjk_fallback">入</span><span class="mord cjk_fallback">值</span><span class="mord cjk_fallback">，</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord mathdefault">u</span><span class="mord mathdefault">m</span><span class="mord mathdefault">e</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">c</span><span class="mopen">(</span></span></span></span>str2)是判断str2是否为数字并且可以识别十进制和十六进制，str2需要等于2592000，sleep()函数是要程序沉睡一段时间，if(((string)<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>r</mi><mn>1</mn><mo>!</mo><mo>=</mo><mo>=</mo><mo>(</mo><mi>s</mi><mi>t</mi><mi>r</mi><mi>i</mi><mi>n</mi><mi>g</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">str1!==(string)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">1</span><span class="mclose">!</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord mathdefault">i</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mclose">)</span></span></span></span>str2)&amp;&amp;(sha1(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>t</mi><mi>r</mi><mn>1</mn><mo>)</mo><mo>=</mo><mo>=</mo><mo>=</mo><mi>s</mi><mi>h</mi><mi>a</mi><mn>1</mn><mo>(</mo></mrow><annotation encoding="application/x-tex">str1)===sha1(</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">h</span><span class="mord mathdefault">a</span><span class="mord">1</span><span class="mopen">(</span></span></span></span>str2)))是指需要让str1与str2的字符串形式不同，并且经过sha1()后相同；绕过这些限制救可获得flag；</p>
-<figure data-type="image" tabindex="41"><img src="http://localhost:4000/post-images/1601205552672.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="41"><img src="https://7usai.github.io/post-images/1601205552672.png" alt="" loading="lazy"></figure>
 <blockquote>
 <p>使用十六进制绕过sleep()函数；</p>
 <p>使用data://text/plain;base64,U3V2aW5fd2FudHNfYV9naXJsZnJpZW5k向str2中写入内容</p>
@@ -390,49 +390,49 @@ r.interactive()
 </blockquote>
 <h3 id="babysqli2">Babysqli2</h3>
 <p>按照传统试一试平常的注入语句，之后发现过滤了单引号，网上查询可使用斜杠转义前面的单引号；</p>
-<figure data-type="image" tabindex="42"><img src="http://localhost:4000/post-images/1601205565567.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="42"><img src="https://7usai.github.io/post-images/1601205565567.png" alt="" loading="lazy"></figure>
 <p>绕过成功，但是只显示了登录成功信息，猜测多半是盲注；发现substr() mid() 等函数被过滤了，但是left()仍可以使用；</p>
-<p>由于flag的开头为C 所以就尝试猜测flag在password中的位置<img src="http://localhost:4000/post-images/1601205573480.png" alt="" loading="lazy"></p>
+<p>由于flag的开头为C 所以就尝试猜测flag在password中的位置<img src="https://7usai.github.io/post-images/1601205573480.png" alt="" loading="lazy"></p>
 <p>结果发现flag在第九行；之后便使用笨办法对flag进行逐个字母爆破，下方即为最终爆破结果，按照ascii码表转换为字母即可格式为		CUMTCTF{}，大括号内全为小写；</p>
-<figure data-type="image" tabindex="43"><img src="http://localhost:4000/post-images/1601205580981.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="43"><img src="https://7usai.github.io/post-images/1601205580981.png" alt="" loading="lazy"></figure>
 <h3 id="简单文件包含">简单文件包含</h3>
 <p>页面提示需要只支持本地请求，使用burpsuite，X-Forwarded-For：127.0.0.1 没有反应  然后尝试使用client-ip:127.0.0.1  成功；</p>
-<figure data-type="image" tabindex="44"><img src="http://localhost:4000/post-images/1601205588605.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="44"><img src="https://7usai.github.io/post-images/1601205588605.png" alt="" loading="lazy"></figure>
 <p>发现使用了include_once()函数，并且使用了两次，该函数只能包含同一文件一次，继续网上查找方法；发现一个重复require_once()的函数的文章，是使用伪协议配合多级符号链接的办法进行绕过的；</p>
 <pre><code>php://filter/convert.base64-encode/resource=/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/proc/self/root/var/www/html/flag.php
 </code></pre>
-<figure data-type="image" tabindex="45"><img src="http://localhost:4000/post-images/1601205595546.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="45"><img src="https://7usai.github.io/post-images/1601205595546.png" alt="" loading="lazy"></figure>
 <p>base64解码即可</p>
-<figure data-type="image" tabindex="46"><img src="http://localhost:4000/post-images/1601205601495.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="46"><img src="https://7usai.github.io/post-images/1601205601495.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[ms17-010漏洞利用]]></title>
-        <id>http://localhost:4000/post/9s2K54U7q/</id>
-        <link href="http://localhost:4000/post/9s2K54U7q/">
+        <id>https://7usai.github.io/post/9s2K54U7q/</id>
+        <link href="https://7usai.github.io/post/9s2K54U7q/">
         </link>
         <updated>2020-09-20T08:16:24.000Z</updated>
         <content type="html"><![CDATA[<p>安装win7虚拟机</p>
 <p>开启win7 445端口</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1600589823167.png" alt="" loading="lazy"></figure>
-<p><img src="http://localhost:4000/post-images/1600589829978.png" alt="" loading="lazy"><br>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600589823167.png" alt="" loading="lazy"></figure>
+<p><img src="https://7usai.github.io/post-images/1600589829978.png" alt="" loading="lazy"><br>
 开启msf<br>
-<img src="http://localhost:4000/post-images/1600589833942.png" alt="" loading="lazy"></p>
+<img src="https://7usai.github.io/post-images/1600589833942.png" alt="" loading="lazy"></p>
 <p>寻找攻击模块</p>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1600589837383.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600589837383.png" alt="" loading="lazy"></figure>
 <p>调用模块use exploit/windows/smb/ms17_010_eternalblue</p>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1600589841598.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600589841598.png" alt="" loading="lazy"></figure>
 <p>show payloads后选windows/x64/meterpreter/reverse_tcp</p>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1600589845319.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600589845319.png" alt="" loading="lazy"></figure>
 <p>开始攻击</p>
-<figure data-type="image" tabindex="5"><img src="http://localhost:4000/post-images/1600589849159.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1600589849159.png" alt="" loading="lazy"></figure>
 <p>成功获得shell</p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[利用msf利用easyfilesharing漏洞]]></title>
-        <id>http://localhost:4000/post/1ucQSUb1Y/</id>
-        <link href="http://localhost:4000/post/1ucQSUb1Y/">
+        <id>https://7usai.github.io/post/1ucQSUb1Y/</id>
+        <link href="https://7usai.github.io/post/1ucQSUb1Y/">
         </link>
         <updated>2020-09-20T03:46:45.000Z</updated>
         <content type="html"><![CDATA[<h3 id="思路">思路</h3>
@@ -440,44 +440,44 @@ r.interactive()
 2.开启win10虚拟机端口<br>
 3.开始攻击</p>
 <p>win10ip地址</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1600573646446.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600573646446.png" alt="" loading="lazy"></figure>
 <p>查看开启端口</p>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1600573658331.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600573658331.png" alt="" loading="lazy"></figure>
 <p>这里可以看到80端口为easyfilesharing，因为在win10虚拟机里我们设置的就为80</p>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1600573677088.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600573677088.png" alt="" loading="lazy"></figure>
 <p>搜索EasyFileSharing漏洞</p>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1600573690601.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600573690601.png" alt="" loading="lazy"></figure>
 <p>设置攻击模块</p>
-<figure data-type="image" tabindex="5"><img src="http://localhost:4000/post-images/1600573704435.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1600573704435.png" alt="" loading="lazy"></figure>
 <p>show payloads后选择第52个</p>
-<figure data-type="image" tabindex="6"><img src="http://localhost:4000/post-images/1600573712860.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="http://localhost:4000/post-images/1600573771977.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1600573712860.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1600573771977.png" alt="" loading="lazy"></figure>
 <p>在这里可以看到缺少一个RHOSTS和一个LHOST，RHOSTS为靶机IP（win10虚拟机），LHOSTS为攻击者IP（kali）</p>
-<figure data-type="image" tabindex="8"><img src="http://localhost:4000/post-images/1600573785155.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1600573785155.png" alt="" loading="lazy"></figure>
 <p>查看kali ip地址</p>
-<figure data-type="image" tabindex="9"><img src="http://localhost:4000/post-images/1600573798152.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1600573798152.png" alt="" loading="lazy"></figure>
 <p>设置ip地址</p>
-<figure data-type="image" tabindex="10"><img src="http://localhost:4000/post-images/1600573806372.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1600573806372.png" alt="" loading="lazy"></figure>
 <p>此漏洞失败</p>
-<figure data-type="image" tabindex="11"><img src="http://localhost:4000/post-images/1600573816668.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1600573816668.png" alt="" loading="lazy"></figure>
 <h3 id="尝试栈溢出漏洞">尝试栈溢出漏洞</h3>
 <p>首先我们查看easyfilesharing上存在哪些漏洞</p>
-<figure data-type="image" tabindex="12"><img src="http://localhost:4000/post-images/1600573827540.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1600573827540.png" alt="" loading="lazy"></figure>
 <p>我们选取这个进行栈溢出漏洞攻击</p>
-<figure data-type="image" tabindex="13"><img src="http://localhost:4000/post-images/1600573834729.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1600573834729.png" alt="" loading="lazy"></figure>
 <p>利用漏洞脚本</p>
-<figure data-type="image" tabindex="14"><img src="http://localhost:4000/post-images/1600573841739.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1600573841739.png" alt="" loading="lazy"></figure>
 <p>打开了计算器并且关闭了easyfilesharing</p>
-<p><img src="http://localhost:4000/post-images/1600573847447.png" alt="" loading="lazy"><br>
-<img src="http://localhost:4000/post-images/1600573853001.png" alt="" loading="lazy"></p>
+<p><img src="https://7usai.github.io/post-images/1600573847447.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600573853001.png" alt="" loading="lazy"></p>
 <h3 id="漏洞利用成功">漏洞利用成功</h3>
 <p>利用溢出漏洞攻击目标并让其服务崩溃和让主机运行计算器</p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[URL,ASCII,Unicode,Base64]]></title>
-        <id>http://localhost:4000/post/BNdT9mz74/</id>
-        <link href="http://localhost:4000/post/BNdT9mz74/">
+        <id>https://7usai.github.io/post/BNdT9mz74/</id>
+        <link href="https://7usai.github.io/post/BNdT9mz74/">
         </link>
         <updated>2020-09-19T11:13:18.000Z</updated>
         <content type="html"><![CDATA[<h3 id="url编码">URL编码</h3>
@@ -907,17 +907,17 @@ print(str_url)
     </entry>
     <entry>
         <title type="html"><![CDATA[Jarvis OJ_re部分]]></title>
-        <id>http://localhost:4000/post/aUlplRi6E/</id>
-        <link href="http://localhost:4000/post/aUlplRi6E/">
+        <id>https://7usai.github.io/post/aUlplRi6E/</id>
+        <link href="https://7usai.github.io/post/aUlplRi6E/">
         </link>
         <updated>2020-09-18T07:30:36.000Z</updated>
         <content type="html"><![CDATA[<h2 id="61dctfstheasy">[61dctf]stheasy</h2>
 <p>主函数</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1600414298392.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600414298392.png" alt="" loading="lazy"></figure>
 <p>进入关键函数得，flag长度为29位</p>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1600414303121.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600414303121.png" alt="" loading="lazy"></figure>
 <p>byte_8049AE0和byte8049B15值如下</p>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1600414307727.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600414307727.png" alt="" loading="lazy"></figure>
 <p>写脚本</p>
 <pre><code>a=[0x48,0x5D,0x8D,0x24,0x84,0x27,0x99,0x9F,0x54,0x18,0x1E,0x69,0x7E,0x33,0x15,0x72
    ,0x8D,0x33,0x24,0x63,0x21,0x54,0x0C,0x78,0x78,0x78,0x78,0x78,0x1B]
@@ -930,12 +930,12 @@ for i in range(29):
 <p>得flag=kctf{YoU_hAVe-GOt-fLg_233333}</p>
 <h2 id="dd-hello">DD - Hello</h2>
 <p>关键函数</p>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1600414334088.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600414334088.png" alt="" loading="lazy"></figure>
 <p>V2等于start和sub_100000C90得地址之差再向右移动两位后于byte_10001040异或</p>
 <p>地址于byte_10001040如下</p>
-<figure data-type="image" tabindex="5"><img src="http://localhost:4000/post-images/1600414343342.png" alt="" loading="lazy"></figure>
-<p><img src="http://localhost:4000/post-images/1600414347990.png" alt="" loading="lazy"><br>
-<img src="http://localhost:4000/post-images/1600414353508.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1600414343342.png" alt="" loading="lazy"></figure>
+<p><img src="https://7usai.github.io/post-images/1600414347990.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600414353508.png" alt="" loading="lazy"></p>
 <p>脚本</p>
 <pre><code>a= [0x41, 0x10, 0x11, 0x11, 0x1B, 0x0A, 0x64, 0x67, 0x6A, 0x68, 0x62, 0x68,
     0x6E, 0x67, 0x68, 0x6B, 0x62, 0x3D, 0x65, 0x6A, 0x6A, 0x3D, 0x68, 0x4,
@@ -956,8 +956,8 @@ print(flag[1:])
     </entry>
     <entry>
         <title type="html"><![CDATA[攻防世界_re_4星题_部分wp]]></title>
-        <id>http://localhost:4000/post/gong-fang-shi-jie-_re_4-xing-ti-_-bu-fen-wp/</id>
-        <link href="http://localhost:4000/post/gong-fang-shi-jie-_re_4-xing-ti-_-bu-fen-wp/">
+        <id>https://7usai.github.io/post/gong-fang-shi-jie-_re_4-xing-ti-_-bu-fen-wp/</id>
+        <link href="https://7usai.github.io/post/gong-fang-shi-jie-_re_4-xing-ti-_-bu-fen-wp/">
         </link>
         <updated>2020-09-16T06:54:30.000Z</updated>
         <content type="html"><![CDATA[<h2 id="handcrafted-pyc">handcrafted-pyc</h2>
@@ -986,10 +986,10 @@ f.write(d)
 </code></pre>
 <p>open用法：https://www.runoob.com/python/python-func-open.html</p>
 <h3 id="添加文件头">添加文件头</h3>
-<p>更改后缀名为pyc时发现不能运行<img src="http://localhost:4000/post-images/1600239334055.png" alt="" loading="lazy"></p>
+<p>更改后缀名为pyc时发现不能运行<img src="https://7usai.github.io/post-images/1600239334055.png" alt="" loading="lazy"></p>
 <p>于是手动添加文件头</p>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1600239343673.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1600239349059.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600239343673.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600239349059.png" alt="" loading="lazy"></figure>
 <p>这里我更改了两个pyc，两种都能运行但是可以看到5~8字节不同，上一个(就是444.pyc)是我在网上搜索得到的文件头，而1111.pyc是我自己编写py文件后转成pyc后得到的文件头，这里有一个知识</p>
 <pre><code>pyc文件头部
 - 前4个字节：03f3 0d0a，表示python版本
@@ -997,16 +997,16 @@ f.write(d)
 </code></pre>
 <p>具体可参考https://www.cnblogs.com/blili/p/11799483.html</p>
 <p>添加文件头后我们发现可以运行了</p>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1600239355890.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600239355890.png" alt="" loading="lazy"></figure>
 <h3 id="pyc转为py">pyc转为py</h3>
 <p>通过uncompyle6将其转为py文件</p>
 <pre><code>uncompyle6 -o 123.py 1111.pyc
 </code></pre>
-<p><img src="http://localhost:4000/post-images/1600239362899.png" alt="" loading="lazy"><br>
+<p><img src="https://7usai.github.io/post-images/1600239362899.png" alt="" loading="lazy"><br>
 2k多行这里只截一部分</p>
 <p>将LOAD_CONST后面的所有数字转为ascii码</p>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1600239369086.png" alt="" loading="lazy"></figure>
-<p><img src="http://localhost:4000/post-images/1600239375580.png" alt="" loading="lazy"><br>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600239369086.png" alt="" loading="lazy"></figure>
+<p><img src="https://7usai.github.io/post-images/1600239375580.png" alt="" loading="lazy"><br>
 再次分析我们可知他是4个字符为一组</p>
 <h3 id="观察规律尝试解密">观察规律尝试解密</h3>
 <p>将乱序得flag尝试4个为一组倒叙得<br>
@@ -1014,27 +1014,27 @@ hitcon{Now y</p>
 <p>神似flag，最终全部倒叙得flag=hitcon{Now you can compile and run Python bytecode in your brain!}</p>
 <h3 id="总结">总结</h3>
 <p>很费时间，学习了pyc文件格式，学习了uncompyle6<br>
-<img src="http://localhost:4000/post-images/1600239447558.png" alt="" loading="lazy"></p>
+<img src="https://7usai.github.io/post-images/1600239447558.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[攻防世界_re_3星题_部分wp]]></title>
-        <id>http://localhost:4000/post/gong-fang-shi-jie-_re_3-xing-ti-_-bu-fen-wp/</id>
-        <link href="http://localhost:4000/post/gong-fang-shi-jie-_re_3-xing-ti-_-bu-fen-wp/">
+        <id>https://7usai.github.io/post/gong-fang-shi-jie-_re_3-xing-ti-_-bu-fen-wp/</id>
+        <link href="https://7usai.github.io/post/gong-fang-shi-jie-_re_3-xing-ti-_-bu-fen-wp/">
         </link>
         <updated>2020-09-14T15:05:52.000Z</updated>
         <content type="html"><![CDATA[<h1 id="攻防世界_re_3星题__部分wp">攻防世界_re_3星题__部分wp</h1>
 <h2 id="debug">debug</h2>
 <h3 id="先用de4dot进行脱壳">先用de4dot进行脱壳</h3>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1600095989406.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600095989406.png" alt="" loading="lazy"></figure>
 <h3 id="放入dnspy调试">放入dnSpy调试</h3>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1600095996901.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600095996901.png" alt="" loading="lazy"></figure>
 <p>找到main函数所在位置，很简单，a相当于输入的数，b就是经过一系列加密后得到的flag,下入断点运行就得到了flag<br>
-<img src="http://localhost:4000/post-images/1600096004477.png" alt="" loading="lazy"></p>
+<img src="https://7usai.github.io/post-images/1600096004477.png" alt="" loading="lazy"></p>
 <h2 id="hackme">hackme</h2>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1600096012245.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600096012245.png" alt="" loading="lazy"></figure>
 <h3 id="主函数">主函数</h3>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1600096022965.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600096022965.png" alt="" loading="lazy"></figure>
 <h3 id="思路网上借鉴的">思路(网上借鉴的)</h3>
 <p>sub_406D90为随机数生成函数，且seed为固定值</p>
 <p>重点是要理解这个函数的逻辑是啥。。虽然这个判断只取了有输入字符串的10个字符，但是实际上需要输入的字符串是22位（也就是实际上flag有22个char）。。</p>
@@ -1056,16 +1056,16 @@ for i in range(22):
 print(flag)
 </code></pre>
 <h2 id="babyre">BABYRE</h2>
-<figure data-type="image" tabindex="5"><img src="http://localhost:4000/post-images/1600096037348.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1600096037348.png" alt="" loading="lazy"></figure>
 <p>GDB还不会，等学会了再写</p>
 <h2 id="crackme">crackme</h2>
 <h3 id="脱壳">脱壳</h3>
-<figure data-type="image" tabindex="6"><img src="http://localhost:4000/post-images/1600096045818.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1600096045818.png" alt="" loading="lazy"></figure>
 <h3 id="主函数-2">主函数</h3>
-<figure data-type="image" tabindex="7"><img src="http://localhost:4000/post-images/1600096054533.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1600096054533.png" alt="" loading="lazy"></figure>
 <p>很简单，异或一下就行</p>
 <p>dword_402150值如下</p>
-<figure data-type="image" tabindex="8"><img src="http://localhost:4000/post-images/1600096060907.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1600096060907.png" alt="" loading="lazy"></figure>
 <h3 id="脚本-2">脚本</h3>
 <pre><code>a=[0x12,0x04,0x08,0x14,0x24,0x5C,0x4A,0x3D,0x56,0x0A,0x10,0x67,0x00,0x41,0x00,0x01,0x46,0x5A,0x44,0x42,0x6E,0x0C,0x44,0x72,0x0C,0x0D,0x40,0x3E,0x4B,0x5F,0x02,0x01,0x4C,0x5E,0x5B,0x17,0x6E,0x0C,0x16,0x68,0x5B,0x12]
 flag=''
@@ -1076,7 +1076,7 @@ print (flag)
 </code></pre>
 <h2 id="apk-逆向2">APK-逆向2</h2>
 <h3 id="主函数-3">主函数</h3>
-<p><img src="http://localhost:4000/post-images/1600096069499.png" alt="" loading="lazy"><br>
+<p><img src="https://7usai.github.io/post-images/1600096069499.png" alt="" loading="lazy"><br>
 大致意思是通过31337端口向主机发送flag</p>
 <h3 id="python脚本">python脚本</h3>
 <pre><code>import http.server
@@ -1087,14 +1087,14 @@ httpd = http.server.HTTPServer(server_address, handler_class)
 httpd.serve_forever()
 </code></pre>
 <h3 id="结果">结果</h3>
-<figure data-type="image" tabindex="9"><img src="http://localhost:4000/post-images/1600096078531.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1600096078531.png" alt="" loading="lazy"></figure>
 <h2 id="babymips">babymips</h2>
 <p>需要配置JDK环境并且安装Ghidra</p>
 <h3 id="主函数-4">主函数</h3>
-<figure data-type="image" tabindex="10"><img src="http://localhost:4000/post-images/1600096092065.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1600096092065.png" alt="" loading="lazy"></figure>
 <p>abStack44为输入的字符，之后进行32次异或：abStack44[i]=abStack44[i]^0x20-char[i]<br>
-iVar1处转换后前5位是Q|j{g<img src="http://localhost:4000/post-images/1600096112265.png" alt="" loading="lazy"><br>
-<img src="http://localhost:4000/post-images/1600096100128.png" alt="" loading="lazy"></p>
+iVar1处转换后前5位是Q|j{g<img src="https://7usai.github.io/post-images/1600096112265.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600096100128.png" alt="" loading="lazy"></p>
 <p>uStack16为偶数时相当于&lt;&lt;2|&gt;&gt;6为奇数时相当于&gt;&gt;2|&lt;&lt;6</p>
 <h3 id="脚本-3">脚本</h3>
 <pre><code>a=[0x51, 0x7C, 0x6A, 0x7B, 0x67,
@@ -1114,11 +1114,11 @@ print(flag)
 </code></pre>
 <p>注意这里的%0x100需要加上不然失败</p>
 <h2 id="reverse-for-the-holy-grail-350">reverse-for-the-holy-grail-350</h2>
-<figure data-type="image" tabindex="11"><img src="http://localhost:4000/post-images/1600161580746.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1600161580746.png" alt="" loading="lazy"></figure>
 <h3 id="主函数-5">主函数</h3>
-<figure data-type="image" tabindex="12"><img src="http://localhost:4000/post-images/1600161585732.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1600161585732.png" alt="" loading="lazy"></figure>
 <h3 id="关键函数stringmod">关键函数stringmod</h3>
-<figure data-type="image" tabindex="13"><img src="http://localhost:4000/post-images/1600161590750.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1600161590750.png" alt="" loading="lazy"></figure>
 <h3 id="脚本-4">脚本</h3>
 <pre><code>firstchar=[0x41,0x69,0x6E,0x45,0x6F,0x61]
 thirdchar=[0x2EF,0x2C4,0x2DC,0x2C7,0x2ED,0x2FC]
@@ -1150,15 +1150,15 @@ print('tuctf{'+''.join(map(chr,flag))+'}')
 如果有想交流的可以发送邮件<br>
 实际flag=tuctf{AfricanOrEuropean?}</p>
 <h2 id="serial-150">serial-150</h2>
-<figure data-type="image" tabindex="14"><img src="http://localhost:4000/post-images/1600240488845.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1600240488845.png" alt="" loading="lazy"></figure>
 <p>注意按字符顺序打印flag，比如208-&gt;208_1_1....</p>
 <h2 id="key">key</h2>
 <h3 id="主函数-6">主函数</h3>
-<figure data-type="image" tabindex="15"><img src="http://localhost:4000/post-images/1600240503658.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1600240503658.png" alt="" loading="lazy"></figure>
 <p>关键函数是sub_4021E0，大致意思就是将后两个参数进行异或放入第一个参数，</p>
-<p><img src="http://localhost:4000/post-images/1600240522266.png" alt="" loading="lazy"><br>
-<img src="http://localhost:4000/post-images/1600240536879.png" alt="" loading="lazy">这里可以看到后两个参数是什么</p>
-<figure data-type="image" tabindex="16"><img src="http://localhost:4000/post-images/1600240546193.png" alt="" loading="lazy"></figure>
+<p><img src="https://7usai.github.io/post-images/1600240522266.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600240536879.png" alt="" loading="lazy">这里可以看到后两个参数是什么</p>
+<figure data-type="image" tabindex="16"><img src="https://7usai.github.io/post-images/1600240546193.png" alt="" loading="lazy"></figure>
 <p>这里也可以但是注意这里是倒叙存储的</p>
 <h3 id="编写脚本">编写脚本</h3>
 <pre><code>a='themidathemidathemida'
@@ -1175,40 +1175,40 @@ print(flag)
 <h3 id="gametime">gametime</h3>
 <h3 id="思路">思路</h3>
 <p>运行一边程序后找错误时的字符串所在函数<br>
-<img src="http://localhost:4000/post-images/1600240563079.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600240563079.png" alt="" loading="lazy"><br>
 如上，就是要让sub_401260(xxxxx)!=0</p>
 <h3 id="进入sub_401260函数">进入sub_401260函数</h3>
-<p><img src="http://localhost:4000/post-images/1600240572593.png" alt="" loading="lazy"><br>
+<p><img src="https://7usai.github.io/post-images/1600240572593.png" alt="" loading="lazy"><br>
 这里有帮助的是v4存在了eax里，最终return的是eax的值<br>
-<img src="http://localhost:4000/post-images/1600240579914.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1600240579914.png" alt="" loading="lazy"><br>
 看思维图可知loc_4012AD对eax清零了，于是我们就要修改错误跳转</p>
 <h3 id="修改错误跳转">修改错误跳转</h3>
-<figure data-type="image" tabindex="17"><img src="http://localhost:4000/post-images/1600240594564.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="17"><img src="https://7usai.github.io/post-images/1600240594564.png" alt="" loading="lazy"></figure>
 <h3 id="运行得flag">运行得flag</h3>
-<figure data-type="image" tabindex="18"><img src="http://localhost:4000/post-images/1600240610853.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="18"><img src="https://7usai.github.io/post-images/1600240610853.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[攻防世界_re_2星题_部分wp]]></title>
-        <id>http://localhost:4000/post/gong-fang-shi-jie-re-bu-fen-wp/</id>
-        <link href="http://localhost:4000/post/gong-fang-shi-jie-re-bu-fen-wp/">
+        <id>https://7usai.github.io/post/gong-fang-shi-jie-re-bu-fen-wp/</id>
+        <link href="https://7usai.github.io/post/gong-fang-shi-jie-re-bu-fen-wp/">
         </link>
         <updated>2020-09-10T14:38:31.000Z</updated>
         <content type="html"><![CDATA[<h1 id="攻防世界re部分wp">攻防世界RE部分wp</h1>
 <h2 id="re2-cpp-is-awesome">re2-cpp-is-awesome</h2>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1599748738949.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1599748738949.png" alt="" loading="lazy"></figure>
 <p>64位ELF文件 放入ubuntu中运行结果如下</p>
-<figure data-type="image" tabindex="2"><img src="http://localhost:4000/post-images/1599748743703.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1599748743703.png" alt="" loading="lazy"></figure>
 <p>放入IDA进入main函数</p>
-<p><img src="http://localhost:4000/post-images/1599748750390.png" alt="" loading="lazy"><br>
+<p><img src="https://7usai.github.io/post-images/1599748750390.png" alt="" loading="lazy"><br>
 如下两个 一个正确一个错误</p>
-<figure data-type="image" tabindex="3"><img src="http://localhost:4000/post-images/1599748769934.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1599748769934.png" alt="" loading="lazy"></figure>
 <p>通过分析可得</p>
-<figure data-type="image" tabindex="4"><img src="http://localhost:4000/post-images/1599748776529.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1599748776529.png" alt="" loading="lazy"></figure>
 <p>V12与off_6020A0和dword_6020C0组成的数组比较，相同则得flag</p>
-<figure data-type="image" tabindex="5"><img src="http://localhost:4000/post-images/1599748784955.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="http://localhost:4000/post-images/1599748790751.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="http://localhost:4000/post-images/1599748796928.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1599748784955.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1599748790751.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1599748796928.png" alt="" loading="lazy"></figure>
 <p>得到所需数值后编写函数</p>
 <pre><code>a=[0x24,0x00,0x05,0x36,0x65,0x07,0x27,0x26,0x2d,0x01,0x03,0x00,0x0d,0x56,0x01,0x03,0x65,0x03,0x2d,0x16,0x02,0x15,0x03,0x65,0x00,0x29,0x44,0x44,0x01,0x44,0x2b]
 flag=&quot; &quot;
@@ -1222,11 +1222,11 @@ print(flag)
 </code></pre>
 <h2 id="srm-50">srm-50</h2>
 <p>主要部分如下</p>
-<figure data-type="image" tabindex="8"><img src="http://localhost:4000/post-images/1599748819043.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1599748819043.png" alt="" loading="lazy"></figure>
 <p>if部分成立时得flag,说明flag长度为16位，前四位是CZ9d<br>
-<img src="http://localhost:4000/post-images/1599748824045.png" alt="" loading="lazy"><br>
+<img src="https://7usai.github.io/post-images/1599748824045.png" alt="" loading="lazy"><br>
 V13<sub>V24组成其余12位，求出V12[4]</sub>V24即可</p>
-<figure data-type="image" tabindex="9"><img src="http://localhost:4000/post-images/1599748829235.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1599748829235.png" alt="" loading="lazy"></figure>
 <p>编写代码</p>
 <pre><code>a=[67,90,57,100,109,113,52,99,56,103,57,71,55,98,65,88]
 flag=&quot; &quot;
@@ -1238,11 +1238,11 @@ print(flag)
 <pre><code>得flag为CZ9dmq4c8g9G7bAX
 </code></pre>
 <h2 id="guess-the-number">Guess-the-Number</h2>
-<figure data-type="image" tabindex="10"><img src="http://localhost:4000/post-images/1599748835634.png" alt="" loading="lazy"></figure>
-<p>转为zip解压后得<img src="http://localhost:4000/post-images/1599748846528.png" alt="" loading="lazy"></p>
-<figure data-type="image" tabindex="11"><img src="http://localhost:4000/post-images/1599748854085.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1599748835634.png" alt="" loading="lazy"></figure>
+<p>转为zip解压后得<img src="https://7usai.github.io/post-images/1599748846528.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1599748854085.png" alt="" loading="lazy"></figure>
 <p>编写脚本</p>
-<figure data-type="image" tabindex="12"><img src="http://localhost:4000/post-images/1599748864158.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1599748864158.png" alt="" loading="lazy"></figure>
 <pre><code>import java.math.BigInteger;
 
 class Untitled {
@@ -1261,9 +1261,9 @@ class Untitled {
 <h3 id="收获第一次反编译java">收获：第一次反编译java</h3>
 <h2 id="666">666</h2>
 <p>主函数</p>
-<figure data-type="image" tabindex="13"><img src="http://localhost:4000/post-images/1600000477839.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1600000477839.png" alt="" loading="lazy"></figure>
 <p>主要加密函数</p>
-<figure data-type="image" tabindex="14"><img src="http://localhost:4000/post-images/1600000482916.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1600000482916.png" alt="" loading="lazy"></figure>
 <pre><code>a2=[0x69,0x7A,0x77,0x68,0x72,0x6F,0x7A,0x22,0x22,0x77,0x22,0x76,0x2E,0x4B,0x22,0x2E,0x4E,0x69]
 flag=''
 for i in range(0,18,3):
@@ -1273,7 +1273,7 @@ for i in range(0,18,3):
 print(flag)
 </code></pre>
 <p>编写代码，得flag</p>
-<p>注：我python一直显示一个错误的flag<img src="http://localhost:4000/post-images/1600000495622.png" alt="" loading="lazy"></p>
+<p>注：我python一直显示一个错误的flag<img src="https://7usai.github.io/post-images/1600000495622.png" alt="" loading="lazy"></p>
 <p>c++代码如下：</p>
 <pre><code>#include&lt;stdio.h&gt;
 int main()
@@ -1290,10 +1290,10 @@ return 0;
 }
 </code></pre>
 <h2 id="2020913第一面完成">2020.9.13第一面完成</h2>
-<figure data-type="image" tabindex="15"><img src="http://localhost:4000/post-images/1600000504111.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1600000504111.png" alt="" loading="lazy"></figure>
 <h2 id="reverseme-120">ReverseMe-120</h2>
 <h3 id="main函数">main函数</h3>
-<p><img src="http://localhost:4000/post-images/1600010757978.png" alt="" loading="lazy"><br>
+<p><img src="https://7usai.github.io/post-images/1600010757978.png" alt="" loading="lazy"><br>
 大概思路是需要v9=0；v9=0的前提是v13=you_know_how_to_remove_junk_code；v13是经过异或的得到的，写脚本得之前的v13如下</p>
 <pre><code>a='you_know_how_to_remove_junk_code'
 b=''
@@ -1303,15 +1303,15 @@ for i in range(c):
     print(b)
 </code></pre>
 <p>得到字符串\JPzNKJRzMJRzQJzW@HJS@zOPKNzFJA@这里失去头绪</p>
-<p>sub_401000函数没看懂；但是查看字符串发现<img src="http://localhost:4000/post-images/1600010779978.png" alt="" loading="lazy"><br>
+<p>sub_401000函数没看懂；但是查看字符串发现<img src="https://7usai.github.io/post-images/1600010779978.png" alt="" loading="lazy"><br>
 猜测是base64;</p>
 <p>在线加密后得XEpQek5LSlJ6TUpSelFKeldASEpTQHpPUEtOekZKQUA=，即为flag</p>
 <h2 id="reversing-x64elf-100">Reversing-x64Elf-100</h2>
-<figure data-type="image" tabindex="16"><img src="http://localhost:4000/post-images/1600010785917.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="16"><img src="https://7usai.github.io/post-images/1600010785917.png" alt="" loading="lazy"></figure>
 <h3 id="主函数">主函数</h3>
-<figure data-type="image" tabindex="17"><img src="http://localhost:4000/post-images/1600010790350.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="17"><img src="https://7usai.github.io/post-images/1600010790350.png" alt="" loading="lazy"></figure>
 <h3 id="关键函数">关键函数</h3>
-<figure data-type="image" tabindex="18"><img src="http://localhost:4000/post-images/1600010796725.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="18"><img src="https://7usai.github.io/post-images/1600010796725.png" alt="" loading="lazy"></figure>
 <h3 id="思路">思路</h3>
 <p>flag存在a1数组里，逆向进行if里得运算就行<br>
 编写脚本</p>
@@ -1326,10 +1326,10 @@ a表示下标为a的字符串，b表示此字符串中下标为b的字符
 </code></pre>
 <h2 id="igniteme">IgniteMe</h2>
 <h3 id="main函数-2">main函数</h3>
-<figure data-type="image" tabindex="19"><img src="http://localhost:4000/post-images/1600010801875.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="19"><img src="https://7usai.github.io/post-images/1600010801875.png" alt="" loading="lazy"></figure>
 <h3 id="进入4011c0">进入4011C0</h3>
-<figure data-type="image" tabindex="20"><img src="http://localhost:4000/post-images/1600010805986.png" alt="" loading="lazy"></figure>
-<p>这里byte_4420B0我简单的用一个a表示<img src="http://localhost:4000/post-images/1600010832666.png" alt="" loading="lazy"></p>
+<figure data-type="image" tabindex="20"><img src="https://7usai.github.io/post-images/1600010805986.png" alt="" loading="lazy"></figure>
+<p>这里byte_4420B0我简单的用一个a表示<img src="https://7usai.github.io/post-images/1600010832666.png" alt="" loading="lazy"></p>
 <h3 id="编写脚本">编写脚本</h3>
 <pre><code>v7=&quot;GONDPHyGjPEKruv{{pj]X@rF&quot;
 a=[0x0D,0x13 ,0x17 ,0x11 ,0x02 ,0x01 ,0x20 ,0x1D,0x0C ,0x02 ,0x19 ,0x2F ,0x17 ,0x2B ,0x24 ,0x1F,0x1E ,
@@ -1352,15 +1352,15 @@ for i in range(len(v5)):
     else:
         flag += eflag[i]
 </code></pre>
-<p>再与<img src="http://localhost:4000/post-images/1600010822260.png" alt="" loading="lazy">连接，得flag=EIS{wadx_tdgk_aihc_ihkn_pjlm}</p>
+<p>再与<img src="https://7usai.github.io/post-images/1600010822260.png" alt="" loading="lazy">连接，得flag=EIS{wadx_tdgk_aihc_ihkn_pjlm}</p>
 <h2 id="总结">总结</h2>
 <p>二星题还是很简单的，部分题目自己觉得没有学习意义就没写wp</p>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Scrambled Eggs (csictf 2020) 转载！！]]></title>
-        <id>http://localhost:4000/post/scrambled-eggs-csictf-2020-zhuan-zai/</id>
-        <link href="http://localhost:4000/post/scrambled-eggs-csictf-2020-zhuan-zai/">
+        <id>https://7usai.github.io/post/scrambled-eggs-csictf-2020-zhuan-zai/</id>
+        <link href="https://7usai.github.io/post/scrambled-eggs-csictf-2020-zhuan-zai/">
         </link>
         <updated>2020-09-09T15:40:51.000Z</updated>
         <content type="html"><![CDATA[<h1 id="scrambled-eggs-csictf-2020-转载自httpsctftimeorg">Scrambled Eggs (csictf 2020) 转载自https://ctftime.org/</h1>
@@ -1811,8 +1811,8 @@ if __name__ == '__main__':
     </entry>
     <entry>
         <title type="html"><![CDATA[CUMTOJ部分题解(更新中)]]></title>
-        <id>http://localhost:4000/post/cumtoj-bu-fen-ti-jie-geng-xin-zhong/</id>
-        <link href="http://localhost:4000/post/cumtoj-bu-fen-ti-jie-geng-xin-zhong/">
+        <id>https://7usai.github.io/post/cumtoj-bu-fen-ti-jie-geng-xin-zhong/</id>
+        <link href="https://7usai.github.io/post/cumtoj-bu-fen-ti-jie-geng-xin-zhong/">
         </link>
         <updated>2020-09-08T15:09:17.000Z</updated>
         <content type="html"><![CDATA[<h2 id="大白just大白">大白just大白</h2>
@@ -2005,7 +2005,7 @@ int main()
 </code></pre>
 <h2 id="快速幂">快速幂</h2>
 <h3 id="题目描述-4">题目描述</h3>
-<figure data-type="image" tabindex="1"><img src="http://localhost:4000/post-images/1599577873521.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1599577873521.png" alt="" loading="lazy"></figure>
 <h3 id="输入-4">输入</h3>
 <p>多组测试样例，最多50组。每组测试样例给定一个整数x(1&lt;=x&lt;=25000)</p>
 <h3 id="输出-4">输出</h3>
