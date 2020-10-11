@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-10-10T15:56:47.392Z</updated>
+    <updated>2020-10-11T14:19:06.727Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -351,6 +351,358 @@ for i in range(len(off_418004)):
 print(flag)
 </code></pre>
 <p>得flag为29位，因为输出函数中比较了29位，我们需要自己再加一位，但是只有加E的时候正确</p>
+<h2 id="2019红帽杯easyre">[2019红帽杯]easyRE</h2>
+<p>ida64位打开，shift+f12查找字符串找到“you found me&quot;，交叉引用找到主函数</p>
+<pre><code>int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  __int64 v3; // rax
+  int result; // eax
+  unsigned __int64 v5; // rax
+  __int64 v6; // rax
+  const __m128i *v7; // ST10_8
+  const __m128i *v8; // ST18_8
+  const __m128i *v9; // ST20_8
+  const __m128i *v10; // ST28_8
+  const __m128i *v11; // ST30_8
+  const __m128i *v12; // ST38_8
+  const __m128i *v13; // ST40_8
+  const __m128i *v14; // ST48_8
+  const __m128i *v15; // ST50_8
+  __int64 v16; // ST58_8
+  int i; // [rsp+Ch] [rbp-114h]
+  char v18; // [rsp+60h] [rbp-C0h]
+  char v19; // [rsp+61h] [rbp-BFh]
+  char v20; // [rsp+62h] [rbp-BEh]
+  char v21; // [rsp+63h] [rbp-BDh]
+  char v22; // [rsp+64h] [rbp-BCh]
+  char v23; // [rsp+65h] [rbp-BBh]
+  char v24; // [rsp+66h] [rbp-BAh]
+  char v25; // [rsp+67h] [rbp-B9h]
+  char v26; // [rsp+68h] [rbp-B8h]
+  char v27; // [rsp+69h] [rbp-B7h]
+  char v28; // [rsp+6Ah] [rbp-B6h]
+  char v29; // [rsp+6Bh] [rbp-B5h]
+  char v30; // [rsp+6Ch] [rbp-B4h]
+  char v31; // [rsp+6Dh] [rbp-B3h]
+  char v32; // [rsp+6Eh] [rbp-B2h]
+  char v33; // [rsp+6Fh] [rbp-B1h]
+  char v34; // [rsp+70h] [rbp-B0h]
+  char v35; // [rsp+71h] [rbp-AFh]
+  char v36; // [rsp+72h] [rbp-AEh]
+  char v37; // [rsp+73h] [rbp-ADh]
+  char v38; // [rsp+74h] [rbp-ACh]
+  char v39; // [rsp+75h] [rbp-ABh]
+  char v40; // [rsp+76h] [rbp-AAh]
+  char v41; // [rsp+77h] [rbp-A9h]
+  char v42; // [rsp+78h] [rbp-A8h]
+  char v43; // [rsp+79h] [rbp-A7h]
+  char v44; // [rsp+7Ah] [rbp-A6h]
+  char v45; // [rsp+7Bh] [rbp-A5h]
+  char v46; // [rsp+7Ch] [rbp-A4h]
+  char v47; // [rsp+7Dh] [rbp-A3h]
+  char v48; // [rsp+7Eh] [rbp-A2h]
+  char v49; // [rsp+7Fh] [rbp-A1h]
+  char v50; // [rsp+80h] [rbp-A0h]
+  char v51; // [rsp+81h] [rbp-9Fh]
+  char v52; // [rsp+82h] [rbp-9Eh]
+  char v53; // [rsp+83h] [rbp-9Dh]
+  char v54[32]; // [rsp+90h] [rbp-90h]
+  int v55; // [rsp+B0h] [rbp-70h]
+  char v56; // [rsp+B4h] [rbp-6Ch]
+  char v57; // [rsp+C0h] [rbp-60h]
+  char v58; // [rsp+E7h] [rbp-39h]
+  char v59; // [rsp+100h] [rbp-20h]
+  unsigned __int64 v60; // [rsp+108h] [rbp-18h]
+
+  v60 = __readfsqword(0x28u);
+  v18 = 73;
+  v19 = 111;
+  v20 = 100;
+  v21 = 108;
+  v22 = 62;
+  v23 = 81;
+  v24 = 110;
+  v25 = 98;
+  v26 = 40;
+  v27 = 111;
+  v28 = 99;
+  v29 = 121;
+  v30 = 127;
+  v31 = 121;
+  v32 = 46;
+  v33 = 105;
+  v34 = 127;
+  v35 = 100;
+  v36 = 96;
+  v37 = 51;
+  v38 = 119;
+  v39 = 125;
+  v40 = 119;
+  v41 = 101;
+  v42 = 107;
+  v43 = 57;
+  v44 = 123;
+  v45 = 105;
+  v46 = 121;
+  v47 = 61;
+  v48 = 126;
+  v49 = 121;
+  v50 = 76;
+  v51 = 64;
+  v52 = 69;
+  v53 = 67;
+  memset(v54, 0, sizeof(v54));                  // 初始化v54为0
+  v55 = 0;
+  v56 = 0;
+  sub_4406E0(0LL, v54);
+  v56 = 0;
+  LODWORD(v3) = sub_424BA0(v54);
+  if ( v3 == 36 )
+  {
+    for ( i = 0; ; ++i )
+    {
+      LODWORD(v5) = sub_424BA0(v54);
+      if ( i &gt;= v5 )
+        break;
+      if ( (v54[i] ^ i) != *(&amp;v18 + i) )        // v18[i],第一个关键异或，求出v54
+      {
+        result = -2;
+        goto LABEL_13;
+      }
+    }
+    sub_410CC0(&quot;continue!&quot;);
+    memset(&amp;v57, 0, 0x40uLL);                   // v57置零
+    v59 = 0;
+    sub_4406E0(0LL, &amp;v57);
+    v58 = 0;
+    LODWORD(v6) = sub_424BA0(&amp;v57);             // 生出v6=39
+    if ( v6 == 39 )
+    {
+      v7 = sub_400E44(&amp;v57);
+      v8 = sub_400E44(v7);
+      v9 = sub_400E44(v8);
+      v10 = sub_400E44(v9);
+      v11 = sub_400E44(v10);
+      v12 = sub_400E44(v11);
+      v13 = sub_400E44(v12);
+      v14 = sub_400E44(v13);
+      v15 = sub_400E44(v14);
+      v16 = sub_400E44(v15);
+      if ( !sub_400360(v16, off_6CC090) )       // off_6CC090与v16进行比较，v16是经过十次相同变化的v57
+      {
+        sub_410CC0(&quot;You found me!!!&quot;);
+        sub_410CC0(&quot;bye bye~&quot;);
+      }
+      result = 0;
+    }
+    else
+    {
+      result = -3;
+    }
+  }
+  else
+  {
+    result = -1;
+  }
+LABEL_13:
+  if ( __readfsqword(0x28u) != v60 )
+    sub_444020();
+  return result;
+}
+</code></pre>
+<p>一共两个关键变化，一个是异或，一个是未知的相同10次变化，进入sub_400E44函数</p>
+<pre><code>__int64 __fastcall sub_400E44(const __m128i *a1)
+{
+  __int64 v1; // rax
+  __int64 v2; // rax
+  __int64 v3; // rax
+  int v5; // [rsp+18h] [rbp-28h]
+  int v6; // [rsp+1Ch] [rbp-24h]
+  signed __int64 v7; // [rsp+20h] [rbp-20h]
+  __int64 v8; // [rsp+30h] [rbp-10h]
+  __int64 v9; // [rsp+38h] [rbp-8h]
+
+  LODWORD(v1) = sub_424BA0(a1);
+  v8 = v1;
+  if ( v1 == 3 * (((6148914691236517206LL * v1) &gt;&gt; 64) - (v1 &gt;&gt; 63)) )
+    v2 = ((6148914691236517206LL * v1) &gt;&gt; 64) - (v1 &gt;&gt; 63);
+  else
+    v2 = ((6148914691236517206LL * v1) &gt;&gt; 64) - (v1 &gt;&gt; 63) + 1;
+  v7 = 4 * v2;
+  v9 = sub_41EF60(4 * v2 + 1);
+  *(v7 + v9) = 0;
+  v5 = 0;
+  v6 = 0;
+  while ( v5 &lt; v7 - 2 )
+  {
+    *(v9 + v5) = aAbcdefghijklmn[(*(a1-&gt;m128i_i64 + v6) &gt;&gt; 2)];
+    *(v9 + v5 + 1LL) = aAbcdefghijklmn[16 * (*(a1-&gt;m128i_i64 + v6) &amp; 3) | (*(a1-&gt;m128i_i64 + v6 + 1) &gt;&gt; 4)];
+    *(v9 + v5 + 2LL) = aAbcdefghijklmn[4 * (*(a1-&gt;m128i_i64 + v6 + 1) &amp; 0xF) | (*(a1-&gt;m128i_i64 + v6 + 2) &gt;&gt; 6)];
+    *(v9 + v5 + 3LL) = aAbcdefghijklmn[*(a1-&gt;m128i_i64 + v6 + 2) &amp; 0x3F];
+    v6 += 3;
+    v5 += 4;
+  }
+  v3 = v8 - 3 * (((6148914691236517206LL * v8) &gt;&gt; 64) - (v8 &gt;&gt; 63));
+  if ( v3 == 1 )
+  {
+    *(v5 - 2LL + v9) = 61;
+    *(v5 - 1LL + v9) = 61;
+  }
+  else if ( v3 == 2 )
+  {
+    *(v5 - 1LL + v9) = 61;
+  }
+  return v9;
+}
+</code></pre>
+<p>容易看出是base64加密，我们则需要进行10次base64解密</p>
+<h3 id="异或以及base64十次解密脚本">异或以及base64十次解密脚本</h3>
+<pre><code>#异或
+a=[73,111,100,108,62,81,110,98,40,111,99,121,127,121,46,105,127,100,96,51,119,125,119,101,107,57,123,105,121,61,126,121,76,64,69,67]
+b=''
+for i in range(len(a)):
+	b+=chr(a[i]^i)
+print(b)
+
+#base64十次解密
+import base64
+url = &quot;Vm0wd2VHUXhTWGhpUm1SWVYwZDRWVll3Wkc5WFJsbDNXa1pPVlUxV2NIcFhhMk0xVmpKS1NHVkdXbFpOYmtKVVZtcEtTMUl5VGtsaVJtUk9ZV3hhZVZadGVHdFRNVTVYVW01T2FGSnRVbGhhVjNoaFZWWmtWMXBFVWxSTmJFcElWbTAxVDJGV1NuTlhia0pXWWxob1dGUnJXbXRXTVZaeVdrWm9hVlpyV1hwV1IzaGhXVmRHVjFOdVVsWmlhMHBZV1ZSR1lWZEdVbFZTYlhSWFRWWndNRlZ0TVc5VWJGcFZWbXR3VjJKSFVYZFdha1pXWlZaT2NtRkhhRk5pVjJoWVYxZDBhMVV3TlhOalJscFlZbGhTY1ZsclduZGxiR1J5VmxSR1ZXSlZjRWhaTUZKaFZqSktWVkZZYUZkV1JWcFlWV3BHYTFkWFRrZFRiV3hvVFVoQ1dsWXhaRFJpTWtsM1RVaG9hbEpYYUhOVmJUVkRZekZhY1ZKcmRGTk5Wa3A2VjJ0U1ExWlhTbFpqUldoYVRVWndkbFpxUmtwbGJVWklZVVprYUdFeGNHOVhXSEJIWkRGS2RGSnJhR2hTYXpWdlZGVm9RMlJzV25STldHUlZUVlpXTlZadE5VOVdiVXBJVld4c1dtSllUWGhXTUZwell6RmFkRkpzVWxOaVNFSktWa1phVTFFeFduUlRhMlJxVWxad1YxWnRlRXRXTVZaSFVsUnNVVlZVTURrPQ==&quot;
+for i in range(10):
+    url = base64.b64decode(url)
+print(url)
+</code></pre>
+<p>得到</p>
+<pre><code>Info:The first four chars are `flag`
+b'https://bbs.pediy.com/thread-254172.htm'
+</code></pre>
+<p>得知flag前四位为flag,进入网址没有题目相关内容，这时查看函数窗口发现main函数与base64加密函数之间还有一个函数，进入并尝试审计</p>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1602425912026.png" alt="" loading="lazy"></figure>
+<pre><code>__int64 sub_400D35()
+{
+  __int64 result; // rax
+  unsigned __int64 v1; // rt1
+  unsigned int v2; // [rsp+Ch] [rbp-24h]
+  signed int i; // [rsp+10h] [rbp-20h]
+  signed int j; // [rsp+14h] [rbp-1Ch]
+  unsigned int v5; // [rsp+24h] [rbp-Ch]
+  unsigned __int64 v6; // [rsp+28h] [rbp-8h]
+
+  v6 = __readfsqword(0x28u);
+  v2 = sub_43FD20(0LL) - qword_6CEE38;
+  for ( i = 0; i &lt;= 1233; ++i )
+  {
+    sub_40F790(v2);
+    sub_40FE60(v2);
+    sub_40FE60(v2);
+    v2 = sub_40FE60(v2) ^ 0x98765432;
+  }
+  v5 = v2;                                      // v5=v2
+  if ( (v2 ^ byte_6CC0A0[0]) == 'f' &amp;&amp; (HIBYTE(v5) ^ byte_6CC0A3) == 'g' )// byte_6CC0A3相当于byte_6CC0A0[3]，即v2与byte_6CC0A0数组异或后第一位为f第四位为g时进入下一个异或，又因为已知前四位为flag，所以观察并进入下一个异或
+  {
+    for ( j = 0; j &lt;= 24; ++j )
+      sub_410E90((byte_6CC0A0[j] ^ *(&amp;v5 + j % 4)));
+  }
+  v1 = __readfsqword(0x28u);
+  result = v1 ^ v6;
+  if ( v1 != v6 )
+    sub_444020();
+  return result;
+}
+</code></pre>
+<p>也是一个异或函数，脚本如下</p>
+<pre><code>byte_6CC0A0=[0x40, 0x35, 0x20, 0x56, 0x5D, 0x18, 0x22, 0x45, 0x17, 0x2F,
+0x24, 0x6E, 0x62, 0x3C, 0x27, 0x54, 0x48, 0x6C, 0x24, 0x6E,
+0x72, 0x3C, 0x32, 0x45,0x5B]
+v2=''
+s='flag'
+flag=''
+for i in range(4):
+    v2+=chr(byte_6CC0A0[i]^ord(s[i]))
+for i in range(len(byte_6CC0A0)):
+    flag+=chr(byte_6CC0A0[i]^ord(v2[i%4]))
+print (flag)
+</code></pre>
+<p>得flag=flag{Act1ve_Defen5e_Test}</p>
+<h2 id="actf新生赛2020easyre">[ACTF新生赛2020]easyre</h2>
+<p>有upx壳，脱壳后放入ida</p>
+<p>主函数</p>
+<pre><code>int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  char v4; // [esp+12h] [ebp-2Eh]
+  char v5; // [esp+13h] [ebp-2Dh]
+  char v6; // [esp+14h] [ebp-2Ch]
+  char v7; // [esp+15h] [ebp-2Bh]
+  char v8; // [esp+16h] [ebp-2Ah]
+  char v9; // [esp+17h] [ebp-29h]
+  char v10; // [esp+18h] [ebp-28h]
+  char v11; // [esp+19h] [ebp-27h]
+  char v12; // [esp+1Ah] [ebp-26h]
+  char v13; // [esp+1Bh] [ebp-25h]
+  char v14; // [esp+1Ch] [ebp-24h]
+  char v15; // [esp+1Dh] [ebp-23h]
+  int v16; // [esp+1Eh] [ebp-22h]
+  int v17; // [esp+22h] [ebp-1Eh]
+  int v18; // [esp+26h] [ebp-1Ah]
+  __int16 v19; // [esp+2Ah] [ebp-16h]
+  char v20; // [esp+2Ch] [ebp-14h]
+  char v21; // [esp+2Dh] [ebp-13h]
+  char v22; // [esp+2Eh] [ebp-12h]
+  int v23; // [esp+2Fh] [ebp-11h]
+  int v24; // [esp+33h] [ebp-Dh]
+  int v25; // [esp+37h] [ebp-9h]
+  char v26; // [esp+3Bh] [ebp-5h]
+  int i; // [esp+3Ch] [ebp-4h]
+
+  sub_401A10();
+  v4 = 42;
+  v5 = 70;
+  v6 = 39;
+  v7 = 34;
+  v8 = 78;
+  v9 = 44;
+  v10 = 34;
+  v11 = 40;
+  v12 = 73;
+  v13 = 63;
+  v14 = 43;
+  v15 = 64;
+  printf(&quot;Please input:&quot;);
+  scanf(&quot;%s&quot;, &amp;v19);
+  if ( (_BYTE)v19 != 'A' || HIBYTE(v19) != 'C' || v20 != 'T' || v21 != 'F' || v22 != '{' || v26 != '}' )
+    return 0;
+  v16 = v23;
+  v17 = v24;
+  v18 = v25;
+  for ( i = 0; i &lt;= 11; ++i )
+  {
+    if ( *(&amp;v4 + i) != byte_402000[*((char *)&amp;v16 + i) - 1] )// v4到v15是一个十二位的数组  7Eh
+      return 0;
+  }
+  printf(&quot;You are correct!&quot;);
+  return 0;
+}
+</code></pre>
+<p>提取byte_402000中的数值，flag为v16到v18的12位字符，flag的ascii值-1作为byte_402000的下标与v4开头v15结束的12个数做对比</p>
+<p>脚本</p>
+<pre><code>v4 = [42,70,39,34,78,44,34,40,73,63,43,64]
+byte_402000= [0x7E, 0x7D, 0x7C, 0x7B, 0x7A, 0x79, 0x78, 0x77, 0x76, 0x75,
+  0x74, 0x73, 0x72, 0x71, 0x70, 0x6F, 0x6E, 0x6D, 0x6C, 0x6B,
+  0x6A, 0x69, 0x68, 0x67, 0x66, 0x65, 0x64, 0x63, 0x62, 0x61,
+  0x60, 0x5F, 0x5E, 0x5D, 0x5C, 0x5B, 0x5A, 0x59, 0x58, 0x57,
+  0x56, 0x55, 0x54, 0x53, 0x52, 0x51, 0x50, 0x4F, 0x4E, 0x4D,
+  0x4C, 0x4B, 0x4A, 0x49, 0x48, 0x47, 0x46, 0x45, 0x44, 0x43,
+  0x42, 0x41, 0x40, 0x3F, 0x3E, 0x3D, 0x3C, 0x3B, 0x3A, 0x39,
+  0x38, 0x37, 0x36, 0x35, 0x34, 0x33, 0x32, 0x31, 0x30, 0x2F,
+  0x2E, 0x2D, 0x2C, 0x2B, 0x2A, 0x29, 0x28, 0x27, 0x26, 0x25,
+  0x24, 0x23, 0x20, 0x21, 0x22, 0x00]
+b=''
+flag=''
+for i in range(len(byte_402000)):
+    b+=chr(byte_402000[i])
+for i in range(len(v4)):
+    flag+=chr(b.find(chr(v4[i]))+1)
+print(flag)
+</code></pre>
 ]]></content>
     </entry>
     <entry>
