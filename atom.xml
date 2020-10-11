@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-10-11T14:19:06.727Z</updated>
+    <updated>2020-10-11T15:12:19.200Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -703,6 +703,54 @@ for i in range(len(v4)):
     flag+=chr(b.find(chr(v4[i]))+1)
 print(flag)
 </code></pre>
+<h2 id="suctf2019signin">[SUCTF2019]SignIn</h2>
+<h3 id="主函数">主函数</h3>
+<pre><code>__int64 __fastcall main(__int64 a1, char **a2, char **a3)
+{
+  char v4; // [rsp+0h] [rbp-4A0h]
+  char v5; // [rsp+10h] [rbp-490h]
+  char v6; // [rsp+20h] [rbp-480h]
+  char v7; // [rsp+30h] [rbp-470h]
+  char v8; // [rsp+40h] [rbp-460h]
+  char v9; // [rsp+B0h] [rbp-3F0h]
+  unsigned __int64 v10; // [rsp+498h] [rbp-8h]
+
+  v10 = __readfsqword(0x28u);
+  puts(&quot;[sign in]&quot;);
+  printf(&quot;[input your flag]: &quot;, a2);
+  __isoc99_scanf(&quot;%99s&quot;, &amp;v8);                  // 输入V8
+  sub_96A(&amp;v8, (__int64)&amp;v9);
+  __gmpz_init_set_str((__int64)&amp;v7, (__int64)&quot;ad939ff59f6e70bcbfad406f2494993757eee98b91bc244184a377520d06fc35&quot;, 16LL);// 将字符数组以16进制解读成数值并写入v7所指向的内存
+  __gmpz_init_set_str((__int64)&amp;v6, (__int64)&amp;v9, 16LL);
+  __gmpz_init_set_str(
+    (__int64)&amp;v4,
+    (__int64)&quot;103461035900816914121390101299049044413950405173712170434161686539878160984549&quot;,
+    10LL);
+  __gmpz_init_set_str((__int64)&amp;v5, (__int64)&quot;65537&quot;, 10LL);
+  __gmpz_powm(&amp;v6, &amp;v6, &amp;v5, &amp;v4);              // 对明文的加密函数,计算v6的v5次方，并对v4取模，最后将结果写入v6,对应于RSA算法中就是n=v4,密文c=v7,公钥e=v5,明文m=v6
+  if ( (unsigned int)__gmpz_cmp(&amp;v6, &amp;v7) )     // 比较函数
+    puts(&quot;GG!&quot;);
+  else
+    puts(&quot;TTTTTTTTTTql!&quot;);
+  return 0LL;
+}
+</code></pre>
+<p>yafu或者在线解出来p,q都可以</p>
+<h3 id="脚本-2">脚本</h3>
+<pre><code>import gmpy2
+import binascii
+c=0xad939ff59f6e70bcbfad406f2494993757eee98b91bc244184a377520d06fc35
+e=65537
+n=103461035900816914121390101299049044413950405173712170434161686539878160984549
+p=366669102002966856876605669837014229419
+q=282164587459512124844245113950593348271
+d = gmpy2.invert(e,(p-1)*(q-1))
+m = pow(c,d,n)
+#print(hex(m))
+print(hex(m)[2:])#[2:]舍去0x
+print(bytes.fromhex(hex(m)[2:]))
+</code></pre>
+<p>得flag=suctf{Pwn_@_hundred_years}</p>
 ]]></content>
     </entry>
     <entry>
