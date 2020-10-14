@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-10-14T15:47:01.745Z</updated>
+    <updated>2020-10-14T16:54:04.136Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -807,6 +807,135 @@ for i in range(len(secret1)):
         else:
             a += chr(ord(secret1[i]))
 print(a)
+</code></pre>
+<h2 id="gwctf-2019xxor">[GWCTF 2019]xxor</h2>
+<p>主函数</p>
+<pre><code>__int64 __fastcall main(__int64 a1, char **a2, char **a3)
+{
+  signed int i; // [rsp+8h] [rbp-68h]
+  signed int j; // [rsp+Ch] [rbp-64h]
+  __int64 v6; // [rsp+10h] [rbp-60h]
+  __int64 v7; // [rsp+18h] [rbp-58h]
+  __int64 v8; // [rsp+20h] [rbp-50h]
+  __int64 v9; // [rsp+28h] [rbp-48h]
+  __int64 v10; // [rsp+30h] [rbp-40h]
+  __int64 v11; // [rsp+40h] [rbp-30h]
+  __int64 v12; // [rsp+48h] [rbp-28h]
+  __int64 v13; // [rsp+50h] [rbp-20h]
+  __int64 v14; // [rsp+58h] [rbp-18h]
+  __int64 v15; // [rsp+60h] [rbp-10h]
+  unsigned __int64 v16; // [rsp+68h] [rbp-8h]
+
+  v16 = __readfsqword(0x28u);
+  puts(&quot;Let us play a game?&quot;);
+  puts(&quot;you have six chances to input&quot;);
+  puts(&quot;Come on!&quot;);
+  v6 = 0LL;
+  v7 = 0LL;
+  v8 = 0LL;
+  v9 = 0LL;
+  v10 = 0LL;
+  for ( i = 0; i &lt;= 5; ++i )
+  {
+    printf(&quot;%s&quot;, &quot;input: &quot;, (unsigned int)i);
+    __isoc99_scanf(&quot;%d&quot;, (char *)&amp;v6 + 4 * i);
+  }
+  v11 = 0LL;
+  v12 = 0LL;
+  v13 = 0LL;
+  v14 = 0LL;
+  v15 = 0LL;
+  for ( j = 0; j &lt;= 4; j += 2 )
+  {
+    dword_601078 = *((_DWORD *)&amp;v6 + j);        // a=v6[j]
+    dword_60107C = *((_DWORD *)&amp;v6 + j + 1);    // b=v6[j+1]
+    sub_400686((unsigned int *)&amp;dword_601078, &amp;unk_601060);// unk_601060=[2,2,3,4] v6[j],j为偶数时进入sub_400686函数转换
+    *((_DWORD *)&amp;v11 + j) = dword_601078;
+    *((_DWORD *)&amp;v11 + j + 1) = dword_60107C;
+  }
+  if ( (unsigned int)sub_400770(&amp;v11) != 1 )
+  {
+    puts(&quot;NO NO NO~ &quot;);
+    exit(0);
+  }
+  puts(&quot;Congratulation!\n&quot;);
+  puts(&quot;You seccess half\n&quot;);
+  puts(&quot;Do not forget to change input to hex and combine~\n&quot;);
+  puts(&quot;ByeBye&quot;);
+  return 0LL;
+}
+</code></pre>
+<p>获得6个数根据函数两两的存入，循环三次，并对其加密，加密函数是sub_400686，此函数见下，意思就是进行了简单的异或，异或后的数分别存入两个参与函数的a[i]和a[i+1]，最后比较时候遇到了sub_400770函数，此函数是比较6个数的值，通过简单的计算或者z3都可以算出来这6个数的值</p>
+<p>sub_400770</p>
+<pre><code>signed __int64 __fastcall sub_400770(_DWORD *a1)
+{
+  signed __int64 result; // rax
+
+  if ( a1[2] - a1[3] != 2225223423LL || a1[3] + a1[4] != 4201428739LL || a1[2] - a1[4] != 1121399208LL )
+  {
+    puts(&quot;Wrong!&quot;);
+    result = 0LL;
+  }
+  else if ( *a1 != 3746099070 || a1[5] != 2230518816 || a1[1] != 550153460 )
+  {
+    puts(&quot;Wrong!&quot;);
+    result = 0LL;
+  }
+  else
+  {
+    puts(&quot;good!&quot;);
+    result = 1LL;
+  }
+  return result;
+}
+</code></pre>
+<p>sub_400686</p>
+<pre><code>__int64 __fastcall sub_400686(unsigned int *a1, _DWORD *a2)
+{
+  __int64 result; // rax
+  unsigned int v3; // [rsp+1Ch] [rbp-24h]
+  unsigned int v4; // [rsp+20h] [rbp-20h]
+  int v5; // [rsp+24h] [rbp-1Ch]
+  unsigned int i; // [rsp+28h] [rbp-18h]
+
+  v3 = *a1;
+  v4 = a1[1];
+  v5 = 0;
+  for ( i = 0; i &lt;= 0x3F; ++i )
+  {
+    v5 += 0x458BCD42;
+    v3 += (v4 + v5 + 11) ^ ((v4 &lt;&lt; 6) + *a2) ^ ((v4 &gt;&gt; 9) + a2[1]) ^ 0x20;
+    v4 += (v3 + v5 + 20) ^ ((v3 &lt;&lt; 6) + a2[2]) ^ ((v3 &gt;&gt; 9) + a2[3]) ^ 0x10;
+  }
+  *a1 = v3;
+  result = v4;
+  a1[1] = v4;
+  return result;
+}
+</code></pre>
+<h3 id="脚本思路-2">脚本思路</h3>
+<p>先求得6个数，得到6个数后进行异或算法的逆算法，之后根据主函数中的提示再转为字符串。<br>
+需要注意的是unsigned int变量在python中的使用，此时用到了ctypes这个外部库<br>
+官方文档就不贴了，网上一大堆</p>
+<p>脚本</p>
+<pre><code>from Crypto.Util.number import long_to_bytes
+from ctypes import *  #使类型更为明确
+a=[3746099070,550153460,3774025685,1548802262,2652626477,2230518816]
+a2=[2,2,3,4]
+s=''
+for i in range(0,6,2):
+    v3=c_uint(a[i])
+    v4=c_uint(a[i+1])
+    v5=c_int(0x458BCD42*64)
+    for j in range(64):
+        v4.value -= (v3.value + v5.value + 20) ^ ((v3.value &lt;&lt; 6) + a2[2]) ^ ((v3.value &gt;&gt; 9) + a2[3]) ^ 0x10
+        v3.value -= (v4.value + v5.value + 11) ^ ((v4.value &lt;&lt; 6) + a2[0]) ^ ((v4.value &gt;&gt; 9) + a2[1]) ^ 0x20
+        v5.value -= 0x458BCD42
+    a[i]=v3.value
+    a[i+1]=v4.value
+for i in range(len(a)):
+    s+=hex(a[i])
+    print(long_to_bytes(a[i]).decode(),end=&quot;&quot;)
 </code></pre>
 ]]></content>
     </entry>
