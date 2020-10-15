@@ -184,8 +184,8 @@
             <h2 class="fh5co-article-title animate-box">BUUCTF re部分wp_3</h2>
             <ol class="breadcrumb fh5co-meta fh5co-date animate-box" style="margin-bottom:0; background-color:#f8f9fa">
                 <li>2020-10-14</li>
-                <li>4613字</li>
-                <li>27 min read</li>
+                <li>5380字</li>
+                <li>31 min read</li>
             </ol>
 
             <div class="col-lg-12 col-lg-offset-0 col-md-12 col-md-offset-0 col-sm-12 col-sm-offset-0 col-xs-12 col-xs-offset-0 text-left content-article">
@@ -1112,6 +1112,186 @@ for i in range(len(a)):
     s+=hex(a[i])
     print(long_to_bytes(a[i]).decode(),end=&quot;&quot;)
 </code></pre>
+<h2 id="mrctf2020transform">[MRCTF2020]Transform</h2>
+<pre><code>// local variable allocation has failed, the output may be wrong!
+int __cdecl main(int argc, const char **argv, const char **envp)
+{
+  __int64 v3; // rdx
+  __int64 v4; // rdx
+  char v6[104]; // [rsp+20h] [rbp-70h]
+  int j; // [rsp+88h] [rbp-8h]
+  int i; // [rsp+8Ch] [rbp-4h]
+
+  sub_402230(argc, argv, envp);
+  sub_40E640(argc, argv, v3, &quot;Give me your code:\n&quot;);
+  sub_40E5F0(argc, argv, v6, &quot;%s&quot;);
+  if ( strlen(*&amp;argc) != 33 )                   // flag长度为33
+  {
+    sub_40E640(argc, argv, v4, &quot;Wrong!\n&quot;);
+    system(*&amp;argc);
+    exit(argc);
+  }
+  for ( i = 0; i &lt;= 32; ++i )
+  {
+    byte_414040[i] = v6[dword_40F040[i]];
+    v4 = i;
+    byte_414040[i] ^= LOBYTE(dword_40F040[i]);
+  }
+  for ( j = 0; j &lt;= 32; ++j )
+  {
+    v4 = j;
+    if ( byte_40F0E0[j] != byte_414040[j] )
+    {
+      sub_40E640(argc, argv, j, &quot;Wrong!\n&quot;);
+      system(*&amp;argc);
+      exit(argc);
+    }
+  }
+  sub_40E640(argc, argv, v4, &quot;Right!Good Job!\n&quot;);
+  sub_40E640(argc, argv, v6, &quot;Here is your flag: %s\n&quot;);
+  system(*&amp;argc);
+  return 0;
+}
+</code></pre>
+<p>main函数很简单，我们可知道byte_414040和dword_40F040的值,byte_414040=byte_40F0E0<br>
+再由下面的函数依次反推出2处的byte_414040，再得出v6就得到了flag</p>
+<pre><code> for ( i = 0; i &lt;= 32; ++i )
+  {
+    byte_414040[i] = v6[dword_40F040[i]];//1处(flag)
+    v4 = i;
+    byte_414040[i] ^= LOBYTE(dword_40F040[i]);//2处
+  }
+</code></pre>
+<p>脚本</p>
+<pre><code>byte_40F0E0=[0x67, 0x79, 0x7B, 0x7F, 0x75, 0x2B, 0x3C, 0x52, 0x53, 0x79,
+  0x57, 0x5E, 0x5D, 0x42, 0x7B, 0x2D, 0x2A, 0x66, 0x42, 0x7E,
+  0x4C, 0x57, 0x79, 0x41, 0x6B, 0x7E, 0x65, 0x3C, 0x5C, 0x45,
+  0x6F, 0x62, 0x4D]
+byte_40F040=[ 0x09, 0x0A,  0x0F, 0x17, 0x07, 0x18, 0x0C, 0x06,  0x01, 0x10,
+              0x03, 0x11,  0x20,  0x1D,  0x0B, 0x1E,0x1B,
+              0x16,0x04,  0x0D,0x13, 0x14, 0x15,  0x02, 0x19, 0x05, 0x1F,
+              0x08, 0x12,  0x1A, 0x1C, 0x0E,0x00]
+a=[0]*33
+flag=''
+for i in range(33):
+    byte_40F0E0[i]^=byte_40F040[i]
+    a[byte_40F040[i]]=byte_40F0E0[i]
+for i in range(33):
+    flag+=chr(a[i])
+print(flag)
+</code></pre>
+<h2 id="bjdctf2020bjd-hamburger-competition">[BJDCTF2020]BJD hamburger competition</h2>
+<p>这个题过于搞笑了</p>
+<p>C#编写的所以用dnspy打开，其中学习到了一点是Assembly-CSharp.dll存放程序的源码，用dnspy打开</p>
+<p>找到主函数</p>
+<pre><code>using System;
+using System.Security.Cryptography;
+using System.Text;
+using UnityEngine;
+
+// Token: 0x02000004 RID: 4
+public class ButtonSpawnFruit : MonoBehaviour
+{
+	// Token: 0x0600000A RID: 10 RVA: 0x00002110 File Offset: 0x00000310
+	public static string Md5(string str)
+	{
+		byte[] bytes = Encoding.UTF8.GetBytes(str);
+		byte[] array = MD5.Create().ComputeHash(bytes);
+		StringBuilder stringBuilder = new StringBuilder();
+		foreach (byte b in array)
+		{
+			stringBuilder.Append(b.ToString(&quot;X2&quot;));//X2是转为大写，对应的x2就是转为小写
+		}
+		return stringBuilder.ToString().Substring(0, 20);//取前二十位
+	}
+
+	// Token: 0x0600000B RID: 11 RVA: 0x00002170 File Offset: 0x00000370
+	public static string Sha1(string str)
+	{
+		byte[] bytes = Encoding.UTF8.GetBytes(str);
+		byte[] array = SHA1.Create().ComputeHash(bytes);
+		StringBuilder stringBuilder = new StringBuilder();
+		foreach (byte b in array)
+		{
+			stringBuilder.Append(b.ToString(&quot;X2&quot;));
+		}
+		return stringBuilder.ToString();
+	}
+
+	// Token: 0x0600000C RID: 12 RVA: 0x000021C8 File Offset: 0x000003C8
+	public void Spawn()
+	{
+		FruitSpawner component = GameObject.FindWithTag(&quot;GameController&quot;).GetComponent&lt;FruitSpawner&gt;();
+		if (component)
+		{
+			if (this.audioSources.Length != 0)
+			{
+				this.audioSources[Random.Range(0, this.audioSources.Length)].Play();
+			}
+			component.Spawn(this.toSpawn);
+			string name = this.toSpawn.name;
+			if (name == &quot;汉堡底&quot; &amp;&amp; Init.spawnCount == 0)
+			{
+				Init.secret += 997;
+			}
+			else if (name == &quot;鸭屁股&quot;)
+			{
+				Init.secret -= 127;
+			}
+			else if (name == &quot;胡罗贝&quot;)
+			{
+				Init.secret *= 3;
+			}
+			else if (name == &quot;臭豆腐&quot;)
+			{
+				Init.secret ^= 18;
+			}
+			else if (name == &quot;俘虏&quot;)
+			{
+				Init.secret += 29;
+			}
+			else if (name == &quot;白拆&quot;)
+			{
+				Init.secret -= 47;
+			}
+			else if (name == &quot;美汁汁&quot;)
+			{
+				Init.secret *= 5;
+			}
+			else if (name == &quot;柠檬&quot;)
+			{
+				Init.secret ^= 87;
+			}
+			else if (name == &quot;汉堡顶&quot; &amp;&amp; Init.spawnCount == 5)
+			{
+				Init.secret ^= 127;
+				string str = Init.secret.ToString();
+				if (ButtonSpawnFruit.Sha1(str) == &quot;DD01903921EA24941C26A48F2CEC24E0BB0E8CC7&quot;)
+				{
+					this.result = &quot;BJDCTF{&quot; + ButtonSpawnFruit.Md5(str) + &quot;}&quot;;
+					Debug.Log(this.result);
+				}
+			}
+			Init.spawnCount++;
+			Debug.Log(Init.secret);
+			Debug.Log(Init.spawnCount);
+		}
+	}
+
+	// Token: 0x04000005 RID: 5
+	public GameObject toSpawn;
+
+	// Token: 0x04000006 RID: 6
+	public int spawnCount = 1;
+
+	// Token: 0x04000007 RID: 7
+	public AudioSource[] audioSources;
+
+	// Token: 0x04000008 RID: 8
+	public string result = &quot;&quot;;
+}
+</code></pre>
+<p>str用sha1加密为一个字符串，将str用MD5加密就得flag，但是注意MD5函数，我已在原函数上注释了</p>
  </p>
                     </div>
                 </div>
@@ -1176,6 +1356,8 @@ for i in range(len(a)):
 <li><a href="#%E8%84%9A%E6%9C%AC%E6%80%9D%E8%B7%AF-2">脚本思路</a></li>
 </ul>
 </li>
+<li><a href="#mrctf2020transform">[MRCTF2020]Transform</a></li>
+<li><a href="#bjdctf2020bjd-hamburger-competition">[BJDCTF2020]BJD hamburger competition</a></li>
 </ul>
 </li>
 </ul>
