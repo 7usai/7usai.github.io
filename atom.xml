@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-10-15T15:11:26.386Z</updated>
+    <updated>2020-10-21T15:55:11.261Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -10,6 +10,131 @@
     <logo>https://7usai.github.io/images/avatar.png</logo>
     <icon>https://7usai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 7usai</rights>
+    <entry>
+        <title type="html"><![CDATA[CUMTCTF2020华为杯决赛]]></title>
+        <id>https://7usai.github.io/post/tHs44F2g1/</id>
+        <link href="https://7usai.github.io/post/tHs44F2g1/">
+        </link>
+        <updated>2020-10-21T15:54:07.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="cumtctf2020华为杯">CUMTCTF2020华为杯</h1>
+<h2 id="misc">misc</h2>
+<h3 id="签个到吧">签个到吧</h3>
+<p>十六进制编译器打开，复制后base64解码，在brainfuck解码，得flag=CUMTCTF{Welcome_to_CUMTCTF_2020_Final}</p>
+<h3 id="出个流量分析题吧">出个流量分析题吧</h3>
+<p>wireshark打开，搜索flag字符串就找到</p>
+<h3 id="出个lsb吧">出个LSB吧</h3>
+<p>解压发现是个图片，用stegsolve打开，发现在red/green/blue plane0 上方有不明黑色块，在analyse中打开data extract，勾选三个0，save bin 以png格式保存，得到一张二维码</p>
+<h2 id="crypto">Crypto</h2>
+<h3 id="classical">Classical</h3>
+<p>vigenere密码</p>
+<p>https://www.guballa.de/vigenere-solver</p>
+<h3 id="earsa">eaRSA</h3>
+<p>winner attack</p>
+<p>直接跑脚本就得出flag</p>
+<h2 id="re">re</h2>
+<h3 id="hello_world">hello_world</h3>
+<p>无壳，64位，直接放入IDA</p>
+<p>关键函数</p>
+<pre><code>signed __int64 __fastcall sub_40156F(const char *a1, __int64 a2, __int64 a3, __int64 a4)
+{
+  __int64 v4; // rdx
+  int i; // [rsp+2Ch] [rbp-54h]
+  __int64 v7; // [rsp+60h] [rbp-20h]
+
+  v7 = a4;
+  for ( i = 0; i &lt; strlen(a1); ++i )
+  {
+    a2 = byte_403020[i];
+    a1 = *(i + v7);
+    if ( a2 != (a1 ^ aIsEasyRight[i % strlen(a1)]) )
+    {
+      sub_401530();
+      printf(a1, a2, v4, &quot;wrong!!!&quot;);
+      return 0LL;
+    }
+  }
+  printf(a1, a2, &quot;you got it!!!&quot;, &quot;%s&quot;);
+  return 1LL;
+}
+</code></pre>
+<p>简单的异或，aIsEasyRight和byte_403020值已知，</p>
+<p>脚本</p>
+<pre><code>a=[  0x2A, 0x26, 0x12, 0x31, 0x1A, 0x07, 0x11, 0x3A, 0x2D, 0x0F,
+  0x0E, 0x1A, 0x41, 0x4B, 0x36, 0x43, 0x31, 0x00, 0x3E, 0x16,
+  0x17, 0x35, 0x1D, 0x10, 0x38, 0x11, 0x44, 0x4A, 0x1B, 0x2C,
+  0x2B, 0x17, 0x50, 0x03, 0x04]
+print(len(a))
+b='is_easy_right?is_easy_right?is_easy_right?'
+print(len(b))
+c=''
+for i in range(len(a)):
+    c+=chr(ord(b[i])^a[i])
+print (c)
+</code></pre>
+<p>得flag=CUMT{the_fir5t_0ne_enjoy_y0ur_tr1p}</p>
+<h3 id="non_name">non_name</h3>
+<p>无壳，64位</p>
+<p>关键函数</p>
+<pre><code>signed __int64 sub_401530()
+{
+  signed int j; // [rsp+8h] [rbp-8h]
+  signed int i; // [rsp+Ch] [rbp-4h]
+
+  for ( i = 0; i &lt;= 3; ++i )
+  {
+    dword_407044 = 0;
+    for ( j = 0; j &lt;= 3; ++j )
+      dword_407044 += byte_403010[4 * i + j] * byte_40703E[j];
+    if ( dword_403020[i] != dword_407044 )
+      return 0LL;
+  }
+  return 1LL;
+}
+</code></pre>
+<p>稍微改一下</p>
+<pre><code>signed __int64 sub_401530()
+{
+  signed int j; // [rsp+8h] [rbp-8h]
+  signed int i; // [rsp+Ch] [rbp-4h]
+
+  for ( i = 0; i &lt;= 3; ++i )
+  {
+    dword_407044 = 0;
+    for ( j = 0; j &lt;= 3; ++j )
+      dword_407044 += a[4 * i + j] * flag[j];
+    if ( b[i] != dword_407044 )
+      return 0LL;
+  }
+  return 1LL;
+}
+</code></pre>
+<p>通过b和a中得数已知，相当于循环4次，每次b[i]=a[4 * i +j] * flag[j] + a[4 * i +j+1] * flag[j+1] + a[4 * i +j+2] * flag[j+2] + a[4 * i +j+3] * flag[j+3]，相当于如下线性方程组</p>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1603295672508.gif" alt="" loading="lazy"></figure>
+<p>其中x为flag</p>
+<p>可以直接在线网站求解的4个十进制数</p>
+<p>https://www.buildenvi.com/gongju/formula/3lck4</p>
+<p>再转为hex得flag</p>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1603295679988.png" alt="" loading="lazy"></figure>
+<p>用z3或者matlab是最好的，这里给出z3脚本</p>
+<pre><code>from z3 import *
+s=Solver()
+x1,x2,x3,x4=Ints(&quot;x1 x2 x3 x4&quot;)
+s.add(0x2534 == 0x0c*x1+0x20*x2+0x22*x3+0x0c*x4)
+s.add(0x1AFF == 0x35*x1+0x01*x2+0x02*x3+0x04*x4)
+s.add(0x2786 == 0x06*x1+0x08*x2+0x22*x3+0x2D*x4)
+s.add(0x5B44 == 0x38*x1+0x20*x2+0x55*x3+0x2B*x4)
+flag=[]
+
+if s.check() == sat:
+    ans = s.model()
+    flag.append(ans[x1])
+    flag.append(ans[x2])
+    flag.append(ans[x3])
+    flag.append(ans[x4])
+print(flag)
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[BUUCTF re部分wp_3]]></title>
         <id>https://7usai.github.io/post/PxGlokR_W/</id>
@@ -3038,175 +3163,6 @@ print(flag)
 <figure data-type="image" tabindex="17"><img src="https://7usai.github.io/post-images/1600240594564.png" alt="" loading="lazy"></figure>
 <h3 id="运行得flag">运行得flag</h3>
 <figure data-type="image" tabindex="18"><img src="https://7usai.github.io/post-images/1600240610853.png" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[攻防世界_re_2星题_部分wp]]></title>
-        <id>https://7usai.github.io/post/gong-fang-shi-jie-re-bu-fen-wp/</id>
-        <link href="https://7usai.github.io/post/gong-fang-shi-jie-re-bu-fen-wp/">
-        </link>
-        <updated>2020-09-10T14:38:31.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="攻防世界re部分wp">攻防世界RE部分wp</h1>
-<h2 id="re2-cpp-is-awesome">re2-cpp-is-awesome</h2>
-<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1599748738949.png" alt="" loading="lazy"></figure>
-<p>64位ELF文件 放入ubuntu中运行结果如下</p>
-<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1599748743703.png" alt="" loading="lazy"></figure>
-<p>放入IDA进入main函数</p>
-<p><img src="https://7usai.github.io/post-images/1599748750390.png" alt="" loading="lazy"><br>
-如下两个 一个正确一个错误</p>
-<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1599748769934.png" alt="" loading="lazy"></figure>
-<p>通过分析可得</p>
-<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1599748776529.png" alt="" loading="lazy"></figure>
-<p>V12与off_6020A0和dword_6020C0组成的数组比较，相同则得flag</p>
-<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1599748784955.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1599748790751.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1599748796928.png" alt="" loading="lazy"></figure>
-<p>得到所需数值后编写函数</p>
-<pre><code>a=[0x24,0x00,0x05,0x36,0x65,0x07,0x27,0x26,0x2d,0x01,0x03,0x00,0x0d,0x56,0x01,0x03,0x65,0x03,0x2d,0x16,0x02,0x15,0x03,0x65,0x00,0x29,0x44,0x44,0x01,0x44,0x2b]
-flag=&quot; &quot;
-x=&quot;L3t_ME_T3ll_Y0u_S0m3th1ng_1mp0rtant_A_{FL4G}_W0nt_b3_3X4ctly_th4t_345y_t0_c4ptur3_H0wev3r_1T_w1ll_b3_C00l_1F_Y0u_g0t_1t&quot;
-b=len(a)
-for i in range(b):
-    flag+=x[a[i]]
-print(flag)
-</code></pre>
-<pre><code>得flag=ALEXCTF{W3_L0v3_C_W1th_CL45535}
-</code></pre>
-<h2 id="srm-50">srm-50</h2>
-<p>主要部分如下</p>
-<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1599748819043.png" alt="" loading="lazy"></figure>
-<p>if部分成立时得flag,说明flag长度为16位，前四位是CZ9d<br>
-<img src="https://7usai.github.io/post-images/1599748824045.png" alt="" loading="lazy"><br>
-V13<sub>V24组成其余12位，求出V12[4]</sub>V24即可</p>
-<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1599748829235.png" alt="" loading="lazy"></figure>
-<p>编写代码</p>
-<pre><code>a=[67,90,57,100,109,113,52,99,56,103,57,71,55,98,65,88]
-flag=&quot; &quot;
-for i in range(len(a)):
-    flag+=chr(a[i])
-print(flag)
-
-</code></pre>
-<pre><code>得flag为CZ9dmq4c8g9G7bAX
-</code></pre>
-<h2 id="guess-the-number">Guess-the-Number</h2>
-<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1599748835634.png" alt="" loading="lazy"></figure>
-<p>转为zip解压后得<img src="https://7usai.github.io/post-images/1599748846528.png" alt="" loading="lazy"></p>
-<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1599748854085.png" alt="" loading="lazy"></figure>
-<p>编写脚本</p>
-<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1599748864158.png" alt="" loading="lazy"></figure>
-<pre><code>import java.math.BigInteger;
-
-class Untitled {
-	public static void main(String[] args) {
-          String str_one = &quot;4b64ca12ace755516c178f72d05d7061&quot;;
-          String str_two = &quot;ecd44646cfe5994ebeb35bf922e25dba&quot;;
-		  BigInteger i1 = new BigInteger(str_one, 16);
-   		  BigInteger i2 = new BigInteger(str_two, 16);
-   		  BigInteger res = i1.xor(i2);
-    	  String result = res.toString(16);
-          System.out.printf(&quot;%s&quot;,result);
-	}
-}
-得flag=a7b08c546302cc1fd2a4d48bf2bf2ddb
-</code></pre>
-<h3 id="收获第一次反编译java">收获：第一次反编译java</h3>
-<h2 id="666">666</h2>
-<p>主函数</p>
-<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1600000477839.png" alt="" loading="lazy"></figure>
-<p>主要加密函数</p>
-<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1600000482916.png" alt="" loading="lazy"></figure>
-<pre><code>a2=[0x69,0x7A,0x77,0x68,0x72,0x6F,0x7A,0x22,0x22,0x77,0x22,0x76,0x2E,0x4B,0x22,0x2E,0x4E,0x69]
-flag=''
-for i in range(0,18,3):
-    flag += chr(18 ^ a2[i] - 6)
-    flag += chr(18 ^ a2[i + 1] + 6)
-    flag += chr(18 ^ a2[i+2] ^ 6)
-print(flag)
-</code></pre>
-<p>编写代码，得flag</p>
-<p>注：我python一直显示一个错误的flag<img src="https://7usai.github.io/post-images/1600000495622.png" alt="" loading="lazy"></p>
-<p>c++代码如下：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main()
-{
-char i;
-char target[]=&quot;izwhroz\&quot;\&quot;w\&quot;v.K\&quot;.Ni&quot;;
-for(i=0;i&lt;18;i+=3){
-    target[i]=(target[i]^18)-6;
-    target[i+1]=(target[i+1]^18)+6;
-    target[i+2]=(target[i+2]^18)^6;
-}
-puts(target);
-return 0;
-}
-</code></pre>
-<h2 id="2020913第一面完成">2020.9.13第一面完成</h2>
-<figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1600000504111.png" alt="" loading="lazy"></figure>
-<h2 id="reverseme-120">ReverseMe-120</h2>
-<h3 id="main函数">main函数</h3>
-<p><img src="https://7usai.github.io/post-images/1600010757978.png" alt="" loading="lazy"><br>
-大概思路是需要v9=0；v9=0的前提是v13=you_know_how_to_remove_junk_code；v13是经过异或的得到的，写脚本得之前的v13如下</p>
-<pre><code>a='you_know_how_to_remove_junk_code'
-b=''
-c=len(a)
-for i in range(c):
-    b+=chr(ord(a[i])^37)
-    print(b)
-</code></pre>
-<p>得到字符串\JPzNKJRzMJRzQJzW@HJS@zOPKNzFJA@这里失去头绪</p>
-<p>sub_401000函数没看懂；但是查看字符串发现<img src="https://7usai.github.io/post-images/1600010779978.png" alt="" loading="lazy"><br>
-猜测是base64;</p>
-<p>在线加密后得XEpQek5LSlJ6TUpSelFKeldASEpTQHpPUEtOekZKQUA=，即为flag</p>
-<h2 id="reversing-x64elf-100">Reversing-x64Elf-100</h2>
-<figure data-type="image" tabindex="16"><img src="https://7usai.github.io/post-images/1600010785917.png" alt="" loading="lazy"></figure>
-<h3 id="主函数">主函数</h3>
-<figure data-type="image" tabindex="17"><img src="https://7usai.github.io/post-images/1600010790350.png" alt="" loading="lazy"></figure>
-<h3 id="关键函数">关键函数</h3>
-<figure data-type="image" tabindex="18"><img src="https://7usai.github.io/post-images/1600010796725.png" alt="" loading="lazy"></figure>
-<h3 id="思路">思路</h3>
-<p>flag存在a1数组里，逆向进行if里得运算就行<br>
-编写脚本</p>
-<pre><code>v3 = [&quot;Dufhbmf&quot;,&quot;pG`imos&quot;,&quot;ewUglpt&quot;]
-flag=''
-for i in range(12):
-    flag+=chr(ord(v3[(i % 3)][2 * int(i / 3)])-1)
-    print(flag)
-</code></pre>
-<pre><code>v3[a][b]的意思
-a表示下标为a的字符串，b表示此字符串中下标为b的字符
-</code></pre>
-<h2 id="igniteme">IgniteMe</h2>
-<h3 id="main函数-2">main函数</h3>
-<figure data-type="image" tabindex="19"><img src="https://7usai.github.io/post-images/1600010801875.png" alt="" loading="lazy"></figure>
-<h3 id="进入4011c0">进入4011C0</h3>
-<figure data-type="image" tabindex="20"><img src="https://7usai.github.io/post-images/1600010805986.png" alt="" loading="lazy"></figure>
-<p>这里byte_4420B0我简单的用一个a表示<img src="https://7usai.github.io/post-images/1600010832666.png" alt="" loading="lazy"></p>
-<h3 id="编写脚本">编写脚本</h3>
-<pre><code>v7=&quot;GONDPHyGjPEKruv{{pj]X@rF&quot;
-a=[0x0D,0x13 ,0x17 ,0x11 ,0x02 ,0x01 ,0x20 ,0x1D,0x0C ,0x02 ,0x19 ,0x2F ,0x17 ,0x2B ,0x24 ,0x1F,0x1E ,
-   0x16 ,0x09 ,0x0F ,0x15 ,0x27 ,0x13 ,0x26 ,0x0A ,0x2F ,0x1E ,0x1A ,0x2D ,0x0C ,0x22 ,0x04]
-v5=''
-eflag=''
-for i in range(len(v7)):
-    v5+=chr(ord(v7[i])^a[i])
-for i in range(len(v5)):
-    eflag+=chr((ord(v5[i])-72)^0x55)
-    print(eflag)
-</code></pre>
-<p>这里注意最后得到的flag值需要大小写转换，因为懒没写代码</p>
-<p>在网上找的代码如下</p>
-<pre><code>for i in range(len(eflag)):
-    if ord(eflag[i]) &gt;= 97 and ord(eflag[i]) &lt;= 122:
-        flag += chr(ord(eflag[i]) - 32)
-    elif ord(eflag[i]) &gt;= 65 and ord(eflag[i]) &lt;= 90:
-        flag += chr(ord(eflag[i]) + 32)
-    else:
-        flag += eflag[i]
-</code></pre>
-<p>再与<img src="https://7usai.github.io/post-images/1600010822260.png" alt="" loading="lazy">连接，得flag=EIS{wadx_tdgk_aihc_ihkn_pjlm}</p>
-<h2 id="总结">总结</h2>
-<p>二星题还是很简单的，部分题目自己觉得没有学习意义就没写wp</p>
 ]]></content>
     </entry>
 </feed>
