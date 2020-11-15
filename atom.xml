@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://7usai.github.io</id>
     <title>7usai</title>
-    <updated>2020-10-27T08:54:07.599Z</updated>
+    <updated>2020-11-15T15:06:28.595Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://7usai.github.io"/>
     <link rel="self" href="https://7usai.github.io/atom.xml"/>
@@ -10,6 +10,21 @@
     <logo>https://7usai.github.io/images/avatar.png</logo>
     <icon>https://7usai.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, 7usai</rights>
+    <entry>
+        <title type="html"><![CDATA[寒假之前的计划]]></title>
+        <id>https://7usai.github.io/post/LNWC1dDnX/</id>
+        <link href="https://7usai.github.io/post/LNWC1dDnX/">
+        </link>
+        <updated>2020-11-15T15:05:51.000Z</updated>
+        <content type="html"><![CDATA[<p>①复习信安数学，网安，认真学习密码学以及网安实验<br>
+②看一遍加密与解密，基本了解<br>
+③学透网安课本<br>
+④背单词并看一遍高数课本，复习计网相关知识<br>
+⑤暂时停止CTF学习<br>
+⑥读linux二进制分析</p>
+<p>ps:寒假之前应该不会更新了</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[CUMTCTF2020华为杯决赛]]></title>
         <id>https://7usai.github.io/post/tHs44F2g1/</id>
@@ -3066,177 +3081,6 @@ hitcon{Now y</p>
 <h3 id="总结">总结</h3>
 <p>很费时间，学习了pyc文件格式，学习了uncompyle6<br>
 <img src="https://7usai.github.io/post-images/1600239447558.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[攻防世界_re_3星题_部分wp]]></title>
-        <id>https://7usai.github.io/post/gong-fang-shi-jie-_re_3-xing-ti-_-bu-fen-wp/</id>
-        <link href="https://7usai.github.io/post/gong-fang-shi-jie-_re_3-xing-ti-_-bu-fen-wp/">
-        </link>
-        <updated>2020-09-14T15:05:52.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="攻防世界_re_3星题__部分wp">攻防世界_re_3星题__部分wp</h1>
-<h2 id="debug">debug</h2>
-<h3 id="先用de4dot进行脱壳">先用de4dot进行脱壳</h3>
-<figure data-type="image" tabindex="1"><img src="https://7usai.github.io/post-images/1600095989406.png" alt="" loading="lazy"></figure>
-<h3 id="放入dnspy调试">放入dnSpy调试</h3>
-<figure data-type="image" tabindex="2"><img src="https://7usai.github.io/post-images/1600095996901.png" alt="" loading="lazy"></figure>
-<p>找到main函数所在位置，很简单，a相当于输入的数，b就是经过一系列加密后得到的flag,下入断点运行就得到了flag<br>
-<img src="https://7usai.github.io/post-images/1600096004477.png" alt="" loading="lazy"></p>
-<h2 id="hackme">hackme</h2>
-<figure data-type="image" tabindex="3"><img src="https://7usai.github.io/post-images/1600096012245.png" alt="" loading="lazy"></figure>
-<h3 id="主函数">主函数</h3>
-<figure data-type="image" tabindex="4"><img src="https://7usai.github.io/post-images/1600096022965.png" alt="" loading="lazy"></figure>
-<h3 id="思路网上借鉴的">思路(网上借鉴的)</h3>
-<p>sub_406D90为随机数生成函数，且seed为固定值</p>
-<p>重点是要理解这个函数的逻辑是啥。。虽然这个判断只取了有输入字符串的10个字符，但是实际上需要输入的字符串是22位（也就是实际上flag有22个char）。。</p>
-<p>之后程序会从这里面随机选择一个数字i，然后从byte_6B4270和输入的字符串中分别取出第i个字符v16和v15，将v15的内容和一个生成的大数进行异或运算与v16比较。</p>
-<p>整体逻辑如上，而且我们发现，这个i具体是多少其实是不需要的，因为这个i是随机生成的用于检验得到的flag的（理解这点后题目就变得十分简单了），所以我们需要做的时按程序正向逻辑进行爆破或者逆向生成这flag即可。</p>
-<p>需要注意的是，虽然很多时候这种类似 unsigned __int8 的信息会被我们忽略， 但是在本题中它是非常重要的， 它标表示这个数被转型为8个bit长（也就是只有一个字节，刚好是我们ascii表的范围），故脚本中我们需要与上一个0xff</p>
-<h3 id="脚本">脚本</h3>
-<pre><code>a=[0x5F ,0xF2 ,0x5E ,0x8B ,0x4E ,0x0E ,0xA3 ,0xAA ,0xC7 ,0x93 ,0x81 ,
-   0x3D ,0x5F ,0x74 ,0xA3 ,0x09 ,0x91 ,0x2B, 0x49 ,0x28 ,0x93 ,0x67]
-flag=''
-for i in range(22):
-    v14=i+1
-    v18=0
-    v19=0
-    while v18&lt;v14:
-        v18+=1
-        v19=1828812941 * v19 + 12345
-    flag+=chr((a[i]^v19)&amp;0xff)
-print(flag)
-</code></pre>
-<h2 id="babyre">BABYRE</h2>
-<figure data-type="image" tabindex="5"><img src="https://7usai.github.io/post-images/1600096037348.png" alt="" loading="lazy"></figure>
-<p>GDB还不会，等学会了再写</p>
-<h2 id="crackme">crackme</h2>
-<h3 id="脱壳">脱壳</h3>
-<figure data-type="image" tabindex="6"><img src="https://7usai.github.io/post-images/1600096045818.png" alt="" loading="lazy"></figure>
-<h3 id="主函数-2">主函数</h3>
-<figure data-type="image" tabindex="7"><img src="https://7usai.github.io/post-images/1600096054533.png" alt="" loading="lazy"></figure>
-<p>很简单，异或一下就行</p>
-<p>dword_402150值如下</p>
-<figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1600096060907.png" alt="" loading="lazy"></figure>
-<h3 id="脚本-2">脚本</h3>
-<pre><code>a=[0x12,0x04,0x08,0x14,0x24,0x5C,0x4A,0x3D,0x56,0x0A,0x10,0x67,0x00,0x41,0x00,0x01,0x46,0x5A,0x44,0x42,0x6E,0x0C,0x44,0x72,0x0C,0x0D,0x40,0x3E,0x4B,0x5F,0x02,0x01,0x4C,0x5E,0x5B,0x17,0x6E,0x0C,0x16,0x68,0x5B,0x12]
-flag=''
-e='this_is_not_flag'
-for i in range(42):
-    flag+=chr(ord(e[i%16])^a[i])
-print (flag)
-</code></pre>
-<h2 id="apk-逆向2">APK-逆向2</h2>
-<h3 id="主函数-3">主函数</h3>
-<p><img src="https://7usai.github.io/post-images/1600096069499.png" alt="" loading="lazy"><br>
-大致意思是通过31337端口向主机发送flag</p>
-<h3 id="python脚本">python脚本</h3>
-<pre><code>import http.server
-
-server_address = ('127.0.0.1', 31337)
-handler_class = http.server.BaseHTTPRequestHandler
-httpd = http.server.HTTPServer(server_address, handler_class)
-httpd.serve_forever()
-</code></pre>
-<h3 id="结果">结果</h3>
-<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1600096078531.png" alt="" loading="lazy"></figure>
-<h2 id="babymips">babymips</h2>
-<p>需要配置JDK环境并且安装Ghidra</p>
-<h3 id="主函数-4">主函数</h3>
-<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1600096092065.png" alt="" loading="lazy"></figure>
-<p>abStack44为输入的字符，之后进行32次异或：abStack44[i]=abStack44[i]^0x20-char[i]<br>
-iVar1处转换后前5位是Q|j{g<img src="https://7usai.github.io/post-images/1600096112265.png" alt="" loading="lazy"><br>
-<img src="https://7usai.github.io/post-images/1600096100128.png" alt="" loading="lazy"></p>
-<p>uStack16为偶数时相当于&lt;&lt;2|&gt;&gt;6为奇数时相当于&gt;&gt;2|&lt;&lt;6</p>
-<h3 id="脚本-3">脚本</h3>
-<pre><code>a=[0x51, 0x7C, 0x6A, 0x7B, 0x67,
-  0x52, 0xFD, 0x16, 0xA4, 0x89, 0xBD, 0x92, 0x80, 0x13, 0x41,
-  0x54, 0xA0, 0x8D, 0x45, 0x18, 0x81, 0xDE, 0xFC, 0x95, 0xF0,
-  0x16, 0x79, 0x1A, 0x15, 0x5B, 0x75, 0x1F, 0x00]
-flag=''
-for i in range(5,32):
-    if((i&amp;1)!=0):
-        a[i]=a[i]&gt;&gt;6|(a[i]&lt;&lt;2)%0x100
-    else:
-        a[i]=(a[i]&lt;&lt;6)%0x100|a[i]&gt;&gt;2
-for i in range(32):
-    a[i]=a[i]^32-i
-    flag+=chr(a[i])
-print(flag)
-</code></pre>
-<p>注意这里的%0x100需要加上不然失败</p>
-<h2 id="reverse-for-the-holy-grail-350">reverse-for-the-holy-grail-350</h2>
-<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1600161580746.png" alt="" loading="lazy"></figure>
-<h3 id="主函数-5">主函数</h3>
-<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1600161585732.png" alt="" loading="lazy"></figure>
-<h3 id="关键函数stringmod">关键函数stringmod</h3>
-<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1600161590750.png" alt="" loading="lazy"></figure>
-<h3 id="脚本-4">脚本</h3>
-<pre><code>firstchar=[0x41,0x69,0x6E,0x45,0x6F,0x61]
-thirdchar=[0x2EF,0x2C4,0x2DC,0x2C7,0x2ED,0x2FC]
-masterArray=[0x1D7,0x0C,0x244,0x25E,0x93,0x6C]
-flag=[0 for i in range(18)]
-t=[]
-v7=666
-temp=0
-for i in range(18):
-    t.append(v7)
-    v7+=v7%5
-    if i % 3==0:
-        flag[i]=firstchar[temp]
-        temp+=1
-temp=0
-for i in range(2,18,3):
-    flag[i]=thirdchar[temp]^t[i]
-    temp+=1
-temp=0
-for i in range (1,18,3):
-    for j in range(32,127):
-        if((flag[i-1]^t[i-1])*(j^t[i])%(flag[i+1]^t[i+1]))==masterArray[temp]:
-            temp+=1
-            flag[i]=j
-            break
-print('tuctf{'+''.join(map(chr,flag))+'}')
-</code></pre>
-<p>这里得到的是tuctf{AfricanOrEuro Va ?}不知道为什么<br>
-如果有想交流的可以发送邮件<br>
-实际flag=tuctf{AfricanOrEuropean?}</p>
-<h2 id="serial-150">serial-150</h2>
-<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1600240488845.png" alt="" loading="lazy"></figure>
-<p>注意按字符顺序打印flag，比如208-&gt;208_1_1....</p>
-<h2 id="key">key</h2>
-<h3 id="主函数-6">主函数</h3>
-<figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1600240503658.png" alt="" loading="lazy"></figure>
-<p>关键函数是sub_4021E0，大致意思就是将后两个参数进行异或放入第一个参数，</p>
-<p><img src="https://7usai.github.io/post-images/1600240522266.png" alt="" loading="lazy"><br>
-<img src="https://7usai.github.io/post-images/1600240536879.png" alt="" loading="lazy">这里可以看到后两个参数是什么</p>
-<figure data-type="image" tabindex="16"><img src="https://7usai.github.io/post-images/1600240546193.png" alt="" loading="lazy"></figure>
-<p>这里也可以但是注意这里是倒叙存储的</p>
-<h3 id="编写脚本">编写脚本</h3>
-<pre><code>a='themidathemidathemida'
-b='&gt;----++++....&lt;&lt;&lt;&lt;.'
-c=''
-flag=''
-for i in range(len(b)):
-    c+=chr((ord(a[i])^ord(b[i]))+22)
-for i in c:
-    flag+=chr(ord(i)+9)
-print(flag)
-</code></pre>
-<p>得flag=idg_cni~bjbfi|gsxb</p>
-<h3 id="gametime">gametime</h3>
-<h3 id="思路">思路</h3>
-<p>运行一边程序后找错误时的字符串所在函数<br>
-<img src="https://7usai.github.io/post-images/1600240563079.png" alt="" loading="lazy"><br>
-如上，就是要让sub_401260(xxxxx)!=0</p>
-<h3 id="进入sub_401260函数">进入sub_401260函数</h3>
-<p><img src="https://7usai.github.io/post-images/1600240572593.png" alt="" loading="lazy"><br>
-这里有帮助的是v4存在了eax里，最终return的是eax的值<br>
-<img src="https://7usai.github.io/post-images/1600240579914.png" alt="" loading="lazy"><br>
-看思维图可知loc_4012AD对eax清零了，于是我们就要修改错误跳转</p>
-<h3 id="修改错误跳转">修改错误跳转</h3>
-<figure data-type="image" tabindex="17"><img src="https://7usai.github.io/post-images/1600240594564.png" alt="" loading="lazy"></figure>
-<h3 id="运行得flag">运行得flag</h3>
-<figure data-type="image" tabindex="18"><img src="https://7usai.github.io/post-images/1600240610853.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
