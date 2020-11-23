@@ -400,9 +400,8 @@ invoke-virtual {v2, v3}, Lnet/bluelotus/tomorrow/easyandroid/MainActivity;-&gt;s
 <figure data-type="image" tabindex="8"><img src="https://7usai.github.io/post-images/1606139113978.png" alt="" loading="lazy"></figure>
 <pre><code>将if-gtz v0, :cond_0改为if-lez v0, :cond_0
 </code></pre>
-<p>之后就编译打包，放入安卓系统中运行</p>
-<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1606139123988.png" alt="" loading="lazy"></figure>
-<p>得到flag=alictf{Y0vAr3TimerMa3te7}</p>
+<p>之后就编译打包，放入安卓系统中运行<br>
+得到flag=alictf{Y0vAr3TimerMa3te7}</p>
 <h2 id="逆向入门">逆向入门</h2>
 <p>这题好怪，根本不像re题</p>
 <p>得到一个html文件</p>
@@ -410,14 +409,14 @@ invoke-virtual {v2, v3}, Lnet/bluelotus/tomorrow/easyandroid/MainActivity;-&gt;s
 <pre><code>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQCAYAAACAvzbMAAAgAElEQVR4Xu29CdhuyVXXW4dAmBIghqEDCIg5aWQmAyhT0oCgkj6CE4HjdT7pgHLVpGVwgsP14nBDixMGGofHxyYRRzodFS7Y6SBc0SSAECA5DDKmQcKUMKPnPr/vPdW9z9t77/rV3uutd7/fqXqe7+nkvLWrVv1r1frXsFbVhevXr19PPXUEOgIdgY5AR6ASgQudQCoR69k7Ah2BjkBH4AyBTiBdEToCHYGOQEdgEQKdQBbB1j/qCHQEOgIdgU4gXQc6Ah2BjkBHYBECnUAWwdY/6gh0BDoCHYFOIF0HOgIdgY5AR2ARAp1AFsHWP+oIdAQ6Ah2BTiBdBzoCHYGOQEdgEQJVBPLmN785PfDAA+kNb3hD+omf+ImbKiQe8cKFC4uE2P/IlBWVZ0rg22+/PT3taU9Lz33ucxe16TWveU3Kf0sKOHT7DOaRGDzjGc9Iz3nOc84wPVTKeKOfue/e8z3f81DVhZW7dlwZXUFYk28sDxhmPJ/4xCeGtXu/oJe+9KXpjW98YwKPNfVhm7Kdohx0j78lKZfz+te/fsnnizE343ORQBMfLe1jTSAMyr....................过长，省略
 </code></pre>
 <p>在线base64转图片，得到二维码，扫描得flag</p>
-<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1606139138139.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="9"><img src="https://7usai.github.io/post-images/1606139138139.png" alt="" loading="lazy"></figure>
 <h2 id="love">love</h2>
 <p>找到main函数</p>
-<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1606139147301.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="10"><img src="https://7usai.github.io/post-images/1606139147301.png" alt="" loading="lazy"></figure>
 <p>发现base64表猜测是base64转换</p>
-<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1606139154144.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="11"><img src="https://7usai.github.io/post-images/1606139154144.png" alt="" loading="lazy"></figure>
 <p>进入sub_4110BE发现果然是</p>
-<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1606139162403.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="12"><img src="https://7usai.github.io/post-images/1606139162403.png" alt="" loading="lazy"></figure>
 <p>在线base64转换有错</p>
 <p>直接编写脚本</p>
 <pre><code>import base64
@@ -432,11 +431,11 @@ print(flag)
 <h2 id="loopandloop">LoopAndLoop</h2>
 <p>用JEB打开</p>
 <p>主要函数</p>
-<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1606139171702.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="13"><img src="https://7usai.github.io/post-images/1606139171702.png" alt="" loading="lazy"></figure>
 <p>将输入得数与99进行函数变化得到得值与0x6D6F1462比较，相同则成功</p>
-<figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1606139179251.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="14"><img src="https://7usai.github.io/post-images/1606139179251.png" alt="" loading="lazy"></figure>
 <p>因为check中有chec，调用了native层的原生函数chec</p>
-<figure data-type="image" tabindex="16"><img src="https://7usai.github.io/post-images/1606139186941.png" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://7usai.github.io/post-images/1606139186941.png" alt="" loading="lazy"></figure>
 <p>此处可知库名为lhm</p>
 <p>将后缀由apk改为zip并解压找到liblhm.so放入IDA</p>
 <p>关键函数</p>
